@@ -1,0 +1,35 @@
+---
+const base = import.meta.env.BASE_URL;
+const links = [
+  { href: `${base}/#metodo`, label: 'Método' },
+  { href: `${base}/#especialidades`, label: 'Especialidades' },
+  { href: `${base}/#quienes-somos`, label: 'Quiénes somos' },
+  { href: `${base}/contacto`, label: 'Contacto' },
+];
+---
+<header class="sticky top-0 z-50 border-b border-white/5 bg-obsidiana/80 backdrop-blur-lg">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href={base || '/'} class="flex items-center gap-3" aria-label="Inicio IXT">
+      <img src={`${base}/brand/icono-jade.svg`} alt="" class="h-8 w-8" />
+      <span class="font-serif text-xl font-bold tracking-tight text-hueso">IXT</span>
+    </a>
+    <ul class="hidden items-center gap-8 md:flex">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="font-mono text-xs uppercase tracking-widest text-hueso/70 transition hover:text-jade"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a
+      href={`${base}/contacto`}
+      class="rounded-full border border-jade/40 px-4 py-2 font-mono text-xs uppercase tracking-widest text-jade transition hover:bg-jade hover:text-obsidiana md:hidden"
+    >
+      Hablemos
+    </a>
+  </nav>
+</header>

@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const compromisos = [
+  { titulo: 'Confidencialidad', texto: 'Toda relación se rige por acuerdo firmado. La información se trata bajo estándares equivalentes a los del sector financiero y conforme a la LFPDPPP.' },
+  { titulo: 'Independencia', texto: 'No recibimos comisiones de proveedores tecnológicos ni de instituciones financieras por recomendar sus productos.' },
+  { titulo: 'Entregables auditables', texto: 'Documentados y revisables por un tercero. Si no se puede auditar, no está terminado.' },
+];
+---
+<Base title="IXT · Contacto" description="Agende una conversación inicial con IXT. Sin costo, sin compromiso.">
+  <section class="trama-fondo border-b border-white/5">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4">Hablemos</p>
+      <h1 class="max-w-3xl font-serif text-5xl font-bold text-hueso md:text-6xl">
+        Cuéntenos qué está pasando.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-hueso/80">
+        La primera conversación no cuesta y no compromete. Salimos de ella sabiendo si podemos
+        ayudar — y si la respuesta es que no, se lo decimos.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-white/5 bg-obsidiana">
+    <div class="mx-auto grid max-w-6xl gap-16 px-6 py-24 md:grid-cols-5">
+      <!-- Formulario -->
+      <div class="md:col-span-3">
+        <form
+          action="mailto:soporte-equifin@ixt.mx"
+          method="post"
+          enctype="text/plain"
+          class="space-y-6"
+        >
+          <div class="grid gap-6 md:grid-cols-2">
+            <label class="block">
+              <span class="eyebrow mb-2 block">Nombre</span>
+              <input
+                type="text"
+                name="nombre"
+                required
+                class="w-full rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-hueso placeholder-hueso/30 focus:border-jade focus:outline-none focus:ring-1 focus:ring-jade"
+                placeholder="Su nombre"
+              />
+            </label>
+            <label class="block">
+              <span class="eyebrow mb-2 block">Correo</span>
+              <input
+                type="email"
+                name="correo"
+                required
+                class="w-full rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-hueso placeholder-hueso/30 focus:border-jade focus:outline-none focus:ring-1 focus:ring-jade"
+                placeholder="usted@suempresa.mx"
+              />
+            </label>
+          </div>
+
+          <label class="block">
+            <span class="eyebrow mb-2 block">Empresa (opcional)</span>
+            <input
+              type="text"
+              name="empresa"
+              class="w-full rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-hueso placeholder-hueso/30 focus:border-jade focus:outline-none focus:ring-1 focus:ring-jade"
+              placeholder="Nombre de la empresa"
+            />
+          </label>
+
+          <label class="block">
+            <span class="eyebrow mb-2 block">¿Qué está pasando?</span>
+            <textarea
+              name="mensaje"
+              required
+              rows="6"
+              class="w-full rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-hueso placeholder-hueso/30 focus:border-jade focus:outline-none focus:ring-1 focus:ring-jade"
+              placeholder="Describa el problema o el reto. Dos o tres líneas bastan para empezar."
+            ></textarea>
+          </label>
+
+          <button
+            type="submit"
+            class="w-full rounded-full bg-jade px-6 py-4 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90"
+          >
+            Enviar · agendar conversación
+          </button>
+
+          <p class="text-xs text-hueso/50">
+            Al enviar, se abre su cliente de correo con el mensaje listo para
+            <code class="font-mono text-jade">soporte-equifin@ixt.mx</code>.
+            Si prefiere escribir directo, también funciona.
+          </p>
+        </form>
+      </div>
+
+      <!-- Side info -->
+      <aside class="space-y-10 md:col-span-2">
+        <div>
+          <p class="eyebrow mb-3">Correo directo</p>
+          <a
+            href="mailto:soporte-equifin@ixt.mx"
+            class="font-serif text-xl text-hueso underline decoration-jade decoration-2 underline-offset-4 transition hover:text-jade"
+          >
+            soporte-equifin@ixt.mx
+          </a>
+        </div>
+
+        <div>
+          <p class="eyebrow mb-3">Qué pasa después</p>
+          <ol class="space-y-3 text-sm text-hueso/80">
+            <li class="flex gap-3">
+              <span class="font-mono text-jade">01</span>
+              <span>Respondemos para agendar 30-45 minutos.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-mono text-jade">02</span>
+              <span>Conversamos sin costo. Salimos con un diagnóstico de si podemos ayudar.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-mono text-jade">03</span>
+              <span>Si vale la pena, propuesta por escrito con alcance y precio.</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="space-y-4 border-t border-white/10 pt-8">
+          {compromisos.map((c) => (
+            <div>
+              <p class="font-mono text-xs uppercase tracking-widest text-jade">{c.titulo}</p>
+              <p class="mt-1 text-sm text-hueso/70">{c.texto}</p>
+            </div>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

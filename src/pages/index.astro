@@ -1,0 +1,237 @@
+---
+import Base from '../layouts/Base.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const ambitos = [
+  {
+    numero: '01',
+    nombre: 'Ver',
+    descripcion: 'Entender el negocio antes de tocarlo. Diagnóstico, levantamiento, modelado de lo que ya existe y de lo que ya funciona.',
+  },
+  {
+    numero: '02',
+    nombre: 'Ordenar',
+    descripcion: 'Arreglar los números y los procesos. Es la condición de entrada: nada de lo demás sostiene si esto no está en pie.',
+  },
+  {
+    numero: '03',
+    nombre: 'Crecer',
+    descripcion: 'Construir lo que multiplica. Sistemas, automatización, capacidad instalada en el equipo del cliente.',
+  },
+  {
+    numero: '04',
+    nombre: 'Renovar',
+    descripcion: 'Volver a mirar. Lo que se construyó envejece; el ciclo se reabre, no se cierra.',
+  },
+];
+
+const especialidades = [
+  {
+    nombre: 'Tecnológica',
+    descripcion: 'Software a la medida e integración de software de terceros, en nube u on-premise. Trabajamos sobre AWS, Azure y Google Cloud.',
+    razon: 'Porque la tecnología es lo que convierte una decisión en algo que ocurre todos los días sin que nadie tenga que acordarse.',
+  },
+  {
+    nombre: 'Financiera',
+    descripcion: 'Automatización de la gestión financiera para PyMEs y FinOps para corporativos. Incluye contabilidad y auditoría contable.',
+    razon: 'Porque es la condición de entrada. Un sistema montado sobre un negocio que no cierra sus números solo automatiza la pérdida.',
+  },
+  {
+    nombre: 'Legal',
+    descripcion: 'Derecho corporativo, contratos, confidencialidad, protección de datos personales y auditorías. Para personas: asesoría penal, laboral, administrativa y civil.',
+    razon: 'Porque un sistema que trata datos personales sin el marco legal correcto es un pasivo, no un activo. Lo legal no se agrega al final: define el diseño.',
+  },
+  {
+    nombre: 'Capital humano',
+    descripcion: 'Capacitación, desarrollo organizacional, administración de personal y procesos de talento.',
+    razon: 'Porque los sistemas los operan personas. Un sistema sin capacitación es un gasto; con capacitación es un activo.',
+  },
+  {
+    nombre: 'Psicológica',
+    descripcion: 'Red de psicólogos con cédula, para empresas y para personas.',
+    razon: 'Porque las decisiones de negocio las toman personas bajo presión, y en la empresa familiar la frontera entre lo personal y lo empresarial no existe.',
+  },
+];
+
+const diferencias = [
+  { comun: 'Una consultora recomienda y un proveedor distinto construye.', nuestro: 'Modelamos y construimos nosotros. No traducimos requerimientos: somos ambos.' },
+  { comun: 'El proveedor gana comisión por recomendar herramientas de terceros.', nuestro: 'No recibimos comisión de nadie. Cuando conviene una herramienta ajena, lo decimos.' },
+  { comun: 'El sistema queda atado al proveedor que lo hizo.', nuestro: 'Entregamos documentado y auditable. Su equipo lo opera sin nosotros.' },
+  { comun: 'La propuesta incluye todo lo que el proveedor sabe hacer.', nuestro: 'La propuesta incluye lo que hace falta este año. El resto queda escrito para después.' },
+];
+---
+
+<Base>
+  <!-- HERO -->
+  <section class="trama-fondo relative overflow-hidden border-b border-white/5">
+    <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+      <p class="eyebrow mb-6">Quiénes somos</p>
+      <h1 class="font-serif text-5xl font-bold leading-[1.05] text-hueso md:text-7xl lg:text-8xl">
+        Saber ver para<br />crecer juntos.
+      </h1>
+      <p class="mt-10 max-w-2xl text-lg leading-relaxed text-hueso/80 md:text-xl">
+        IXT es un ecosistema de especialidades que arregla primero los números de una empresa
+        y después construye la tecnología que los sostiene. <span class="text-jade">En ese orden, siempre.</span>
+      </p>
+      <div class="mt-12 flex flex-wrap items-center gap-4">
+        <a
+          href={`${base}/contacto`}
+          class="rounded-full bg-jade px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90"
+        >
+          Conversación inicial · sin costo
+        </a>
+        <a
+          href="#metodo"
+          class="rounded-full border border-hueso/20 px-6 py-3 font-mono text-sm uppercase tracking-wider text-hueso/80 transition hover:border-jade hover:text-jade"
+        >
+          Cómo trabajamos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPIO RECTOR -->
+  <section class="border-b border-white/5 bg-obsidiana">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-5">
+      <div class="md:col-span-2">
+        <p class="eyebrow mb-4">El principio rector</p>
+        <h2 class="font-serif text-3xl font-bold text-hueso md:text-4xl">
+          Nada funciona si lo financiero no está arreglado.
+        </h2>
+      </div>
+      <div class="space-y-6 text-base leading-relaxed text-hueso/80 md:col-span-3">
+        <p>
+          La tecnología multiplica lo que ya hay. Si lo que hay está mal, lo multiplica mal,
+          más rápido y con mejor presentación. Un sistema montado sobre un negocio que no sabe
+          su costo unitario solo produce reportes elegantes de un margen equivocado.
+        </p>
+        <blockquote class="border-l-2 border-jade pl-6 italic text-hueso">
+          Por eso el primer entregable de casi cualquier proyecto nuestro no es software:
+          es saber cuánto cuesta realmente lo que usted vende.
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO · 4 ÁMBITOS -->
+  <section id="metodo" class="trama-fondo border-b border-white/5">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4">Cómo trabajamos</p>
+      <h2 class="max-w-3xl font-serif text-4xl font-bold text-hueso md:text-5xl">
+        Cuatro ámbitos girando alrededor de un centro que no se mueve.
+      </h2>
+      <p class="mt-6 max-w-3xl text-base leading-relaxed text-hueso/70">
+        No son departamentos ni etapas cerradas: son los cuatro momentos por los que pasa
+        cualquier trabajo, y vuelven a empezar. Al centro, lo financiero —la condición que
+        los cuatro atraviesan.
+      </p>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {ambitos.map((a) => (
+          <article class="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/30 p-8 transition hover:border-jade/50">
+            <span class="font-mono text-xs text-jade/60">{a.numero}</span>
+            <h3 class="mt-3 font-serif text-3xl font-bold text-hueso">{a.nombre}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-hueso/70">{a.descripcion}</p>
+            <div class="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-jade/5 blur-3xl transition group-hover:bg-jade/15"></div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-12 rounded-2xl border border-cal/20 bg-cal/5 p-8">
+        <p class="eyebrow mb-3 text-cal">Al centro</p>
+        <p class="font-serif text-xl text-hueso">
+          Lo financiero. Ver sin números es una opinión. Ordenar es, literalmente, poner los
+          números en su lugar. Crecer sin saber el margen es crecer a ciegas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES -->
+  <section id="especialidades" class="border-b border-white/5 bg-obsidiana">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4">Las especialidades</p>
+      <h2 class="max-w-3xl font-serif text-4xl font-bold text-hueso md:text-5xl">
+        Cinco, y cada una está por una razón.
+      </h2>
+      <p class="mt-6 max-w-3xl text-base leading-relaxed text-hueso/70">
+        No porque se juntaron cinco profesionistas: los problemas de una empresa no respetan
+        las fronteras de las profesiones. Una rotación alta es un problema financiero antes
+        que de capital humano; un sistema que nadie usa es psicológico antes que técnico.
+      </p>
+
+      <div class="mt-16 space-y-px rounded-2xl border border-white/10 bg-black/30 overflow-hidden">
+        {especialidades.map((e, i) => (
+          <article class="grid gap-6 border-b border-white/5 p-8 last:border-b-0 md:grid-cols-3">
+            <div>
+              <span class="font-mono text-xs text-jade/60">0{i + 1}</span>
+              <h3 class="mt-2 font-serif text-2xl font-bold text-hueso">{e.nombre}</h3>
+            </div>
+            <div class="md:col-span-2">
+              <p class="text-sm leading-relaxed text-hueso/80">{e.descripcion}</p>
+              <p class="mt-3 border-l-2 border-jade/40 pl-4 text-sm italic text-hueso/60">
+                {e.razon}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS · DIFERENCIAS -->
+  <section id="quienes-somos" class="trama-fondo border-b border-white/5">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4">En qué nos diferenciamos</p>
+      <h2 class="max-w-3xl font-serif text-4xl font-bold text-hueso md:text-5xl">
+        El mercado tiene buenas consultoras y buenas fábricas de software.
+      </h2>
+      <p class="mt-4 max-w-3xl text-base text-hueso/70">
+        Estas son las cuatro diferencias que sí se notan.
+      </p>
+
+      <div class="mt-16 overflow-hidden rounded-2xl border border-white/10">
+        <div class="grid grid-cols-2 bg-black/40 px-6 py-4 font-mono text-xs uppercase tracking-widest">
+          <span class="text-hueso/40">Lo común en el mercado</span>
+          <span class="text-jade">Lo que hacemos</span>
+        </div>
+        {diferencias.map((d) => (
+          <div class="grid gap-6 border-t border-white/5 bg-black/20 px-6 py-6 md:grid-cols-2">
+            <p class="text-sm text-hueso/50 line-through decoration-hueso/30">{d.comun}</p>
+            <p class="text-sm font-medium text-hueso">{d.nuestro}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO EMPEZAR · CTA FINAL -->
+  <section class="bg-obsidiana">
+    <div class="mx-auto max-w-4xl px-6 py-24 text-center">
+      <p class="eyebrow mb-6">Cómo empezar</p>
+      <h2 class="font-serif text-4xl font-bold text-hueso md:text-5xl">
+        La primera conversación<br />no cuesta y no compromete.
+      </h2>
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-hueso/70">
+        Salimos de ella con tres cosas: si el problema es el que usted cree, si podemos ayudar,
+        y qué costaría averiguarlo bien. Si resulta que el problema es de alguien más, se lo
+        decimos y, si podemos, le decimos de quién.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href={`${base}/contacto`}
+          class="rounded-full bg-jade px-8 py-4 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90"
+        >
+          Agendar conversación
+        </a>
+        <a
+          href="mailto:soporte-equifin@ixt.mx"
+          class="rounded-full border border-hueso/20 px-8 py-4 font-mono text-sm uppercase tracking-wider text-hueso/80 transition hover:border-jade hover:text-jade"
+        >
+          soporte-equifin@ixt.mx
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

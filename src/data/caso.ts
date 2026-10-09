@@ -9,7 +9,7 @@ export const resultados = [
   {
     icono: 'hand-coins',
     titulo: 'Cobranza oportuna',
-    texto: 'Un mismo corte diario para todos: cada abono queda con fecha y hora, y las cuotas atrasadas se ven el mismo día.',
+    texto: 'Un mismo corte diario para todos: cada abono queda con fecha y hora, la clienta recibe su mensaje por WhatsApp y lo atrasado se ve el mismo día.',
   },
   {
     icono: 'activity',

@@ -34,6 +34,7 @@ const capturas = [
   { pagina: 'solicitud-curp.html', archivo: 'solicitud-curp.png', ancho: 390, alto: 844 },
   { pagina: 'solicitud-leida.html', archivo: 'solicitud-leida.png', ancho: 390, alto: 844 },
   { pagina: 'abono.html', archivo: 'abono.png', ancho: 390, alto: 844 },
+  { pagina: 'whatsapp.html', archivo: 'whatsapp.png', ancho: 390, alto: 879 },
   { pagina: 'cashflow.html', archivo: 'cashflow.png', alto: 1000 },
   { pagina: 'cashflow.html', archivo: 'cashflow-ciclo.png', alto: 1400, selector: '#ciclo' },
 ];

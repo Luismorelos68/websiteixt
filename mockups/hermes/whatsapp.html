@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Mensaje para la clienta (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+    <style>
+      .tipos .btn {
+        font-size: 14px;
+        padding: 4px 10px;
+        border-color: #adb5bd;
+        color: #495057;
+      }
+      .tipos .btn.activo {
+        background: #1d2b3a;
+        border-color: #1d2b3a;
+        color: #fff;
+      }
+      .mensaje {
+        font-size: 15px;
+        line-height: 1.5;
+        resize: none;
+      }
+      .btn-whatsapp {
+        background: #1f8a4c;
+        border-color: #1f8a4c;
+        color: #fff;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body class="hm-movil">
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+    <!-- El mismo crédito inventado del calendario de pagos: la cuota 8 de $420.00 se pagó antes de tiempo. Texto del mensaje propio de esta demostración. -->
+    <main class="px-3 py-3">
+      <div class="card card-hm">
+        <div class="card-header d-block py-2">
+          <div class="fs-5"><i class="bi bi-whatsapp me-2"></i>Mensaje para la clienta</div>
+          <div class="small fw-normal opacity-90">AMELIA BARRERA CASTILLO · cuota 8 · $420.00</div>
+        </div>
+        <div class="card-body">
+          <div class="mb-2"><strong>Tipo de mensaje</strong> <span class="text-secondary small">(propuesto según el pago; puedes cambiarlo)</span></div>
+          <div class="tipos d-flex flex-wrap gap-2 mb-3">
+            <button class="btn btn-outline-secondary activo">Puntual</button>
+            <button class="btn btn-outline-secondary">Puntual en efectivo</button>
+            <button class="btn btn-outline-secondary">Puntual con error en concepto</button>
+            <button class="btn btn-outline-secondary">Recibido después de horario / día</button>
+            <button class="btn btn-outline-secondary">Después de horario + error en concepto</button>
+            <button class="btn btn-outline-secondary">Pago en jurídico</button>
+            <button class="btn btn-outline-secondary">Personalizado</button>
+          </div>
+          <div class="mb-1"><strong>Vista previa</strong> <span class="text-secondary small">(puedes ajustar el texto antes de enviar)</span></div>
+          <textarea class="form-control mensaje mb-2" rows="7">¡Hola, Amelia! Recibimos el pago de su cuota 8 por $420.00, antes de la hora de corte. Muchas gracias por su puntualidad: pagos así hacen crecer su historial y le abren la puerta a su próxima renovación. Aquí seguimos para lo que necesite.</textarea>
+          <p class="small text-secondary mb-3">Se envía desde tu WhatsApp, al chat o grupo que elijas; el sistema no lo manda por ti.</p>
+          <button class="btn btn-whatsapp w-100 py-2 mb-1"><i class="bi bi-whatsapp me-2"></i>Abrir WhatsApp con el mensaje</button>
+          <p class="small text-secondary text-center mb-2">Se abre tu WhatsApp con el texto listo: tú eliges el chat o grupo al que va.</p>
+          <button class="btn btn-outline-secondary w-100"><i class="bi bi-clipboard me-2"></i>Copiar mensaje</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

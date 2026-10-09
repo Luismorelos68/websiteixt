@@ -15,6 +15,7 @@ import grupo from '../../assets/hermes/grupo.png';
 import credito from '../../assets/hermes/credito.png';
 import cuotas from '../../assets/hermes/cuotas.png';
 import abono from '../../assets/hermes/abono.png';
+import whatsapp from '../../assets/hermes/whatsapp.png';
 import cumpleanos from '../../assets/hermes/cumpleanos.png';
 import prestamo from '../../assets/hermes/prestamo.png';
 import miTablero from '../../assets/hermes/mi-tablero.png';
@@ -45,13 +46,14 @@ const recorrido = [
   { id: 'expediente', numero: '02', icono: 'folder-lock', nombre: 'El expediente' },
   { id: 'credito', numero: '03', icono: 'calendar-check', nombre: 'El crédito' },
   { id: 'cobro', numero: '04', icono: 'hand-coins', nombre: 'El cobro' },
-  { id: 'relacion', numero: '05', icono: 'cake', nombre: 'La relación' },
+  { id: 'comunicacion', numero: '05', icono: 'message-circle', nombre: 'La comunicación' },
+  { id: 'relacion', numero: '06', icono: 'cake', nombre: 'La relación' },
 ] as const;
 
 const vistaDireccion = [
-  { id: 'monitoreo', numero: '06', icono: 'gauge', nombre: 'El monitoreo' },
-  { id: 'riesgo', numero: '07', icono: 'shield-alert', nombre: 'El riesgo' },
-  { id: 'caja', numero: '08', icono: 'wallet', nombre: 'La caja' },
+  { id: 'monitoreo', numero: '07', icono: 'gauge', nombre: 'El monitoreo' },
+  { id: 'riesgo', numero: '08', icono: 'shield-alert', nombre: 'El riesgo' },
+  { id: 'caja', numero: '09', icono: 'wallet', nombre: 'La caja' },
 ] as const;
 
 const pasosSolicitud = [
@@ -116,7 +118,7 @@ const forma = [
     icono: 'refresh-cw',
     titulo: 'Mejora continua',
     texto:
-      'HERMES cambia al ritmo de la operación: metas nuevas, reglas nuevas y reportes nuevos. Migramos la información del sistema anterior y hoy va en su versión 2.45.',
+      'HERMES cambia al ritmo de la operación: metas nuevas, reglas nuevas y reportes nuevos. Migramos la información del sistema anterior, hoy va en su versión 2.45 y lo que sigue son los cobros por WhatsApp y con link de pago.',
   },
   {
     icono: 'messages-square',
@@ -208,7 +210,7 @@ const forma = [
       <div class="space-y-4">
         <div class="rounded-2xl border border-obsidiana/10 bg-white p-6 shadow-sm">
           <p class="font-serif text-xl font-bold">Primera parte · El recorrido de la clienta</p>
-          <ol class="mt-5 grid gap-3 sm:grid-cols-5">
+          <ol class="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {recorrido.map((paso) => (
               <li>
                 <a
@@ -393,8 +395,53 @@ const forma = [
         </Capitulo>
 
         <Capitulo
-          id="relacion"
+          id="comunicacion"
           numero="05"
+          icono="message-circle"
+          etiqueta="La comunicación"
+          titulo="Cada pago, una conversación por WhatsApp."
+          reto="Avisarle a cada clienta cómo quedó su pago, y con el tono correcto, no puede depender de la memoria de cada gerente."
+          texto="Cuando se registra un pago, HERMES propone el mensaje para la clienta según cómo pagó: a tiempo, en efectivo, después del horario o con un error en el concepto. El gerente lo revisa, lo ajusta si quiere y lo envía desde su propio WhatsApp, al chat o al grupo que elija."
+          puntos={[
+            'Un mensaje listo para cada caso: puntual, en efectivo, después de horario, con error en el concepto, en jurídico o personalizado.',
+            'Se abre WhatsApp con el texto listo; el sistema no envía nada por su cuenta.',
+            'El mismo tono con todas las clientas: un agradecimiento cuando paga a tiempo y un recordatorio claro cuando hace falta.',
+            'WhatsApp acompaña todo el recorrido: felicitaciones de cumpleaños y documentos que llegan por chat.',
+          ]}
+        >
+          <div class="grid items-center gap-8 sm:grid-cols-2">
+            <PhoneFrame
+              src={whatsapp}
+              alt="Mensaje para la clienta en HERMES: tipo de mensaje propuesto según el pago, vista previa editable y botón para abrir WhatsApp con el texto listo (datos ficticios)."
+              pie="El mensaje se propone según cómo pagó la clienta."
+            />
+            <aside class="rounded-2xl border border-dashed border-jade-oscuro/40 bg-white p-6 shadow-sm">
+              <span class="inline-flex rounded-full bg-cal px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-obsidiana">Próximamente</span>
+              <h4 class="mt-4 font-serif text-2xl font-bold">Cobrar por WhatsApp</h4>
+              <p class="mt-3 text-sm leading-relaxed text-obsidiana/70">
+                La clienta podrá pagar desde su celular, por WhatsApp o con un link de pago, a través de una pasarela de pagos.
+              </p>
+              <ul class="mt-5 space-y-3 text-sm text-obsidiana/80">
+                {(
+                  [
+                    { icono: 'message-circle', texto: 'Pagos por WhatsApp' },
+                    { icono: 'link', texto: 'Link de pago' },
+                    { icono: 'wallet', texto: 'Pasarela de pagos' },
+                  ] as const
+                ).map((item) => (
+                  <li class="flex items-center gap-3">
+                    <span class="inline-flex rounded-lg bg-jade/15 p-1.5 text-jade-oscuro"><Icon name={item.icono} class="h-4 w-4" /></span>
+                    {item.texto}
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+        </Capitulo>
+
+        <Capitulo
+          id="relacion"
+          numero="06"
           icono="cake"
           etiqueta="La relación"
           titulo="La relación no termina en el cobro."
@@ -442,7 +489,7 @@ const forma = [
       <div class="mt-20 space-y-28">
         <Capitulo
           id="monitoreo"
-          numero="06"
+          numero="07"
           icono="gauge"
           etiqueta="Monitoreo en tiempo real"
           titulo="Todos ven las mismas cifras, al momento."
@@ -474,7 +521,7 @@ const forma = [
 
         <Capitulo
           id="riesgo"
-          numero="07"
+          numero="08"
           icono="shield-alert"
           etiqueta="Dashboard de riesgo"
           titulo="Seis preguntas que dirección responde cada mañana."
@@ -522,7 +569,7 @@ const forma = [
 
         <Capitulo
           id="caja"
-          numero="08"
+          numero="09"
           icono="wallet"
           etiqueta="La caja"
           titulo="¿Alcanza la caja para seguir prestando?"

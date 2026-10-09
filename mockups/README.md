@@ -12,4 +12,4 @@ npx playwright install chromium   # solo si no hay un Chromium disponible
 node mockups/render.mjs
 ```
 
-`render.mjs` toma cada página a 1280 px de ancho y escala 2x, y guarda los PNG en `src/assets/hermes/`. Para agregar una pantalla nueva, crea su HTML en `mockups/hermes/` (reutilizando `hermes.css`) y añádela a la lista `capturas` de `render.mjs`.
+`render.mjs` toma cada página a 1280 px de ancho (390 px las de celular) y escala 2x, y guarda los PNG en `src/assets/hermes/`. También genera las vistas previas para compartir el sitio en WhatsApp y redes a partir de `mockups/og/`: `public/og.jpg` (portada) y `public/og-equifin.jpg` (caso), de 1200×630 y menos de 300 KB. Para agregar una pantalla nueva, crea su HTML en `mockups/hermes/` (reutilizando `hermes.css`) y añádela a la lista `capturas` de `render.mjs`.

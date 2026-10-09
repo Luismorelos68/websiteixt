@@ -27,7 +27,7 @@ src/
   utils/base.ts ruta base del sitio para armar enlaces
 public/
   brand/        logotipos e íconos en SVG
-  og.png        imagen para compartir en redes (1200×630)
+  og*.jpg       vistas previas para WhatsApp y redes (1200×630), generadas desde mockups/og/
 mockups/        recreaciones en HTML de las pantallas de HERMES (ver mockups/README.md)
 ```
 

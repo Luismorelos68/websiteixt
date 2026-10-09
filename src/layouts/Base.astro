@@ -13,17 +13,22 @@ interface Props {
   description?: string;
   /** Para páginas que no deben indexarse (como la 404): quita la URL canónica. */
   noindex?: boolean;
+  /** Imagen de vista previa al compartir (WhatsApp, redes), dentro de public/. Se genera en mockups/og/. */
+  imagen?: string;
+  imagenAlt?: string;
 }
 
 const {
   title = 'IXT · Consultoría financiera y software a la medida',
   description = 'Primero ordenamos las finanzas de su negocio; después construimos el sistema que las sostiene y le acompañamos mientras crece. Conozca el caso EquiFin.',
   noindex = false,
+  imagen = 'og.jpg',
+  imagenAlt = 'IXT · Software que nace de entender sus números.',
 } = Astro.props;
 
 // Con barra final, igual que las URLs del sitemap y las que sirve GitHub Pages.
 const canonical = new URL(Astro.url.pathname.replace(/\/?$/, '/'), Astro.site);
-const ogImage = new URL(`${base}/og.png`, Astro.site);
+const ogImage = new URL(`${base}/${imagen}`, Astro.site);
 ---
 <!doctype html>
 <html lang="es">
@@ -47,10 +52,15 @@ const ogImage = new URL(`${base}/og.png`, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="IXT · Saber ver para crecer juntos." />
+    <meta property="og:image:alt" content={imagenAlt} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body class="min-h-screen flex flex-col">
     <Navbar />

@@ -1,15 +1,16 @@
 ---
-const base = import.meta.env.BASE_URL;
+import { base } from '../utils/base';
+
 const links = [
   { href: `${base}/#metodo`, label: 'Método' },
   { href: `${base}/#especialidades`, label: 'Especialidades' },
   { href: `${base}/#quienes-somos`, label: 'Quiénes somos' },
-  { href: `${base}/contacto`, label: 'Contacto' },
+  { href: `${base}/contacto/`, label: 'Contacto' },
 ];
 ---
 <header class="sticky top-0 z-50 border-b border-white/5 bg-obsidiana/80 backdrop-blur-lg">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href={base || '/'} class="flex items-center gap-3" aria-label="Inicio IXT">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Principal">
+    <a href={`${base}/`} class="flex items-center gap-3" aria-label="Inicio IXT">
       <img src={`${base}/brand/icono-jade.svg`} alt="" class="h-8 w-8" />
       <span class="font-serif text-xl font-bold tracking-tight text-hueso">IXT</span>
     </a>
@@ -25,11 +26,72 @@ const links = [
         </li>
       ))}
     </ul>
-    <a
-      href={`${base}/contacto`}
-      class="rounded-full border border-jade/40 px-4 py-2 font-mono text-xs uppercase tracking-widest text-jade transition hover:bg-jade hover:text-obsidiana md:hidden"
-    >
-      Hablemos
-    </a>
+    <div class="flex items-center gap-2 md:hidden">
+      <a
+        href={`${base}/contacto/`}
+        class="rounded-full border border-jade/40 px-4 py-2 font-mono text-xs uppercase tracking-widest text-jade transition hover:bg-jade hover:text-obsidiana"
+      >
+        Hablemos
+      </a>
+      <button
+        type="button"
+        id="menu-boton"
+        class="group -mr-2 flex h-10 w-10 items-center justify-center rounded-full text-hueso/80 transition hover:text-jade"
+        aria-controls="menu-movil"
+        aria-expanded="false"
+        aria-label="Abrir menú"
+      >
+        <svg class="h-6 w-6 group-aria-expanded:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg class="hidden h-6 w-6 group-aria-expanded:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
   </nav>
+
+  <div id="menu-movil" class="absolute inset-x-0 top-full hidden border-b border-white/10 bg-obsidiana md:hidden">
+    <ul class="mx-auto max-w-6xl px-6 py-4">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="block py-3 font-mono text-sm uppercase tracking-widest text-hueso/80 transition hover:text-jade"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </header>
+
+<script>
+  const boton = document.getElementById('menu-boton');
+  const menu = document.getElementById('menu-movil');
+
+  if (boton && menu) {
+    const estaAbierto = () => boton.getAttribute('aria-expanded') === 'true';
+    const mostrarMenu = (abierto: boolean) => {
+      boton.setAttribute('aria-expanded', String(abierto));
+      boton.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+      menu.classList.toggle('hidden', !abierto);
+    };
+
+    boton.addEventListener('click', () => mostrarMenu(!estaAbierto()));
+    // Cierra al elegir un enlace (los de ancla no recargan la página), con Escape o al tocar fuera.
+    menu.addEventListener('click', (e) => {
+      if ((e.target as Element).closest('a')) mostrarMenu(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && estaAbierto()) {
+        mostrarMenu(false);
+        boton.focus();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!(e.target as Element).closest('header')) mostrarMenu(false);
+    });
+  }
+</script>

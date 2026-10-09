@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import { base } from '../utils/base';
+---
+<Base title="IXT · Página no encontrada" description="La página que busca no existe o cambió de lugar." noindex>
+  <section class="trama-fondo">
+    <div class="mx-auto max-w-6xl px-6 py-32">
+      <p class="eyebrow mb-4">Error 404</p>
+      <h1 class="max-w-3xl text-balance font-serif text-5xl font-bold text-hueso md:text-6xl">
+        Aquí no hay nada que ver.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-hueso/80">
+        La página que busca no existe o cambió de lugar. Revise la dirección o empiece de nuevo
+        desde el inicio.
+      </p>
+      <div class="mt-12 flex flex-wrap items-center gap-4">
+        <a
+          href={`${base}/`}
+          class="rounded-full bg-jade px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90"
+        >
+          Ir al inicio
+        </a>
+        <a
+          href={`${base}/contacto/`}
+          class="rounded-full border border-hueso/20 px-6 py-3 font-mono text-sm uppercase tracking-wider text-hueso/80 transition hover:border-jade hover:text-jade"
+        >
+          Contacto
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

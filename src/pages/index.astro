@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const base = import.meta.env.BASE_URL;
+import { base } from '../utils/base';
 
 const ambitos = [
   {
@@ -66,7 +65,7 @@ const diferencias = [
   <!-- HERO -->
   <section class="trama-fondo relative overflow-hidden border-b border-white/5">
     <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
-      <p class="eyebrow mb-6">Quiénes somos</p>
+      <p class="eyebrow mb-6">IXT · Ixtlamatini</p>
       <h1 class="font-serif text-5xl font-bold leading-[1.05] text-hueso md:text-7xl lg:text-8xl">
         Saber ver para<br />crecer juntos.
       </h1>
@@ -76,7 +75,7 @@ const diferencias = [
       </p>
       <div class="mt-12 flex flex-wrap items-center gap-4">
         <a
-          href={`${base}/contacto`}
+          href={`${base}/contacto/`}
           class="rounded-full bg-jade px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90"
         >
           Conversación inicial · sin costo
@@ -220,7 +219,7 @@ const diferencias = [
       </p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
         <a
-          href={`${base}/contacto`}
+          href={`${base}/contacto/`}
           class="rounded-full bg-jade px-8 py-4 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90"
         >
           Agendar conversación

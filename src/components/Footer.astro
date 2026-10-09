@@ -1,6 +1,11 @@
 ---
-const base = import.meta.env.BASE_URL;
-const year = new Date().getFullYear();
+import { base } from '../utils/base';
+
+// Fecha de la compilación: se actualiza sola en cada publicación.
+const ahora = new Date();
+const year = ahora.getFullYear();
+const mes = ahora.toLocaleDateString('es-MX', { month: 'long' });
+const actualizado = `${mes.charAt(0).toUpperCase()}${mes.slice(1)} ${year}`;
 ---
 <footer class="border-t border-white/5 bg-obsidiana">
   <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-4">
@@ -14,7 +19,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div>
-      <h4 class="eyebrow mb-4">Contacto</h4>
+      <h2 class="eyebrow mb-4">Contacto</h2>
       <ul class="space-y-2 text-sm text-hueso/70">
         <li>
           <a href="mailto:soporte-equifin@ixt.mx" class="transition hover:text-jade">
@@ -26,7 +31,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div>
-      <h4 class="eyebrow mb-4">Marca</h4>
+      <h2 class="eyebrow mb-4">Marca</h2>
       <ul class="space-y-2 text-sm text-hueso/70">
         <li>IXT · Ixtlamatini</li>
         <li class="text-hueso/50">Saber ver para crecer juntos.</li>
@@ -37,7 +42,7 @@ const year = new Date().getFullYear();
   <div class="border-t border-white/5">
     <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-6 py-6 text-xs text-hueso/40 md:flex-row md:items-center">
       <span>© {year} IXT. Todos los derechos reservados.</span>
-      <span class="font-mono">Revisión anual · Octubre 2026</span>
+      <span class="font-mono">Actualizado · {actualizado}</span>
     </div>
   </div>
 </footer>

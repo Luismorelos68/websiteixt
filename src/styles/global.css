@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* DejaVu recortada al rango latino (ver src/fonts/LICENSE-DejaVu.txt). Inter se importa en Base.astro. */
+@font-face {
+  font-family: 'DejaVu Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/dejavu-serif-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DejaVu Serif';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/dejavu-serif-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/dejavu-sans-mono-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/dejavu-sans-mono-700.woff2') format('woff2');
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

@@ -14,7 +14,7 @@ export default {
       fontFamily: {
         serif: ['"DejaVu Serif"', 'Georgia', 'Cambria', '"Times New Roman"', 'serif'],
         mono: ['"DejaVu Sans Mono"', '"JetBrains Mono"', 'Menlo', 'Consolas', 'monospace'],
-        sans: ['"Inter"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['"Inter Variable"', '"Inter"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       maxWidth: {
         prose: '68ch',

@@ -17,16 +17,21 @@ npm run preview   # sirve dist/ para revisarlo antes de publicar
 
 ```
 src/
-  pages/        index, contacto, 404 y robots.txt
+  pages/        index, casos/equifin, contacto, 404 y robots.txt
   layouts/      Base.astro: <head>, metaetiquetas SEO/Open Graph, navbar y footer
-  components/   Navbar (con menú móvil) y Footer
-  styles/       global.css: Tailwind y @font-face de DejaVu
+  components/   Navbar (con menú móvil), Footer, CtaContacto, BrowserFrame e Icon
+  data/         correos de contacto (contacto.ts)
+  assets/       capturas de EquiFin con datos ficticios (se generan en mockups/)
+  styles/       global.css: Tailwind, @font-face de DejaVu y botones
   fonts/        DejaVu Serif y DejaVu Sans Mono recortadas al rango latino (woff2)
   utils/base.ts ruta base del sitio para armar enlaces
 public/
   brand/        logotipos e íconos en SVG
   og.png        imagen para compartir en redes (1200×630)
+mockups/        recreaciones en HTML de las pantallas de EquiFin (ver mockups/README.md)
 ```
+
+Los correos públicos (`l.morelos@ixt.mx` y `ventas@ixt.mx`) viven en `src/data/contacto.ts`: si cambian, se actualizan ahí.
 
 Los enlaces internos se escriben como `${base}/ruta/` usando `src/utils/base.ts`, así funcionan igual en la raíz del dominio que en `usuario.github.io/websiteixt`.
 

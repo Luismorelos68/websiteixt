@@ -1,236 +1,354 @@
 ---
 import Base from '../layouts/Base.astro';
+import BrowserFrame from '../components/BrowserFrame.astro';
+import CtaContacto from '../components/CtaContacto.astro';
+import Icon from '../components/Icon.astro';
 import { base } from '../utils/base';
+import dashboard from '../assets/equifin/dashboard.png';
+import clientes from '../assets/equifin/clientes.png';
+import credito from '../assets/equifin/credito.png';
 
-const ambitos = [
+const capacidades = [
   {
-    numero: '01',
+    icono: 'gauge',
+    titulo: 'Cartera al día',
+    texto: 'Mora, cartera vigente y colocación del mes por gerente, contra la meta y con semáforo.',
+  },
+  {
+    icono: 'calendar-check',
+    titulo: 'Cobranza semanal',
+    texto: 'Calendario de pagos de cada crédito: en tiempo, adelantado o pendiente, con multas e historial.',
+  },
+  {
+    icono: 'users',
+    titulo: 'Clientes y grupos',
+    texto: 'Expedientes de cada emprendedora y de cada grupo, con alertas cuando falta información.',
+  },
+  {
+    icono: 'scale',
+    titulo: 'Reglas claras',
+    texto: 'Las políticas de crédito viven en el sistema y se explican en pantalla, para que todos cuenten igual.',
+  },
+] as const;
+
+const etapas = [
+  {
+    icono: 'eye',
     nombre: 'Ver',
-    descripcion: 'Entender el negocio antes de tocarlo. Diagnóstico, levantamiento, modelado de lo que ya existe y de lo que ya funciona.',
+    texto: 'Escuchamos, revisamos sus números y conocemos su operación antes de proponer nada.',
   },
   {
-    numero: '02',
+    icono: 'list-checks',
     nombre: 'Ordenar',
-    descripcion: 'Arreglar los números y los procesos. Es la condición de entrada: nada de lo demás sostiene si esto no está en pie.',
+    texto: 'Ponemos en orden lo financiero: costos, márgenes y reglas claras. Es la base de todo lo demás.',
   },
   {
-    numero: '03',
+    icono: 'trending-up',
     nombre: 'Crecer',
-    descripcion: 'Construir lo que multiplica. Sistemas, automatización, capacidad instalada en el equipo del cliente.',
+    texto: 'Construimos el sistema por etapas, con entregas que su equipo usa y ajusta desde el principio.',
   },
   {
-    numero: '04',
+    icono: 'refresh-cw',
     nombre: 'Renovar',
-    descripcion: 'Volver a mirar. Lo que se construyó envejece; el ciclo se reabre, no se cierra.',
+    texto: 'Capacitamos, medimos y ajustamos. Cuando su negocio cambia, el sistema cambia con él.',
   },
+] as const;
+
+const compromisos = [
+  {
+    icono: 'user-round-check',
+    titulo: 'Trato directo',
+    texto: 'Habla con quienes diseñan y construyen su solución, sin intermediarios.',
+  },
+  {
+    icono: 'graduation-cap',
+    titulo: 'Su equipo, capacitado',
+    texto: 'Nadie se queda sin saber usar lo que construimos.',
+  },
+  {
+    icono: 'book-open',
+    titulo: 'Todo documentado',
+    texto: 'Entregables auditables: su equipo puede operar sin depender de nosotros.',
+  },
+] as const;
+
+const metas = [
+  { titulo: 'Claridad', texto: 'Que sepa cuánto cuesta realmente lo que vende y dónde gana o pierde.' },
+  { titulo: 'Control', texto: 'Que su operación diaria no dependa de la memoria de nadie.' },
+  { titulo: 'Autonomía', texto: 'Que su equipo opere y mejore sus sistemas sin depender de nosotros.' },
+  { titulo: 'Crecimiento', texto: 'Que crezca sabiendo su margen, no a ciegas.' },
 ];
+
+const valores = [
+  {
+    icono: 'eye',
+    nombre: 'Saber ver',
+    texto: 'Entendemos antes de proponer. Ixtlamatini es el que conoce porque vio, no porque le contaron.',
+  },
+  {
+    icono: 'badge-check',
+    nombre: 'Honestidad',
+    texto: 'Si no podemos ayudar, se lo decimos. Y si el problema es de alguien más, le decimos de quién.',
+  },
+  {
+    icono: 'compass',
+    nombre: 'Independencia',
+    texto: 'No recibimos comisiones de proveedores ni de instituciones financieras: recomendamos lo que le conviene a usted.',
+  },
+  {
+    icono: 'lock',
+    nombre: 'Confidencialidad',
+    texto: 'Acuerdo firmado y su información tratada con estándares del sector financiero, conforme a la LFPDPPP.',
+  },
+  {
+    icono: 'file-search',
+    nombre: 'Transparencia',
+    texto: 'Todo lo que entregamos está documentado y lo puede revisar un tercero.',
+  },
+  {
+    icono: 'sprout',
+    nombre: 'Crecer juntos',
+    texto: 'Buscamos relaciones de largo plazo: su crecimiento es la medida de nuestro trabajo.',
+  },
+] as const;
 
 const especialidades = [
   {
+    icono: 'code',
     nombre: 'Tecnológica',
-    descripcion: 'Software a la medida e integración de software de terceros, en nube u on-premise. Trabajamos sobre AWS, Azure y Google Cloud.',
-    razon: 'Porque la tecnología es lo que convierte una decisión en algo que ocurre todos los días sin que nadie tenga que acordarse.',
+    descripcion: 'Software a la medida e integración de software de terceros, en la nube u on-premise: AWS, Azure y Google Cloud.',
+    razon: 'Convierte una decisión en algo que ocurre todos los días sin que nadie tenga que acordarse.',
   },
   {
+    icono: 'landmark',
     nombre: 'Financiera',
-    descripcion: 'Automatización de la gestión financiera para PyMEs y FinOps para corporativos. Incluye contabilidad y auditoría contable.',
-    razon: 'Porque es la condición de entrada. Un sistema montado sobre un negocio que no cierra sus números solo automatiza la pérdida.',
+    descripcion: 'Automatización de la gestión financiera para PyMEs y FinOps para corporativos, con contabilidad y auditoría contable.',
+    razon: 'Es la condición de entrada: un sistema sobre un negocio que no cierra sus números solo automatiza la pérdida.',
   },
   {
+    icono: 'scale',
     nombre: 'Legal',
-    descripcion: 'Derecho corporativo, contratos, confidencialidad, protección de datos personales y auditorías. Para personas: asesoría penal, laboral, administrativa y civil.',
-    razon: 'Porque un sistema que trata datos personales sin el marco legal correcto es un pasivo, no un activo. Lo legal no se agrega al final: define el diseño.',
+    descripcion: 'Derecho corporativo, contratos, confidencialidad, protección de datos y auditorías. Para personas: penal, laboral, administrativo y civil.',
+    razon: 'Lo legal no se agrega al final: define el diseño desde el principio.',
   },
   {
+    icono: 'graduation-cap',
     nombre: 'Capital humano',
     descripcion: 'Capacitación, desarrollo organizacional, administración de personal y procesos de talento.',
-    razon: 'Porque los sistemas los operan personas. Un sistema sin capacitación es un gasto; con capacitación es un activo.',
+    razon: 'Los sistemas los operan personas: sin capacitación, un sistema es un gasto; con ella, un activo.',
   },
   {
+    icono: 'heart-handshake',
     nombre: 'Psicológica',
     descripcion: 'Red de psicólogos con cédula, para empresas y para personas.',
-    razon: 'Porque las decisiones de negocio las toman personas bajo presión, y en la empresa familiar la frontera entre lo personal y lo empresarial no existe.',
+    razon: 'Las decisiones de negocio las toman personas bajo presión, y en la empresa familiar lo personal y lo empresarial se mezclan.',
   },
-];
-
-const diferencias = [
-  { comun: 'Una consultora recomienda y un proveedor distinto construye.', nuestro: 'Modelamos y construimos nosotros. No traducimos requerimientos: somos ambos.' },
-  { comun: 'El proveedor gana comisión por recomendar herramientas de terceros.', nuestro: 'No recibimos comisión de nadie. Cuando conviene una herramienta ajena, lo decimos.' },
-  { comun: 'El sistema queda atado al proveedor que lo hizo.', nuestro: 'Entregamos documentado y auditable. Su equipo lo opera sin nosotros.' },
-  { comun: 'La propuesta incluye todo lo que el proveedor sabe hacer.', nuestro: 'La propuesta incluye lo que hace falta este año. El resto queda escrito para después.' },
-];
+] as const;
 ---
 
 <Base>
-  <!-- HERO -->
+  <!-- PORTADA -->
   <section class="trama-fondo relative overflow-hidden border-b border-white/5">
-    <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
-      <p class="eyebrow mb-6">IXT · Ixtlamatini</p>
-      <h1 class="font-serif text-5xl font-bold leading-[1.05] text-hueso md:text-7xl lg:text-8xl">
-        Saber ver para<br />crecer juntos.
-      </h1>
-      <p class="mt-10 max-w-2xl text-lg leading-relaxed text-hueso/80 md:text-xl">
-        IXT es un ecosistema de especialidades que arregla primero los números de una empresa
-        y después construye la tecnología que los sostiene. <span class="text-jade">En ese orden, siempre.</span>
-      </p>
-      <div class="mt-12 flex flex-wrap items-center gap-4">
-        <a
-          href={`${base}/contacto/`}
-          class="rounded-full bg-jade px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90"
-        >
-          Conversación inicial · sin costo
-        </a>
-        <a
-          href="#metodo"
-          class="rounded-full border border-hueso/20 px-6 py-3 font-mono text-sm uppercase tracking-wider text-hueso/80 transition hover:border-jade hover:text-jade"
-        >
-          Cómo trabajamos
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRINCIPIO RECTOR -->
-  <section class="border-b border-white/5 bg-obsidiana">
-    <div class="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-5">
-      <div class="md:col-span-2">
-        <p class="eyebrow mb-4">El principio rector</p>
-        <h2 class="font-serif text-3xl font-bold text-hueso md:text-4xl">
-          Nada funciona si lo financiero no está arreglado.
-        </h2>
-      </div>
-      <div class="space-y-6 text-base leading-relaxed text-hueso/80 md:col-span-3">
-        <p>
-          La tecnología multiplica lo que ya hay. Si lo que hay está mal, lo multiplica mal,
-          más rápido y con mejor presentación. Un sistema montado sobre un negocio que no sabe
-          su costo unitario solo produce reportes elegantes de un margen equivocado.
+    <div class="pointer-events-none absolute -right-48 top-10 h-[34rem] w-[34rem] rounded-full bg-jade/10 blur-3xl" aria-hidden="true"></div>
+    <div class="relative mx-auto grid max-w-6xl items-center gap-14 px-6 pb-24 pt-16 md:pt-24 lg:grid-cols-12 lg:gap-12">
+      <div class="lg:col-span-6">
+        <p class="eyebrow mb-6">Consultoría financiera · Software a la medida</p>
+        <h1 class="text-balance font-serif text-5xl font-bold leading-[1.05] text-hueso md:text-6xl">
+          Software que nace de entender sus números.
+        </h1>
+        <p class="mt-8 max-w-xl text-lg leading-relaxed text-hueso/80">
+          Primero ordenamos las finanzas de su negocio; después construimos el sistema que las sostiene.
+          <span class="text-jade">Y nos quedamos a su lado mientras crece.</span>
         </p>
-        <blockquote class="border-l-2 border-jade pl-6 italic text-hueso">
-          Por eso el primer entregable de casi cualquier proyecto nuestro no es software:
-          es saber cuánto cuesta realmente lo que usted vende.
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- MÉTODO · 4 ÁMBITOS -->
-  <section id="metodo" class="trama-fondo border-b border-white/5">
-    <div class="mx-auto max-w-6xl px-6 py-24">
-      <p class="eyebrow mb-4">Cómo trabajamos</p>
-      <h2 class="max-w-3xl font-serif text-4xl font-bold text-hueso md:text-5xl">
-        Cuatro ámbitos girando alrededor de un centro que no se mueve.
-      </h2>
-      <p class="mt-6 max-w-3xl text-base leading-relaxed text-hueso/70">
-        No son departamentos ni etapas cerradas: son los cuatro momentos por los que pasa
-        cualquier trabajo, y vuelven a empezar. Al centro, lo financiero —la condición que
-        los cuatro atraviesan.
-      </p>
-
-      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {ambitos.map((a) => (
-          <article class="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/30 p-8 transition hover:border-jade/50">
-            <span class="font-mono text-xs text-jade/60">{a.numero}</span>
-            <h3 class="mt-3 font-serif text-3xl font-bold text-hueso">{a.nombre}</h3>
-            <p class="mt-4 text-sm leading-relaxed text-hueso/70">{a.descripcion}</p>
-            <div class="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-jade/5 blur-3xl transition group-hover:bg-jade/15"></div>
-          </article>
-        ))}
-      </div>
-
-      <div class="mt-12 rounded-2xl border border-cal/20 bg-cal/5 p-8">
-        <p class="eyebrow mb-3 text-cal">Al centro</p>
-        <p class="font-serif text-xl text-hueso">
-          Lo financiero. Ver sin números es una opinión. Ordenar es, literalmente, poner los
-          números en su lugar. Crecer sin saber el margen es crecer a ciegas.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ESPECIALIDADES -->
-  <section id="especialidades" class="border-b border-white/5 bg-obsidiana">
-    <div class="mx-auto max-w-6xl px-6 py-24">
-      <p class="eyebrow mb-4">Las especialidades</p>
-      <h2 class="max-w-3xl font-serif text-4xl font-bold text-hueso md:text-5xl">
-        Cinco, y cada una está por una razón.
-      </h2>
-      <p class="mt-6 max-w-3xl text-base leading-relaxed text-hueso/70">
-        No porque se juntaron cinco profesionistas: los problemas de una empresa no respetan
-        las fronteras de las profesiones. Una rotación alta es un problema financiero antes
-        que de capital humano; un sistema que nadie usa es psicológico antes que técnico.
-      </p>
-
-      <div class="mt-16 space-y-px rounded-2xl border border-white/10 bg-black/30 overflow-hidden">
-        {especialidades.map((e, i) => (
-          <article class="grid gap-6 border-b border-white/5 p-8 last:border-b-0 md:grid-cols-3">
-            <div>
-              <span class="font-mono text-xs text-jade/60">0{i + 1}</span>
-              <h3 class="mt-2 font-serif text-2xl font-bold text-hueso">{e.nombre}</h3>
-            </div>
-            <div class="md:col-span-2">
-              <p class="text-sm leading-relaxed text-hueso/80">{e.descripcion}</p>
-              <p class="mt-3 border-l-2 border-jade/40 pl-4 text-sm italic text-hueso/60">
-                {e.razon}
-              </p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- QUIÉNES SOMOS · DIFERENCIAS -->
-  <section id="quienes-somos" class="trama-fondo border-b border-white/5">
-    <div class="mx-auto max-w-6xl px-6 py-24">
-      <p class="eyebrow mb-4">En qué nos diferenciamos</p>
-      <h2 class="max-w-3xl font-serif text-4xl font-bold text-hueso md:text-5xl">
-        El mercado tiene buenas consultoras y buenas fábricas de software.
-      </h2>
-      <p class="mt-4 max-w-3xl text-base text-hueso/70">
-        Estas son las cuatro diferencias que sí se notan.
-      </p>
-
-      <div class="mt-16 overflow-hidden rounded-2xl border border-white/10">
-        <div class="grid grid-cols-2 bg-black/40 px-6 py-4 font-mono text-xs uppercase tracking-widest">
-          <span class="text-hueso/40">Lo común en el mercado</span>
-          <span class="text-jade">Lo que hacemos</span>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href={`${base}/contacto/`} class="btn-primario">Agendar conversación</a>
+          <a href={`${base}/casos/equifin/`} class="btn-secundario">
+            Ver el caso EquiFin <Icon name="arrow-right" class="h-4 w-4" />
+          </a>
         </div>
-        {diferencias.map((d) => (
-          <div class="grid gap-6 border-t border-white/5 bg-black/20 px-6 py-6 md:grid-cols-2">
-            <p class="text-sm text-hueso/50 line-through decoration-hueso/30">{d.comun}</p>
-            <p class="text-sm font-medium text-hueso">{d.nuestro}</p>
+        <p class="mt-6 font-mono text-xs uppercase tracking-widest text-hueso/50">Primera conversación sin costo</p>
+      </div>
+
+      <div class="relative lg:col-span-6">
+        <BrowserFrame
+          src={dashboard}
+          alt="Tablero de HERMES, el sistema de EquiFin: porcentaje de mora, créditos, emprendedoras, cartera vigente y colocación del mes (datos ficticios)."
+          sizes="(min-width: 1152px) 552px, (min-width: 1024px) 48vw, 100vw"
+          prioridad
+        />
+        <a
+          href={`${base}/casos/equifin/`}
+          class="absolute -bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-jade/30 bg-obsidiana/90 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-jade shadow-lg backdrop-blur transition hover:border-jade"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-jade"></span> Caso real · HERMES para EquiFin
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASO EQUIFIN -->
+  <section id="equifin" class="bg-hueso text-obsidiana">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="eyebrow mb-4 text-jade-oscuro">Lo que hemos construido</p>
+          <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">HERMES: la operación de EquiFin en un solo sistema.</h2>
+          <p class="mt-6 text-lg leading-relaxed text-obsidiana/75">
+            EquiFin otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Con su equipo diseñamos y
+            construimos HERMES, el sistema donde hoy administran clientes, grupos, créditos y cobranza semanal.
+          </p>
+          <a
+            href={`${base}/casos/equifin/`}
+            class="mt-8 inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider text-jade-oscuro underline decoration-jade decoration-2 underline-offset-8 transition hover:text-obsidiana"
+          >
+            Conozca el caso completo <Icon name="arrow-right" class="h-4 w-4" />
+          </a>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {capacidades.map((c) => (
+            <article class="rounded-2xl border border-obsidiana/10 bg-white p-6 shadow-sm">
+              <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro">
+                <Icon name={c.icono} class="h-5 w-5" />
+              </span>
+              <h3 class="mt-4 font-serif text-xl font-bold">{c.titulo}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{c.texto}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2">
+        <BrowserFrame
+          src={clientes}
+          tono="claro"
+          alt="Lista de clientes en HERMES con código, nombre, CURP, gerente y estatus del crédito (datos ficticios)."
+          sizes="(min-width: 1152px) 540px, (min-width: 768px) 46vw, 100vw"
+        />
+        <BrowserFrame
+          src={credito}
+          tono="claro"
+          alt="Detalle de un crédito en HERMES con su calendario de pagos semanal, la política de cobranza y el historial del cliente (datos ficticios)."
+          sizes="(min-width: 1152px) 540px, (min-width: 768px) 46vw, 100vw"
+        />
+      </div>
+      <p class="mt-6 text-sm text-obsidiana/60">
+        Pantallas recreadas con datos ficticios: la información de EquiFin y de sus clientes es confidencial.
+      </p>
+    </div>
+  </section>
+
+  <!-- ACOMPAÑAMIENTO -->
+  <section id="acompanamiento" class="trama-fondo border-b border-white/5">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4">Acompañamiento personalizado</p>
+      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold text-hueso md:text-5xl">
+        No le entregamos un sistema y desaparecemos.
+      </h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-hueso/75">
+        Cada negocio es distinto, así que cada proyecto también. Trabajamos a su lado y con su gente en cada etapa, de
+        principio a fin. Y es un ciclo: cuando termina, vuelve a empezar.
+      </p>
+
+      <ol class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {etapas.map((e, i) => (
+          <li class="rounded-2xl border border-white/10 bg-black/30 p-7">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs text-jade/70">0{i + 1}</span>
+              <Icon name={e.icono} class="h-6 w-6 text-jade" />
+            </div>
+            <h3 class="mt-5 font-serif text-3xl font-bold text-hueso">{e.nombre}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-hueso/70">{e.texto}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="mt-8 grid gap-8 rounded-2xl border border-jade/20 bg-jade/5 p-8 md:grid-cols-3">
+        {compromisos.map((c) => (
+          <div class="flex gap-4">
+            <Icon name={c.icono} class="mt-1 h-6 w-6 shrink-0 text-jade" />
+            <div>
+              <h3 class="font-serif text-lg font-bold text-hueso">{c.titulo}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-hueso/70">{c.texto}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CÓMO EMPEZAR · CTA FINAL -->
-  <section class="bg-obsidiana">
-    <div class="mx-auto max-w-4xl px-6 py-24 text-center">
-      <p class="eyebrow mb-6">Cómo empezar</p>
-      <h2 class="font-serif text-4xl font-bold text-hueso md:text-5xl">
-        La primera conversación<br />no cuesta y no compromete.
-      </h2>
-      <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-hueso/70">
-        Salimos de ella con tres cosas: si el problema es el que usted cree, si podemos ayudar,
-        y qué costaría averiguarlo bien. Si resulta que el problema es de alguien más, se lo
-        decimos y, si podemos, le decimos de quién.
+  <!-- PROPÓSITO Y VALORES -->
+  <section id="valores" class="bg-nieve text-obsidiana">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="eyebrow mb-4 text-jade-oscuro">Lo que queremos lograr</p>
+          <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">
+            Que cada cliente decida con números claros y crezca sobre bases firmes.
+          </h2>
+        </div>
+        <dl class="grid gap-8 sm:grid-cols-2 lg:col-span-7 lg:pt-2">
+          {metas.map((m) => (
+            <div class="border-t-2 border-jade-oscuro pt-4">
+              <dt class="font-serif text-2xl font-bold">{m.titulo}</dt>
+              <dd class="mt-2 leading-relaxed text-obsidiana/70">{m.texto}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="mt-24">
+        <p class="eyebrow mb-4 text-jade-oscuro">Nuestros valores</p>
+        <h2 class="font-serif text-4xl font-bold md:text-5xl">Lo que no negociamos.</h2>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {valores.map((v) => (
+            <article class="rounded-2xl border border-obsidiana/10 bg-white p-7 shadow-sm">
+              <Icon name={v.icono} class="h-6 w-6 text-jade-oscuro" />
+              <h3 class="mt-4 font-serif text-xl font-bold">{v.nombre}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{v.texto}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES -->
+  <section id="especialidades" class="bg-obsidiana">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4">Especialidades</p>
+      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold text-hueso md:text-5xl">Cinco especialidades, un mismo equipo.</h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-hueso/75">
+        Los problemas de una empresa no respetan las fronteras de las profesiones: una rotación alta es un problema financiero
+        antes que de capital humano, y un sistema que nadie usa es psicológico antes que técnico.
       </p>
-      <div class="mt-12 flex flex-wrap justify-center gap-4">
+
+      <div class="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {especialidades.map((e) => (
+          <article class="rounded-2xl border border-white/10 bg-black/30 p-7 transition hover:border-jade/40">
+            <Icon name={e.icono} class="h-7 w-7 text-jade" />
+            <h3 class="mt-5 font-serif text-2xl font-bold text-hueso">{e.nombre}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-hueso/75">{e.descripcion}</p>
+            <p class="mt-4 border-l-2 border-jade/40 pl-4 text-sm italic leading-relaxed text-hueso/60">{e.razon}</p>
+          </article>
+        ))}
         <a
           href={`${base}/contacto/`}
-          class="rounded-full bg-jade px-8 py-4 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90"
+          class="group flex flex-col justify-between rounded-2xl border border-dashed border-jade/40 p-7 transition hover:border-jade hover:bg-jade/5"
         >
-          Agendar conversación
-        </a>
-        <a
-          href="mailto:soporte-equifin@ixt.mx"
-          class="rounded-full border border-hueso/20 px-8 py-4 font-mono text-sm uppercase tracking-wider text-hueso/80 transition hover:border-jade hover:text-jade"
-        >
-          soporte-equifin@ixt.mx
+          <div>
+            <p class="font-serif text-2xl font-bold text-hueso">¿No sabe por dónde empezar?</p>
+            <p class="mt-3 text-sm leading-relaxed text-hueso/70">
+              Cuéntenos qué está pasando y le decimos qué especialidad necesita primero.
+            </p>
+          </div>
+          <span class="mt-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-jade">
+            Hablemos <Icon name="arrow-right" class="h-4 w-4 transition group-hover:translate-x-1" />
+          </span>
         </a>
       </div>
     </div>
   </section>
+
+  <CtaContacto />
 </Base>

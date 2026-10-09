@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Detalle de crédito (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="equifin.css" />
+  </head>
+  <body class="bg-body-tertiary">
+    <nav class="ef-navbar"><span class="ef-logo">EquiFin</span><span class="ef-burger"><i class="bi bi-list"></i></span></nav>
+
+    <main class="container-fluid px-4 py-3">
+      <div class="d-flex align-items-end justify-content-between mb-3">
+        <div>
+          <a class="btn btn-sm btn-outline-secondary mb-2 bg-white"><i class="bi bi-arrow-left"></i> Clientes</a>
+          <h1 class="h4 mb-1">Crédito <span class="ef-code fs-5">P412-BACA120586PK-P530</span></h1>
+          <div class="text-secondary">AMELIA BARRERA CASTILLO · Gerente: Sofía Méndez Rangel</div>
+        </div>
+        <span class="badge text-bg-success fs-6">Activo con préstamo</span>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-8">
+          <div class="card card-ef">
+            <div class="card-header py-3">
+              <span><i class="bi bi-calendar3 me-2"></i>Calendario de pagos</span>
+              <span class="fw-semibold small">8 pagados · 8 pendientes</span>
+            </div>
+            <table class="table table-sm table-hover align-middle mb-0" style="font-size: 14px">
+              <thead class="table-light">
+                <tr>
+                  <th class="ps-3">#</th>
+                  <th>Fecha</th>
+                  <th>Status</th>
+                  <th class="text-end">Programado</th>
+                  <th class="text-end">Pagado</th>
+                  <th class="text-center">Trans.</th>
+                  <th class="text-center">Multa</th>
+                  <th>Pagado el</th>
+                  <th class="text-end pe-3">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="pagos"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-4 d-flex flex-column gap-3">
+          <div class="card card-ef">
+            <div class="card-header py-3"><span><i class="bi bi-cash-coin me-2"></i>Crédito</span></div>
+            <ul class="list-group list-group-flush small">
+              <li class="list-group-item d-flex justify-content-between"><span>Monto prestado</span><strong>$6,000.00</strong></li>
+              <li class="list-group-item d-flex justify-content-between"><span>Pago semanal</span><strong>$420.00</strong></li>
+              <li class="list-group-item d-flex justify-content-between"><span>Plazo</span><strong>16 semanas</strong></li>
+              <li class="list-group-item d-flex justify-content-between"><span>Primer / último pago</span><strong>21/08/26 · 04/12/26</strong></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Semáforo de renovación</span><span class="badge text-bg-success">Verde · 0 en atraso</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card card-ef" id="politica">
+            <div class="card-header py-3"><span><i class="bi bi-shield-exclamation me-2"></i>¿Qué significa la política?</span></div>
+            <div class="card-body small">
+              <p class="mb-2">
+                Este crédito lleva <strong>0</strong> cuotas cobradas fuera de tiempo (el contador de política): sube
+                <strong>+1 cuando la cuota se cubre completa con atraso o fuera de horario</strong>, haya o no multa. Define el
+                estatus del cierre en el histórico.
+              </p>
+              <p class="text-secondary mb-2">
+                El consejo de renovación no sale de este contador: lo da el <strong>Semáforo de renovación</strong>, que cuenta
+                cuotas en atraso. Dos conteos distintos sobre el mismo crédito.
+              </p>
+              <div class="text-success"><i class="bi bi-check-circle me-1"></i>Contador en cero: ninguna cuota ha sumado puntos.</div>
+            </div>
+          </div>
+
+          <div class="card card-ef">
+            <div class="card-header py-3"><span><i class="bi bi-clock-history me-2"></i>Historial del cliente</span></div>
+            <ul class="list-group list-group-flush small">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><a href="#">P1-BA-08</a> <span class="badge text-bg-success">Finiquitado</span></span><strong>$3,000.00 · hasta 14/11/25</strong>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><a href="#">P1-BA-15</a> <span class="badge text-bg-success">Finiquitado</span></span><strong>$4,000.00 · hasta 20/03/26</strong>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><a href="#">P301-BACA…-P418</a> <span class="badge text-bg-success">Finiquitado</span></span><strong>$5,000.00 · 14/08/26</strong>
+              </li>
+              <li class="list-group-item"><a href="#"><i class="bi bi-arrow-repeat me-1"></i>Ver todos los ciclos</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Calendario semanal inventado: 16 pagos de $420.00 a partir del 21/08/26.
+      const fechas = ['21/08/26', '28/08/26', '04/09/26', '11/09/26', '18/09/26', '25/09/26', '02/10/26', '09/10/26', '16/10/26', '23/10/26', '30/10/26', '06/11/26', '13/11/26', '20/11/26', '27/11/26', '04/12/26'];
+      const pagados = [
+        ['tiempo', '21/08/26', '12:40'],
+        ['adelantado', '27/08/26', '09:15'],
+        ['tiempo', '04/09/26', '13:02', 2],
+        ['adelantado', '10/09/26', '18:30'],
+        ['tiempo', '18/09/26', '11:47'],
+        ['tiempo', '25/09/26', '12:10'],
+        ['adelantado', '01/10/26', '16:05'],
+        ['excedente', '08/10/26', '17:22'],
+      ];
+      const STATUS = {
+        tiempo: '<span class="badge text-bg-success">Pagado en tiempo</span> <i class="bi bi-check-circle-fill text-success"></i>',
+        adelantado: '<span class="badge text-bg-primary">Pago adelantado</span> <i class="bi bi-check-circle-fill text-success"></i>',
+        excedente:
+          '<span class="badge text-bg-primary">Pago adelantado</span> <span class="badge text-bg-info">excedente</span> <i class="bi bi-check-circle-fill text-success"></i>',
+      };
+      document.getElementById('pagos').innerHTML = fechas
+        .map((fecha, i) => {
+          const pago = pagados[i];
+          if (pago) {
+            const [tipo, dia, hora, trans = 1] = pago;
+            return `<tr>
+              <td class="ps-3">${i + 1}</td><td>${fecha}</td><td>${STATUS[tipo]}</td>
+              <td class="text-end">$420.00</td><td class="text-end">$420.00</td>
+              <td class="text-center"><span class="ef-pill ${trans > 1 ? 'ef-pill-dark' : ''}">${trans} <i class="bi bi-receipt"></i></span></td>
+              <td class="text-center">—</td><td>${dia} <span class="text-secondary">${hora}</span></td>
+              <td class="text-end pe-3"><button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button></td>
+            </tr>`;
+          }
+          return `<tr>
+            <td class="ps-3">${i + 1}</td><td>${fecha}</td><td><span class="badge text-bg-danger">No pagado</span></td>
+            <td class="text-end">$420.00</td><td class="text-end">—</td><td class="text-center text-secondary">—</td>
+            <td class="text-center">—</td><td>—</td>
+            <td class="text-end pe-3"><button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+              <button class="btn btn-sm btn-ef"><i class="bi bi-cash"></i></button></td>
+          </tr>`;
+        })
+        .join('');
+    </script>
+  </body>
+</html>

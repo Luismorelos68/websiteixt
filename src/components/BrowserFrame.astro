@@ -1,0 +1,61 @@
+---
+// Captura de pantalla dentro de una ventana de navegador. Las imágenes salen de mockups/ (ver su README).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  url?: string;
+  tono?: 'oscuro' | 'claro';
+  sizes?: string;
+  /** Para la imagen principal de la página: se carga de inmediato. */
+  prioridad?: boolean;
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  url = 'equifin.com.mx',
+  tono = 'oscuro',
+  sizes = '(min-width: 1024px) 50vw, 100vw',
+  prioridad = false,
+  class: className,
+} = Astro.props;
+
+const oscuro = tono === 'oscuro';
+---
+<figure
+  class:list={[
+    'overflow-hidden rounded-xl border shadow-2xl',
+    oscuro ? 'border-white/10 bg-[#141916] shadow-black/60' : 'border-obsidiana/10 bg-white shadow-obsidiana/15',
+    className,
+  ]}
+>
+  <div class:list={['grid grid-cols-[auto_1fr_auto] items-center gap-3 border-b px-4 py-2.5', oscuro ? 'border-white/10' : 'border-obsidiana/10 bg-nieve']}>
+    <span class="flex gap-1.5" aria-hidden="true">
+      {[0, 1, 2].map(() => <span class:list={['h-2.5 w-2.5 rounded-full', oscuro ? 'bg-white/15' : 'bg-obsidiana/15']} />)}
+    </span>
+    <span
+      class:list={[
+        'mx-auto truncate rounded-md px-3 py-0.5 font-mono text-[11px]',
+        oscuro ? 'bg-white/5 text-hueso/50' : 'bg-obsidiana/5 text-obsidiana/60',
+      ]}
+    >
+      {url}
+    </span>
+    <span class="w-[42px]" aria-hidden="true"></span>
+  </div>
+  <Image
+    src={src}
+    alt={alt}
+    widths={[640, 960, 1280, 1920].filter((w) => w <= src.width)}
+    sizes={sizes}
+    format="webp"
+    quality={80}
+    loading={prioridad ? 'eager' : 'lazy'}
+    fetchpriority={prioridad ? 'high' : undefined}
+    class="block h-auto w-full"
+  />
+</figure>

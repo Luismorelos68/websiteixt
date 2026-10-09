@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+import { base } from '../utils/base';
+import { correoContacto, correoVentas } from '../data/contacto';
+
+interface Props {
+  titulo?: string;
+}
+
+const { titulo = 'Cuéntenos qué está pasando en su negocio.' } = Astro.props;
+
+const correos = [
+  { etiqueta: 'Contacto directo', correo: correoContacto },
+  { etiqueta: 'Ventas', correo: correoVentas },
+];
+---
+<section class="bg-jade-oscuro">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-12 lg:py-24">
+    <div class="lg:col-span-7">
+      <p class="eyebrow mb-5 text-cal">Cómo empezar</p>
+      <h2 class="text-balance font-serif text-4xl font-bold text-hueso md:text-5xl">{titulo}</h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-hueso/90">
+        La primera conversación no cuesta y no compromete. Salimos de ella sabiendo si podemos ayudar; y si no podemos, se lo
+        decimos.
+      </p>
+    </div>
+    <div class="flex flex-col gap-4 lg:col-span-5">
+      <a
+        href={`${base}/contacto/`}
+        class="inline-flex items-center justify-center gap-2 rounded-full bg-hueso px-6 py-4 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-white"
+      >
+        Agendar conversación <Icon name="arrow-right" class="h-4 w-4" />
+      </a>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+        {correos.map(({ etiqueta, correo }) => (
+          <a
+            href={`mailto:${correo}`}
+            class="flex items-center gap-4 rounded-2xl border border-hueso/25 px-5 py-4 transition hover:border-hueso/60 hover:bg-hueso/10"
+          >
+            <Icon name="mail" class="h-5 w-5 shrink-0 text-cal" />
+            <span>
+              <span class="block font-mono text-[11px] uppercase tracking-widest text-cal">{etiqueta}</span>
+              <span class="text-hueso">{correo}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Dashboard (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="equifin.css" />
+  </head>
+  <body>
+    <nav class="ef-navbar"><span class="ef-logo">EquiFin</span><span class="ef-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!-- Todas las cifras y nombres son inventados; los totales cuadran entre sí. -->
+    <main class="container-fluid px-4 py-3">
+      <h1 class="h3 mb-1"><i class="bi bi-speedometer2 me-2"></i>Dashboard <span class="text-secondary fs-5 fw-normal">· 09/10/2026</span></h1>
+      <p class="text-secondary small mb-2">
+        Mes EQUIFIN octubre: del 1 al 28 de octubre. Solo COLOCACIÓN DEL MES y Renovación del ciclo siguen este calendario; las demás
+        cifras son la fotografía de hoy.
+      </p>
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-sliders me-1"></i>Armar reporte</button>
+        <button class="btn btn-sm btn-ef"><i class="bi bi-table me-1"></i>Cartera completa</button>
+        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-shield me-1"></i>Dashboard de riesgo</button>
+        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-arrow-repeat me-1"></i>Renovaciones</button>
+        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-clipboard-data me-1"></i>Gerencial</button>
+      </div>
+
+      <h2 class="h5 mb-3">
+        <i class="bi bi-people text-danger me-1"></i>Subtotal comercial
+        <small class="text-secondary fw-normal fs-6 ms-1">CARTERA · 4 gerentes comerciales · sin jurídico ni especiales</small>
+      </h2>
+
+      <div class="row g-3">
+        <div class="col-4">
+          <div class="kpi kpi-warn">
+            <div><span class="chip"><i class="bi bi-exclamation-triangle-fill"></i>Atención</span> <span class="kpi-meta">meta desde 03/oct</span></div>
+            <div class="chip-mini mt-1"><i class="bi bi-circle-fill" style="font-size: 6px"></i>meta nueva</div>
+            <div class="kpi-value mt-1">1.72%</div>
+            <div class="kpi-label">% de mora</div>
+            <div class="kpi-foot">saldo completo de los créditos con atraso</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="kpi">
+            <div class="kpi-meta"><i class="bi bi-dash-circle me-1"></i>Sin meta definida</div>
+            <div class="kpi-value mt-1">186</div>
+            <div class="kpi-label">Créditos</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="kpi kpi-warn">
+            <div><span class="chip"><i class="bi bi-exclamation-triangle-fill"></i>Atención</span> <span class="kpi-meta">meta desde 05/oct</span></div>
+            <div class="kpi-value mt-2">352</div>
+            <div class="kpi-label">Emprendedoras/es</div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="kpi kpi-danger">
+            <div><span class="chip chip-danger"><i class="bi bi-calendar-x text-danger"></i>5 créditos con atraso</span></div>
+            <div class="kpi-value mt-1">$56,494.00</div>
+            <div class="kpi-label">Mora</div>
+            <div class="kpi-foot">Atraso cubierto con presupuesto de multas: $760.00</div>
+            <div class="kpi-foot mt-1 small">8 cuotas atrasadas</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="kpi kpi-ok">
+            <div class="kpi-meta"><i class="bi bi-dash-circle me-1"></i>Sin meta definida</div>
+            <div class="kpi-value mt-1">$3,284,560.00</div>
+            <div class="kpi-label">Cartera vigente</div>
+            <div class="kpi-foot">meta del mes pendiente de definir</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="kpi">
+            <div class="kpi-meta"><i class="bi bi-dash-circle me-1"></i>Sin meta definida</div>
+            <div class="kpi-value mt-1">$392,840.00</div>
+            <div class="kpi-label">Monto de pago semanal</div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="kpi"><div class="kpi-value kpi-value-sm">$4,512,000.00</div><div class="kpi-label">Crédito desembolsado</div></div>
+        </div>
+        <div class="col-4">
+          <div class="kpi">
+            <div class="kpi-value kpi-value-sm">$78,568.00</div>
+            <div class="kpi-label">Int sem ganado</div>
+            <span class="factor"><i class="bi bi-arrow-left-right"></i>factor ×0.2</span>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="kpi"><div class="kpi-value kpi-value-sm">$6,284,800.00</div><div class="kpi-label">Préstamo con interés</div></div>
+        </div>
+
+        <div class="col-4">
+          <div class="kpi"><div class="kpi-value kpi-value-sm">$1,772,800.00</div><div class="kpi-label">Diferencia</div></div>
+        </div>
+        <div class="col-4">
+          <div class="kpi kpi-ok-borde">
+            <div class="kpi-value kpi-value-sm">$164,000.00</div>
+            <div class="kpi-label">Colocación del mes · 8 créd.</div>
+            <div class="mt-1"><span class="chip chip-ok"><i class="bi bi-check-circle-fill"></i>EN META</span> <span class="kpi-meta">META DESDE 06/OCT</span></div>
+            <div class="kpi-foot mt-1 small">↗ +12.4% vs. al día 9 del mes pasado</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="kpi">
+            <div class="kpi-value kpi-value-sm">$109,840.25</div>
+            <div class="kpi-label">Interés por cuota</div>
+            <span class="factor"><i class="bi bi-arrow-left-right"></i>con el contrato</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="small text-secondary mt-3 mb-1">
+        <strong>Semáforo del % de mora:</strong> <i class="bi bi-check-circle-fill text-success"></i> <strong class="text-success">En meta</strong> hasta
+        1.50% · <i class="bi bi-exclamation-triangle-fill text-warning"></i> <strong class="text-warning-emphasis">Atención</strong> hasta 2.00% ·
+        <i class="bi bi-exclamation-circle-fill text-danger"></i> <strong class="text-danger">Fuera de meta</strong> arriba de 2.00%. Meta vigente desde
+        el 03/10/2026.
+      </p>
+      <p class="small text-secondary mb-3">
+        <strong>% DE MORA:</strong> de los créditos con al menos una cuota atrasada, su saldo <em>completo</em> —no solo la cuota.
+        <strong>INTERÉS POR CUOTA:</strong> lo que deja de interés cada cuota según el contrato: (monto total − monto prestado) ÷ número de pagos.
+      </p>
+
+      <div class="card" id="tabla-gerentes">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+          <span class="fw-semibold fs-5"><i class="bi bi-people text-danger me-2"></i>Tabla base de colocación por gerente</span>
+          <span class="d-flex align-items-center gap-2 text-secondary small">
+            clic en un gerente = su cartera filtrada
+            <button class="btn btn-sm btn-ef"><i class="bi bi-file-earmark-excel me-1"></i>xlsx</button>
+            <button class="btn btn-sm btn-outline-secondary">csv</button>
+          </span>
+        </div>
+        <table class="table tabla-gerentes align-middle mb-0">
+          <thead class="table-light">
+            <tr class="small text-uppercase">
+              <th>Cartera</th>
+              <th class="text-center">% de mora</th>
+              <th class="text-center">Créditos</th>
+              <th class="text-center">Emprendedoras/es</th>
+              <th class="text-end">Mora</th>
+              <th class="text-center">Pagos en tiempo y forma</th>
+              <th class="text-end">Cartera vigente</th>
+              <th class="text-end">Monto semanal</th>
+            </tr>
+          </thead>
+          <tbody id="gerentes"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script>
+      const ok = '<span class="semaforo text-success"><i class="bi bi-check-circle-fill"></i></span>';
+      const warn = '<span class="semaforo text-warning"><i class="bi bi-exclamation-triangle-fill"></i></span>';
+      const mal = '<span class="semaforo text-danger"><i class="bi bi-exclamation-circle-fill"></i></span>';
+      const gerentes = [
+        ['SOFÍA MÉNDEZ', '0.00%', ok, 52, 98, warn, '$0.00', '96.2%', ok, '50 de 52', '$942,300.00', '$112,740.00'],
+        ['HÉCTOR SALINAS', '0.93%', ok, 48, 91, ok, '$8,120.00', '91.7%', warn, '44 de 48', '$868,450.00', '$104,180.00'],
+        ['PAOLA RÍOS', '4.67%', mal, 45, 86, ok, '$48,374.00', '86.7%', mal, '39 de 45', '$1,035,610.00', '$103,520.00'],
+        ['TOMÁS AGUIRRE', '0.00%', ok, 41, 77, warn, '$0.00', '95.1%', ok, '39 de 41', '$438,200.00', '$72,400.00'],
+      ];
+      const fila = ([nombre, mora, sMora, creditos, emp, sEmp, montoMora, pagos, sPagos, deTotal, cartera, semanal], subtotal) => `
+        <tr class="${subtotal ? 'table-secondary fw-semibold' : ''}">
+          <td>${subtotal ? 'Subtotal comercial' : `<a href="#">${nombre}</a>`}</td>
+          <td class="text-center ${sMora === mal ? 'text-danger' : sMora === warn ? 'text-warning-emphasis' : ''}">${mora}<br>${sMora}</td>
+          <td class="text-center">${creditos}</td>
+          <td class="text-center">${emp} ${sEmp}</td>
+          <td class="text-end ${montoMora !== '$0.00' ? 'text-danger' : ''}">${montoMora}</td>
+          <td class="text-center"><span class="${sPagos === mal ? 'text-danger' : ''}">≤ ${pagos}</span><br>${sPagos} <span class="text-secondary small">${deTotal}</span></td>
+          <td class="text-end">${cartera}</td>
+          <td class="text-end">${semanal}</td>
+        </tr>`;
+      document.getElementById('gerentes').innerHTML =
+        gerentes.map((g) => fila(g)).join('') +
+        fila(['', '1.72%', warn, 186, 352, warn, '$56,494.00', '92.5%', warn, '172 de 186', '$3,284,560.00', '$392,840.00'], true);
+    </script>
+  </body>
+</html>

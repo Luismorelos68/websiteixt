@@ -1,0 +1,37 @@
+// Convierte las recreaciones de pantallas de EquiFin (mockups/equifin/*.html) en PNG a 2x dentro de
+// src/assets/equifin/, que es de donde las toma el sitio. Ver mockups/README.md.
+import { chromium } from 'playwright';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+
+const dir = path.dirname(fileURLToPath(import.meta.url));
+const salida = path.join(dir, '..', 'src', 'assets', 'equifin');
+
+// Sin `selector` se captura la ventana completa; con `selector`, solo ese elemento.
+const capturas = [
+  { pagina: 'dashboard.html', archivo: 'dashboard.png', alto: 900 },
+  { pagina: 'dashboard.html', archivo: 'dashboard-gerentes.png', alto: 1400, selector: '#tabla-gerentes' },
+  { pagina: 'clientes.html', archivo: 'clientes.png', alto: 900 },
+  { pagina: 'grupos.html', archivo: 'grupos.png', alto: 860 },
+  { pagina: 'credito.html', archivo: 'credito.png', alto: 980 },
+  { pagina: 'credito.html', archivo: 'politica.png', alto: 940, selector: '#politica' },
+  { pagina: 'login.html', archivo: 'login.png', alto: 800 },
+];
+
+const browser = await chromium.launch();
+const page = await browser.newPage({ deviceScaleFactor: 2 });
+
+for (const { pagina, archivo, alto, selector } of capturas) {
+  await page.setViewportSize({ width: 1280, height: alto });
+  await page.goto(pathToFileURL(path.join(dir, 'equifin', pagina)).href, { waitUntil: 'load' });
+  await page.evaluate(() => document.fonts.ready);
+  const destino = path.join(salida, archivo);
+  if (selector) {
+    await page.locator(selector).screenshot({ path: destino });
+  } else {
+    await page.screenshot({ path: destino });
+  }
+  console.log('✓', path.relative(process.cwd(), destino));
+}
+
+await browser.close();

@@ -2,11 +2,16 @@
 import { base } from '../utils/base';
 
 const links = [
-  { href: `${base}/#metodo`, label: 'Método' },
+  { href: `${base}/casos/equifin/`, label: 'Caso EquiFin' },
+  { href: `${base}/#acompanamiento`, label: 'Cómo trabajamos' },
+  { href: `${base}/#valores`, label: 'Valores' },
   { href: `${base}/#especialidades`, label: 'Especialidades' },
-  { href: `${base}/#quienes-somos`, label: 'Quiénes somos' },
-  { href: `${base}/contacto/`, label: 'Contacto' },
 ];
+const contacto = { href: `${base}/contacto/`, label: 'Contacto' };
+
+// Marca el enlace de la página actual; los de ancla apuntan a secciones de la portada y nunca coinciden.
+const paginaActual = Astro.url.pathname.replace(/\/?$/, '/');
+const actual = (href: string) => (href === paginaActual ? 'page' : undefined);
 ---
 <header class="sticky top-0 z-50 border-b border-white/5 bg-obsidiana/80 backdrop-blur-lg">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Principal">
@@ -14,21 +19,23 @@ const links = [
       <img src={`${base}/brand/icono-jade.svg`} alt="" class="h-8 w-8" />
       <span class="font-serif text-xl font-bold tracking-tight text-hueso">IXT</span>
     </a>
-    <ul class="hidden items-center gap-8 md:flex">
-      {links.map((link) => (
-        <li>
-          <a
-            href={link.href}
-            class="font-mono text-xs uppercase tracking-widest text-hueso/70 transition hover:text-jade"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-    <div class="flex items-center gap-2 md:hidden">
+    <div class="flex items-center gap-2 lg:gap-8">
+      <ul class="hidden items-center gap-8 lg:flex">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={actual(link.href)}
+              class="font-mono text-xs uppercase tracking-widest text-hueso/70 transition hover:text-jade aria-[current=page]:text-jade"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
       <a
-        href={`${base}/contacto/`}
+        href={contacto.href}
+        aria-current={actual(contacto.href)}
         class="rounded-full border border-jade/40 px-4 py-2 font-mono text-xs uppercase tracking-widest text-jade transition hover:bg-jade hover:text-obsidiana"
       >
         Hablemos
@@ -36,7 +43,7 @@ const links = [
       <button
         type="button"
         id="menu-boton"
-        class="group -mr-2 flex h-10 w-10 items-center justify-center rounded-full text-hueso/80 transition hover:text-jade"
+        class="group -mr-2 flex h-10 w-10 items-center justify-center rounded-full text-hueso/80 transition hover:text-jade lg:hidden"
         aria-controls="menu-movil"
         aria-expanded="false"
         aria-label="Abrir menú"
@@ -51,13 +58,14 @@ const links = [
     </div>
   </nav>
 
-  <div id="menu-movil" class="absolute inset-x-0 top-full hidden border-b border-white/10 bg-obsidiana md:hidden">
+  <div id="menu-movil" class="absolute inset-x-0 top-full hidden border-b border-white/10 bg-obsidiana lg:hidden">
     <ul class="mx-auto max-w-6xl px-6 py-4">
-      {links.map((link) => (
+      {[...links, contacto].map((link) => (
         <li>
           <a
             href={link.href}
-            class="block py-3 font-mono text-sm uppercase tracking-widest text-hueso/80 transition hover:text-jade"
+            aria-current={actual(link.href)}
+            class="block py-3 font-mono text-sm uppercase tracking-widest text-hueso/80 transition hover:text-jade aria-[current=page]:text-jade"
           >
             {link.label}
           </a>

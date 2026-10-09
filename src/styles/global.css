@@ -38,12 +38,17 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-obsidiana text-hueso font-sans;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-4 outline-jade;
   }
 
   h1, h2, h3, h4 {
@@ -57,5 +62,15 @@
 
   .eyebrow {
     @apply font-mono text-xs uppercase tracking-[0.2em] text-jade;
+  }
+}
+
+@layer components {
+  .btn-primario {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-jade px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-obsidiana transition hover:bg-jade/90;
+  }
+
+  .btn-secundario {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-hueso/20 px-6 py-3 font-mono text-sm uppercase tracking-wider text-hueso/80 transition hover:border-jade hover:text-jade;
   }
 }

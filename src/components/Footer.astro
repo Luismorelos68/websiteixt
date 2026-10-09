@@ -1,11 +1,20 @@
 ---
 import { base } from '../utils/base';
+import { correoContacto, correoVentas } from '../data/contacto';
 
 // Fecha de la compilación: se actualiza sola en cada publicación.
 const ahora = new Date();
 const year = ahora.getFullYear();
 const mes = ahora.toLocaleDateString('es-MX', { month: 'long' });
 const actualizado = `${mes.charAt(0).toUpperCase()}${mes.slice(1)} ${year}`;
+
+const secciones = [
+  { href: `${base}/casos/equifin/`, label: 'Caso EquiFin' },
+  { href: `${base}/#acompanamiento`, label: 'Cómo trabajamos' },
+  { href: `${base}/#valores`, label: 'Valores' },
+  { href: `${base}/#especialidades`, label: 'Especialidades' },
+  { href: `${base}/contacto/`, label: 'Contacto' },
+];
 ---
 <footer class="border-t border-white/5 bg-obsidiana">
   <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-4">
@@ -22,26 +31,30 @@ const actualizado = `${mes.charAt(0).toUpperCase()}${mes.slice(1)} ${year}`;
       <h2 class="eyebrow mb-4">Contacto</h2>
       <ul class="space-y-2 text-sm text-hueso/70">
         <li>
-          <a href="mailto:soporte-equifin@ixt.mx" class="transition hover:text-jade">
-            soporte-equifin@ixt.mx
-          </a>
+          <a href={`mailto:${correoContacto}`} class="transition hover:text-jade">{correoContacto}</a>
+        </li>
+        <li>
+          <a href={`mailto:${correoVentas}`} class="transition hover:text-jade">{correoVentas}</a>
         </li>
         <li class="text-hueso/50">México</li>
       </ul>
     </div>
 
     <div>
-      <h2 class="eyebrow mb-4">Marca</h2>
+      <h2 class="eyebrow mb-4">Sitio</h2>
       <ul class="space-y-2 text-sm text-hueso/70">
-        <li>IXT · Ixtlamatini</li>
-        <li class="text-hueso/50">Saber ver para crecer juntos.</li>
+        {secciones.map(({ href, label }) => (
+          <li>
+            <a href={href} class="transition hover:text-jade">{label}</a>
+          </li>
+        ))}
       </ul>
     </div>
   </div>
 
   <div class="border-t border-white/5">
-    <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-6 py-6 text-xs text-hueso/40 md:flex-row md:items-center">
-      <span>© {year} IXT. Todos los derechos reservados.</span>
+    <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-6 py-6 text-xs text-hueso/50 md:flex-row md:items-center">
+      <span>© {year} IXT · Ixtlamatini. Saber ver para crecer juntos.</span>
       <span class="font-mono">Actualizado · {actualizado}</span>
     </div>
   </div>

@@ -1,10 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
+import { correoContacto, correoVentas } from '../data/contacto';
 
 const compromisos = [
   { titulo: 'Confidencialidad', texto: 'Toda relación se rige por acuerdo firmado. La información se trata bajo estándares equivalentes a los del sector financiero y conforme a la LFPDPPP.' },
   { titulo: 'Independencia', texto: 'No recibimos comisiones de proveedores tecnológicos ni de instituciones financieras por recomendar sus productos.' },
   { titulo: 'Entregables auditables', texto: 'Documentados y revisables por un tercero. Si no se puede auditar, no está terminado.' },
+];
+
+const correos = [
+  { etiqueta: 'Contacto directo', correo: correoContacto },
+  { etiqueta: 'Ventas', correo: correoVentas },
 ];
 ---
 <Base title="IXT · Contacto" description="Agende una conversación inicial con IXT. Sin costo, sin compromiso.">
@@ -26,10 +32,10 @@ const compromisos = [
       <!-- Formulario -->
       <div class="md:col-span-3">
         <form
-          action="mailto:soporte-equifin@ixt.mx"
+          action={`mailto:${correoContacto}`}
           method="post"
           enctype="text/plain"
-          class="space-y-6"
+          class="space-y-6 rounded-2xl border border-white/10 bg-black/20 p-6 md:p-8"
         >
           <div class="grid gap-6 md:grid-cols-2">
             <label class="block">
@@ -84,7 +90,7 @@ const compromisos = [
 
           <p class="text-xs text-hueso/50">
             Al enviar, se abre su cliente de correo con el mensaje listo para
-            <code class="font-mono text-jade">soporte-equifin@ixt.mx</code>.
+            <code class="font-mono text-jade">{correoContacto}</code>.
             Si prefiere escribir directo, también funciona.
           </p>
         </form>
@@ -92,14 +98,18 @@ const compromisos = [
 
       <!-- Side info -->
       <aside class="space-y-10 md:col-span-2">
-        <div>
-          <p class="eyebrow mb-3">Correo directo</p>
-          <a
-            href="mailto:soporte-equifin@ixt.mx"
-            class="font-serif text-xl text-hueso underline decoration-jade decoration-2 underline-offset-4 transition hover:text-jade"
-          >
-            soporte-equifin@ixt.mx
-          </a>
+        <div class="space-y-5">
+          {correos.map(({ etiqueta, correo }) => (
+            <div>
+              <p class="eyebrow mb-2">{etiqueta}</p>
+              <a
+                href={`mailto:${correo}`}
+                class="font-serif text-xl text-hueso underline decoration-jade decoration-2 underline-offset-4 transition hover:text-jade"
+              >
+                {correo}
+              </a>
+            </div>
+          ))}
         </div>
 
         <div>
@@ -116,6 +126,10 @@ const compromisos = [
             <li class="flex gap-3">
               <span class="font-mono text-jade">03</span>
               <span>Si vale la pena, propuesta por escrito con alcance y precio.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-mono text-jade">04</span>
+              <span>Si trabajamos juntos, le acompañamos en cada etapa, de principio a fin.</span>
             </li>
           </ol>
         </div>

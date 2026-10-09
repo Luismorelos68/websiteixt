@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Grupos (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="equifin.css" />
+  </head>
+  <body>
+    <nav class="ef-navbar"><span class="ef-logo">EquiFin</span><span class="ef-burger"><i class="bi bi-list"></i></span></nav>
+
+    <main class="container-fluid px-4 py-3">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h1 class="h3 mb-0"><i class="bi bi-people-fill me-2"></i>Grupos</h1>
+        <button class="btn btn-ef"><i class="bi bi-plus-circle me-1"></i> Nuevo grupo</button>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body py-3">
+          <div class="row g-3 align-items-end">
+            <div class="col-4">
+              <label class="form-label text-secondary mb-1">Buscar</label>
+              <input class="form-control" placeholder="Nombre o código..." />
+            </div>
+            <div class="col-3">
+              <label class="form-label text-secondary mb-1">Gerente</label>
+              <select class="form-select"><option>— Todos —</option></select>
+            </div>
+            <div class="col d-flex gap-3 pb-2">
+              <div class="form-check"><input class="form-check-input" type="checkbox" /><label class="form-check-label">Con advertencias</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" /><label class="form-check-label">Incompletos</label></div>
+            </div>
+            <div class="col-auto d-flex gap-2">
+              <button class="btn btn-ef px-4"><i class="bi bi-search"></i></button>
+              <button class="btn btn-outline-secondary">Limpiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="badge text-bg-dark fs-6 mb-2 px-3 py-2">Total: 72</span>
+
+      <table class="table table-ef">
+        <thead>
+          <tr>
+            <th style="width: 110px">Código</th>
+            <th>Nombre del grupo</th>
+            <th class="text-center">Integrantes</th>
+            <th>Gerente</th>
+            <th class="text-center">Estatus</th>
+            <th class="text-center" style="width: 160px">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="filas"></tbody>
+      </table>
+    </main>
+
+    <script>
+      // Nombres de grupos, códigos y gerentes inventados.
+      const ESTATUS = {
+        prestamo: '<span class="badge text-bg-success">Activo con préstamo</span>',
+        baja: '<span class="badge text-bg-danger">Baja / moroso (antecedente)</span>',
+      };
+      const grupos = [
+        ['GH7QD', 'GRUPO AURORA', 5, 'Héctor Salinas Fuentes', 'prestamo'],
+        ['GE6YB', 'GRUPO ESTRELLAS', 5, 'Paola Ríos Calderón', 'prestamo'],
+        ['G4KMR', 'GRUPO GIRASOLES', 4, 'Sofía Méndez Rangel', 'prestamo'],
+        ['GM8JK', 'GRUPO LA COLMENA', 4, 'JURÍDICO', 'baja', true],
+        ['GBX2T', 'GRUPO LAS ABEJAS', 3, 'JURÍDICO', 'baja', true],
+        ['GC5RZ', 'GRUPO LAS LUCIÉRNAGAS', 3, 'Sofía Méndez Rangel', 'prestamo'],
+        ['GP3LN', 'GRUPO MANANTIAL', 3, 'Paola Ríos Calderón', 'prestamo', true],
+        ['GT9VW', 'GRUPO NUEVO AMANECER', 4, 'Tomás Aguirre León', 'prestamo'],
+        ['GR2FH', 'GRUPO RAÍCES', 3, 'Héctor Salinas Fuentes', 'prestamo'],
+      ];
+      document.getElementById('filas').innerHTML = grupos
+        .map(
+          ([codigo, nombre, integrantes, gerente, estatus, incompleto]) => `
+          <tr>
+            <td><span class="ef-code">${codigo}</span></td>
+            <td>${nombre}${incompleto ? '<br><span class="badge text-bg-warning mt-1"><i class="bi bi-exclamation-triangle me-1"></i>Incompleto</span>' : ''}</td>
+            <td class="text-center">${integrantes}</td>
+            <td>${gerente}</td>
+            <td class="text-center">${ESTATUS[estatus]}</td>
+            <td class="text-center ef-acciones">
+              <button class="btn btn-outline-primary"><i class="bi bi-eye"></i></button>
+              <button class="btn btn-outline-secondary"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+            </td>
+          </tr>`,
+        )
+        .join('');
+    </script>
+  </body>
+</html>

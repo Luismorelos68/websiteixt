@@ -1,6 +1,6 @@
 # websiteixt
 
-Sitio web de IXT · Ixtlamatini. Sitio estático hecho con [Astro](https://astro.build) y Tailwind CSS, publicado en GitHub Pages.
+Sitio web de IXT · Ixtlamatini. Sitio estático hecho con [Astro](https://astro.build) y Tailwind CSS, publicado en GitHub Pages en https://ixt.mx.
 
 ## Desarrollo
 
@@ -8,7 +8,7 @@ Requiere Node 20 o superior.
 
 ```sh
 npm install
-npm run dev       # servidor local en http://localhost:4321/websiteixt/
+npm run dev       # servidor local en http://localhost:4321/
 npm run build     # genera el sitio en dist/
 npm run preview   # sirve dist/ para revisarlo antes de publicar
 ```
@@ -28,20 +28,32 @@ public/
   og.png        imagen para compartir en redes (1200×630)
 ```
 
-Los enlaces internos se escriben como `${base}/ruta/` usando `src/utils/base.ts`, así funcionan igual en `usuario.github.io/websiteixt` que en un dominio propio.
+Los enlaces internos se escriben como `${base}/ruta/` usando `src/utils/base.ts`, así funcionan igual en la raíz del dominio que en `usuario.github.io/websiteixt`.
 
 ## Publicación
 
-Cada push a `main` compila y publica el sitio con GitHub Actions (`.github/workflows/deploy.yml`).
+Cada push a `main` compila y publica el sitio en https://ixt.mx con GitHub Actions (`.github/workflows/deploy.yml`).
 
-1. En GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. En `astro.config.mjs`, `site` debe ser `https://<usuario>.github.io` y `base` el nombre del repositorio (`/websiteixt`).
+Configuración en GitHub (una sola vez):
 
-### Dominio propio
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+2. **Settings → Pages → Custom domain: `ixt.mx`** y, cuando el DNS esté listo, **Enforce HTTPS**. Al publicar con GitHub Actions no hace falta un archivo `CNAME`: el dominio se guarda en esta configuración.
 
-1. Crear `public/CNAME` con el dominio (por ejemplo `ixt.mx`).
-2. En `astro.config.mjs`: `site: 'https://ixt.mx'` y `base: '/'`.
-3. Configurar el DNS del dominio según la [guía de GitHub Pages](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site).
+### DNS (Squarespace)
+
+El dominio se administra en Squarespace Domains. Registros para GitHub Pages:
+
+| Tipo  | Host | Valor                   |
+|-------|------|-------------------------|
+| A     | @    | 185.199.108.153         |
+| A     | @    | 185.199.109.153         |
+| A     | @    | 185.199.110.153         |
+| A     | @    | 185.199.111.153         |
+| CNAME | www  | luismorelos68.github.io |
+
+Los registros de Google Workspace (MX y TXT del correo) no se tocan. Más detalle en la [guía de GitHub Pages](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site).
+
+Para publicar sin dominio propio en `https://<usuario>.github.io/websiteixt/`, en `astro.config.mjs` usar `site: 'https://<usuario>.github.io'` y `base: '/websiteixt'`.
 
 ## Fuentes
 

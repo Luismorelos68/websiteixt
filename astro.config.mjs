@@ -3,7 +3,6 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://luismorelos68.github.io',
-  base: '/websiteixt',
+  site: 'https://ixt.mx',
   integrations: [tailwind(), sitemap()],
 });

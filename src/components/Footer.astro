@@ -10,11 +10,11 @@ const mes = ahora.toLocaleDateString('es-MX', { month: 'long' });
 const actualizado = `${mes.charAt(0).toUpperCase()}${mes.slice(1)} ${year}`;
 
 const secciones = [
+  { href: `${base}/#nosotros`, label: 'Nosotros' },
   { href: `${base}/casos/microfinanciera/`, label: 'Caso de éxito' },
   { href: `${base}/#acompanamiento`, label: 'Cómo trabajamos' },
   { href: `${base}/#finanzas`, label: 'Finanzas' },
   { href: `${base}/#especialidades`, label: 'Especialidades' },
-  { href: `${base}/#valores`, label: 'Valores' },
   { href: `${base}/contacto/`, label: 'Contacto' },
 ];
 ---

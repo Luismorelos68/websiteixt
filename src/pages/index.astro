@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import BrowserFrame from '../components/BrowserFrame.astro';
 import CtaContacto from '../components/CtaContacto.astro';
 import Icon from '../components/Icon.astro';
+import LogoIxt from '../components/LogoIxt.astro';
 import PhoneFrame from '../components/PhoneFrame.astro';
 import { base } from '../utils/base';
 import { resultados, avisoConfidencialidad } from '../data/caso';
@@ -114,6 +115,12 @@ const metas = [
   { titulo: 'Crecimiento', texto: 'Que crezca sabiendo su margen, no a ciegas.' },
 ];
 
+const nombre = [
+  { palabra: 'ixtli', significado: 'el rostro, los ojos' },
+  { palabra: 'tlamatini', significado: 'el que sabe' },
+  { palabra: 'Ixtlamatini', significado: 'el que sabe con los ojos', destacado: true },
+];
+
 const valores = [
   {
     icono: 'lock',
@@ -123,7 +130,7 @@ const valores = [
   {
     icono: 'eye',
     nombre: 'Saber ver',
-    texto: 'Entendemos antes de proponer. Ixtlamatini es el que conoce porque vio, no porque le contaron.',
+    texto: 'Entendemos antes de proponer: primero vemos su operación y sus números, y después le decimos qué haríamos.',
   },
   {
     icono: 'badge-check',
@@ -151,7 +158,7 @@ const especialidades = [
   {
     icono: 'code',
     nombre: 'Tecnológica',
-    descripcion: 'Ajuste e integración de los sistemas que ya usa y software a la medida cuando hace falta, en la nube u on-premise: AWS, Azure y Google Cloud.',
+    descripcion: 'Ajuste e integración de los sistemas que ya usa y, cuando hace falta, software a la medida: web y móvil, todo en uno, en la nube u on-premise (AWS, Azure y Google Cloud).',
     razon: 'Convierte una decisión en algo que ocurre todos los días sin que nadie tenga que acordarse.',
   },
   {
@@ -181,7 +188,7 @@ const especialidades = [
     <div class="pointer-events-none absolute -right-48 top-10 h-[34rem] w-[34rem] rounded-full bg-jade/10 blur-3xl" aria-hidden="true"></div>
     <div class="relative mx-auto grid max-w-6xl items-center gap-14 px-6 pb-24 pt-16 md:pt-24 lg:grid-cols-12 lg:gap-12">
       <div class="lg:col-span-6">
-        <p class="eyebrow mb-6">Consultoría financiera · Software a la medida</p>
+        <p class="eyebrow mb-6">Le acompañamos a crecer</p>
         <h1 class="text-balance font-serif text-5xl font-bold leading-[1.05] text-hueso md:text-6xl">
           Software que nace de entender sus números.
         </h1>
@@ -216,6 +223,59 @@ const especialidades = [
     </div>
   </section>
 
+  <!-- NOSOTROS: NUESTRO NOMBRE Y NUESTROS VALORES -->
+  <section id="nosotros" class="relative overflow-hidden bg-arena text-obsidiana">
+    <div class="pointer-events-none absolute -right-40 -top-20 h-[32rem] w-[32rem] rounded-full bg-cal/80 blur-3xl" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-6 py-24">
+      <div class="grid items-center gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <p class="eyebrow mb-4 text-jade-oscuro">Nuestro nombre</p>
+          <h2 class="text-balance font-serif text-4xl font-bold md:text-6xl">Ixtlamatini: el que sabe con los ojos.</h2>
+          <p class="mt-8 text-lg leading-relaxed text-obsidiana/75">
+            En náhuatl, <em class="font-semibold not-italic text-obsidiana">ixtli</em> es el rostro, los ojos, y un
+            <em class="font-semibold not-italic text-obsidiana">tlamatini</em> es el que sabe. Ixtlamatini es el que conoce porque vio,
+            no porque le contaron.
+          </p>
+          <p class="mt-5 text-lg leading-relaxed text-obsidiana/75">
+            Así trabajamos: antes de proponer, nos sentamos con usted, conocemos su operación y revisamos sus números. Usted
+            conoce su negocio mejor que nadie; nosotros lo conocemos porque lo vemos a su lado.
+          </p>
+          <p class="mt-8 border-l-4 border-jade-oscuro pl-5 font-serif text-2xl font-bold leading-snug">
+            No le dejamos solo: le acompañamos antes, durante y después.
+          </p>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="rounded-3xl border border-obsidiana/10 bg-white/80 p-8 shadow-xl shadow-obsidiana/5">
+            <LogoIxt class="h-20 w-20 text-jade-oscuro" />
+            <dl class="mt-8 space-y-4">
+              {nombre.map((parte) => (
+                <div class="flex items-baseline justify-between gap-4 border-b border-obsidiana/10 pb-4 last:border-0 last:pb-0">
+                  <dt class:list={['font-serif text-2xl font-bold', parte.destacado && 'text-jade-oscuro']}>{parte.palabra}</dt>
+                  <dd class="text-right text-obsidiana/70">{parte.significado}</dd>
+                </div>
+              ))}
+            </dl>
+            <p class="mt-8 font-mono text-xs uppercase tracking-widest text-jade-oscuro">Saber ver para crecer juntos</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="valores" class="mt-24 scroll-mt-20">
+        <p class="eyebrow mb-4 text-jade-oscuro">Nuestros valores</p>
+        <h2 class="font-serif text-4xl font-bold md:text-5xl">Lo que no negociamos.</h2>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {valores.map((v) => (
+            <article class="rounded-2xl border border-obsidiana/10 bg-white p-7 shadow-sm">
+              <Icon name={v.icono} class="h-6 w-6 text-jade-oscuro" />
+              <h3 class="mt-4 font-serif text-xl font-bold">{v.nombre}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{v.texto}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CASO DE ÉXITO -->
   <section id="caso" class="bg-hueso text-obsidiana">
     <div class="mx-auto max-w-6xl px-6 py-24">
@@ -225,9 +285,9 @@ const especialidades = [
           <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">Más eficiencia operativa para una microfinanciera.</h2>
           <p class="mt-6 text-lg leading-relaxed text-obsidiana/75">
             Nuestro cliente otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Ellos son los
-            expertos en microfinanzas; nosotros los acompañamos. Con su equipo construimos HERMES, el sistema que sigue el
-            recorrido de cada clienta, de la solicitud en campo al último pago, con cobranza oportuna, monitoreo en tiempo real,
-            un dashboard de riesgo y seguridad en cada pantalla.
+            expertos en microfinanzas; nosotros los acompañamos. Con su equipo construimos HERMES, una plataforma web y móvil,
+            todo en uno, que sigue el recorrido de cada clienta, de la solicitud en campo al último pago, con cobranza oportuna,
+            monitoreo en tiempo real, un dashboard de riesgo y seguridad en cada pantalla.
           </p>
           <div class="mt-8 flex gap-4 rounded-2xl border border-jade-oscuro/20 bg-white p-5">
             <Icon name="lock" class="mt-0.5 h-5 w-5 shrink-0 text-jade-oscuro" />
@@ -290,7 +350,7 @@ const especialidades = [
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-hueso/75">
         Nadie conoce su negocio mejor que usted y su equipo. Nuestro trabajo es acompañarlos: escuchar, ordenar los números
         y ajustar o integrar los sistemas que ya usan, o construir los que falten. No le entregamos un sistema y
-        desaparecemos: es un ciclo que, cuando termina, vuelve a empezar.
+        desaparecemos: nos quedamos a su lado, en un ciclo que, cuando termina, vuelve a empezar.
       </p>
 
       <ol class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -412,8 +472,8 @@ const especialidades = [
     </div>
   </section>
 
-  <!-- PROPÓSITO Y VALORES -->
-  <section id="valores" class="bg-nieve text-obsidiana">
+  <!-- LO QUE QUEREMOS LOGRAR -->
+  <section id="metas" class="bg-nieve text-obsidiana">
     <div class="mx-auto max-w-6xl px-6 py-24">
       <div class="grid gap-12 lg:grid-cols-12">
         <div class="lg:col-span-5">
@@ -430,20 +490,6 @@ const especialidades = [
             </div>
           ))}
         </dl>
-      </div>
-
-      <div class="mt-24">
-        <p class="eyebrow mb-4 text-jade-oscuro">Nuestros valores</p>
-        <h2 class="font-serif text-4xl font-bold md:text-5xl">Lo que no negociamos.</h2>
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {valores.map((v) => (
-            <article class="rounded-2xl border border-obsidiana/10 bg-white p-7 shadow-sm">
-              <Icon name={v.icono} class="h-6 w-6 text-jade-oscuro" />
-              <h3 class="mt-4 font-serif text-xl font-bold">{v.nombre}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{v.texto}</p>
-            </article>
-          ))}
-        </div>
       </div>
     </div>
   </section>

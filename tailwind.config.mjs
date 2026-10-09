@@ -10,6 +10,8 @@ export default {
         hueso: '#F3F4EF',
         nieve: '#EDEFE8',
         cal: '#EADFC4',
+        // Cal aclarada: fondo cálido para las secciones de nombre y valores.
+        arena: '#F2EBDA',
       },
       fontFamily: {
         serif: ['"DejaVu Serif"', 'Georgia', 'Cambria', '"Times New Roman"', 'serif'],

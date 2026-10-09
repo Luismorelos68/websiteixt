@@ -83,7 +83,7 @@ const seguridad = [
   {
     icono: 'timer',
     titulo: 'Cierre automático',
-    texto: 'Una sesión sin actividad se cierra sola a las 3 horas.',
+    texto: 'Una sesión sin actividad se cierra sola, en el tiempo que defina el cliente; en este caso, a las 3 horas.',
   },
   {
     icono: 'key-round',
@@ -127,8 +127,8 @@ const forma = [
   },
   {
     icono: 'puzzle',
-    titulo: 'Módulos a la medida',
-    texto: 'Cada módulo se adaptó a cómo trabaja el cliente, y los nuevos se suman cuando la operación los pide.',
+    titulo: 'A la medida de su metodología',
+    texto: 'Cada módulo y cada regla siguen la metodología del cliente: hora de corte, multas, metas y renovaciones. Los módulos nuevos se suman cuando la operación los pide.',
   },
 ] as const;
 ---
@@ -275,6 +275,17 @@ const forma = [
         HERMES sigue el customer journey de cada clienta: de la primera visita del gerente a su último pago, y de vuelta a
         empezar con la renovación.
       </p>
+      <div class="mt-10 flex max-w-4xl gap-4 rounded-2xl border border-jade-oscuro/25 bg-white p-6 shadow-sm">
+        <Icon name="scale" class="mt-1 h-6 w-6 shrink-0 text-jade-oscuro" />
+        <div>
+          <p class="font-serif text-xl font-bold">Las reglas son las del cliente.</p>
+          <p class="mt-2 leading-relaxed text-obsidiana/75">
+            La hora de corte, las multas, las metas y sus semáforos, los plazos y las renovaciones siguen la metodología de cada
+            institución; HERMES las aplica igual para todos y las explica en pantalla. En este caso, el corte es a las
+            <strong class="font-semibold text-obsidiana">2:00 pm</strong>, porque así lo marca la metodología de nuestro cliente.
+          </p>
+        </div>
+      </div>
 
       <div class="mt-20 space-y-28">
         <Capitulo
@@ -289,7 +300,7 @@ const forma = [
             'Lectura automática de la credencial con OCR + IA: nombre, CURP, fecha de nacimiento y vigencia.',
             'La CURP se confirma carácter por carácter, con avisos para el cero y la O, el uno y la I.',
             'Antes de las fotos, se le lee el aviso de privacidad a la clienta y su consentimiento queda registrado.',
-            'Detecta solicitudes repetidas y guarda las incompletas 7 días antes de cancelarlas solas.',
+            'Detecta solicitudes repetidas y guarda las incompletas el plazo que marca la metodología (en este caso, 7 días) antes de cancelarlas solas.',
             'Los datos se comparan con reportes de otras instituciones; el crédito lo decide la oficina.',
           ]}
           apilado
@@ -337,7 +348,7 @@ const forma = [
             'Calendario de pagos: a tiempo, adelantado, con excedente o pendiente.',
             'Monto asignado por integrante y responsable del grupo.',
             'Historial de ciclos: cómo cerró cada crédito.',
-            'Las reglas del negocio se explican donde se usan, para que todos cuenten igual.',
+            'Las reglas son las de la metodología del cliente: el sistema las aplica y las explica donde se usan, para que todos cuenten igual.',
           ]}
           apilado
         >
@@ -354,7 +365,7 @@ const forma = [
               tono="claro"
               sizes={tamanoMitad}
               alt="Detalle de un crédito individual en HERMES: calendario de pagos semanal, datos del crédito, política e historial de la clienta (datos ficticios)."
-              pie="Un crédito individual: su calendario semanal y la política, explicada en pantalla."
+              pie="Un crédito individual: su calendario semanal y la política del cliente, explicada en pantalla."
             />
           </div>
         </Capitulo>
@@ -366,12 +377,12 @@ const forma = [
           etiqueta="El cobro"
           titulo="Cada pago, a tiempo y a la vista."
           reto="Una cuota pagada a las seis de la tarde del día de pago, ¿llegó a tiempo? Si cada quien cuenta distinto, nadie sabe en realidad cómo va la cobranza."
-          texto="La regla es una y la aplica el sistema: el corte es a las 2:00 pm y, desde las 2:01, la cuota del día cuenta como atrasada. El gerente registra cada abono desde su celular, con fecha y hora, y las cuotas atrasadas aparecen el mismo día para darles un seguimiento oportuno."
+          texto="La regla la pone la metodología del cliente y el sistema la aplica igual para todos. En este caso, el corte es a las 2:00 pm: desde las 2:01, la cuota del día cuenta como atrasada. El gerente registra cada abono desde su celular, con fecha y hora, y las cuotas atrasadas aparecen el mismo día para darles un seguimiento oportuno."
           puntos={[
             'Cuotas pendientes, atrasadas, por vencer o adelantadas, por gerente y por fecha.',
             'Abonos parciales: cuánto se pagó y cuánto falta.',
             'Si la clienta paga de más, el excedente se adelanta solo a las cuotas siguientes.',
-            'La multa por atraso se propone sola y se cobra aparte, sin frenar el abono.',
+            'La multa por atraso se calcula según la política del cliente y se cobra aparte, sin frenar el abono.',
             'Cobro por lista y descarga en CSV.',
           ]}
           apilado
@@ -401,9 +412,9 @@ const forma = [
           etiqueta="La comunicación"
           titulo="Cada pago, una conversación por WhatsApp."
           reto="Avisarle a cada clienta cómo quedó su pago, y con el tono correcto, no puede depender de la memoria de cada gerente."
-          texto="Cuando se registra un pago, HERMES propone el mensaje para la clienta según cómo pagó: a tiempo, en efectivo, después del horario o con un error en el concepto. El gerente lo revisa, lo ajusta si quiere y lo envía desde su propio WhatsApp, al chat o al grupo que elija."
+          texto="Cuando se registra un pago, HERMES propone el mensaje para la clienta según cómo pagó: a tiempo, en efectivo, después de la hora de corte o con un error en el concepto. El gerente lo revisa, lo ajusta si quiere y lo envía desde su propio WhatsApp, al chat o al grupo que elija."
           puntos={[
-            'Un mensaje listo para cada caso: puntual, en efectivo, después de horario, con error en el concepto, en jurídico o personalizado.',
+            'Un mensaje listo para cada caso —puntual, en efectivo, después de horario, con error en el concepto, en jurídico o personalizado—, con los textos que define el cliente.',
             'Se abre WhatsApp con el texto listo; el sistema no envía nada por su cuenta.',
             'El mismo tono con todas las clientas: un agradecimiento cuando paga a tiempo y un recordatorio claro cuando hace falta.',
             'WhatsApp acompaña todo el recorrido: felicitaciones de cumpleaños y documentos que llegan por chat.',
@@ -446,7 +457,7 @@ const forma = [
           etiqueta="La relación"
           titulo="La relación no termina en el cobro."
           reto="Una clienta que paga puntual merece algo más que un recibo, y es la primera a quien conviene volver a prestar."
-          texto="HERMES recuerda los cumpleaños de las clientas, con su crédito y su gerente a la vista, para felicitarlas por WhatsApp o por teléfono. Y cuando un crédito va al corriente, el semáforo de renovación dice si puede renovar y por cuánto: el recorrido vuelve a empezar."
+          texto="HERMES recuerda los cumpleaños de las clientas, con su crédito y su gerente a la vista, para felicitarlas por WhatsApp o por teléfono. Y cuando un crédito va al corriente, el semáforo de renovación dice si puede renovar y por cuánto, según las reglas de renovación del cliente: el recorrido vuelve a empezar."
           puntos={[
             'Cumpleañeras del mes por cartera, con el mensaje listo para copiar.',
             'Aviso para ofrecer renovación a quien va al corriente.',
@@ -468,7 +479,7 @@ const forma = [
               tono="claro"
               sizes={tamanoLado}
               alt="Detalle de un préstamo en HERMES: saldo, pagos cubiertos, pagos en tiempo y forma, próximo pago y semáforo de renovación (datos ficticios)."
-              pie="Un crédito al corriente: el semáforo de renovación dice hasta cuánto puede renovar."
+              pie="Un crédito al corriente: el semáforo de renovación dice hasta cuánto puede renovar, según la política del cliente."
             />
           </div>
         </Capitulo>
@@ -496,9 +507,9 @@ const forma = [
           reto="Esperar al cierre de mes para saber cómo va la cartera es enterarse tarde."
           texto="Cada gerente tiene su tablero y dirección ve todas las carteras: mora, pagos en tiempo y forma, cartera vigente, colocación del mes y lo que hay por cobrar hoy. Todo contra la meta y con semáforo."
           puntos={[
-            'Fotografía del día al corte, con la definición de cada cifra en pantalla.',
-            'Semáforo contra la meta —en meta, atención o fuera de meta— y cada meta con su fecha de vigencia.',
-            'Cuotas por día y por cartera, con aviso cuando una cartera rebasa el límite acordado.',
+            'Fotografía del día a la hora de corte del cliente, con la definición de cada cifra en pantalla.',
+            'Semáforo contra las metas que fija el cliente —en meta, atención o fuera de meta—, cada una con su fecha de vigencia.',
+            'Cuotas por día y por cartera, con aviso cuando una cartera rebasa el límite que marca la metodología.',
             'Exportación a Excel y CSV, y reporte gerencial.',
           ]}
           tono="oscuro"
@@ -508,7 +519,7 @@ const forma = [
               src={miTablero}
               sizes={tamanoLado}
               alt="Mi tablero en HERMES, vista de dirección: cartera vigente, colocación del mes, créditos, emprendedoras, porcentaje de mora y tabla de carteras comerciales (datos ficticios)."
-              pie="Mi tablero: la fotografía de hoy al corte, cartera por cartera."
+              pie="Mi tablero: la fotografía de hoy al corte de las 2:00 pm de este cliente, cartera por cartera."
             />
             <BrowserFrame
               src={miTableroDias}
@@ -526,7 +537,7 @@ const forma = [
           etiqueta="Dashboard de riesgo"
           titulo="Seis preguntas que dirección responde cada mañana."
           reto="Un porcentaje de mora, solo, no dice si el atraso es de ayer o de hace tres meses, ni en qué cartera está."
-          texto="El dashboard de riesgo está ordenado como las preguntas que se hace quien dirige una cartera, y cada respuesta baja hasta la clienta, el gerente y la cuota."
+          texto="El dashboard de riesgo está ordenado como las preguntas que se hace quien dirige una cartera, con las definiciones y metas que acordó el cliente, y cada respuesta baja hasta la clienta, el gerente y la cuota."
           puntos={[
             '¿Cuánto está en riesgo hoy?',
             '¿Qué tan viejo es el atraso?',

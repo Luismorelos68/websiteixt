@@ -9,12 +9,12 @@ export const resultados = [
   {
     icono: 'hand-coins',
     titulo: 'Cobranza oportuna',
-    texto: 'Un mismo corte diario para todos: cada abono queda con fecha y hora, la clienta recibe su mensaje por WhatsApp y lo atrasado se ve el mismo día.',
+    texto: 'Un mismo corte diario para todos, a la hora que marca su metodología: cada abono queda con fecha y hora, la clienta recibe su mensaje por WhatsApp y lo atrasado se ve el mismo día.',
   },
   {
     icono: 'activity',
     titulo: 'Monitoreo en tiempo real',
-    texto: 'Cada gerente ve su cartera y dirección ve todas, contra la meta y con semáforo, sin esperar al cierre de mes.',
+    texto: 'Cada gerente ve su cartera y dirección ve todas, contra las metas del cliente y con semáforo, sin esperar al cierre de mes.',
   },
   {
     icono: 'shield-alert',

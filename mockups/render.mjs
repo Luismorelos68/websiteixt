@@ -22,6 +22,8 @@ const capturas = [
   { pagina: 'solicitud-credencial.html', archivo: 'solicitud-credencial.png', ancho: 390, alto: 844 },
   { pagina: 'solicitud-curp.html', archivo: 'solicitud-curp.png', ancho: 390, alto: 844 },
   { pagina: 'solicitud-leida.html', archivo: 'solicitud-leida.png', ancho: 390, alto: 844 },
+  { pagina: 'cashflow.html', archivo: 'cashflow.png', alto: 1000 },
+  { pagina: 'cashflow.html', archivo: 'cashflow-ciclo.png', alto: 1400, selector: '#ciclo' },
 ];
 
 // Vistas previas para WhatsApp y redes (Open Graph): 1200×630, JPG ligero (WhatsApp pide menos de 300 KB).

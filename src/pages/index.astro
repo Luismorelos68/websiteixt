@@ -8,6 +8,7 @@ import { base } from '../utils/base';
 import dashboard from '../assets/hermes/dashboard.png';
 import credito from '../assets/hermes/credito.png';
 import solicitudLeida from '../assets/hermes/solicitud-leida.png';
+import cashflow from '../assets/hermes/cashflow.png';
 
 const capacidades = [
   {
@@ -51,7 +52,7 @@ const etapas = [
   {
     icono: 'list-checks',
     nombre: 'Ordenar',
-    texto: 'Ponemos en orden lo financiero: costos, márgenes y reglas claras. Es la base de todo lo demás.',
+    texto: 'Empezamos por su P&L y su flujo de efectivo; de ahí, costos, márgenes y reglas claras. Es la base de todo lo demás.',
   },
   {
     icono: 'trending-up',
@@ -97,6 +98,31 @@ const formaDeTrabajo = [
     texto: 'Habla con quienes diseñan y construyen su solución, sin intermediarios.',
   },
 ] as const;
+
+const reportes = [
+  {
+    sigla: 'P&L',
+    nombre: 'Estado de resultados',
+    pregunta: '¿Su negocio gana o pierde dinero?',
+    texto: 'Ingresos, costos y gastos del periodo: el margen real de lo que vende.',
+    puntos: [
+      'Precios con base en el costo real.',
+      'Qué productos, clientes o sucursales dejan utilidad.',
+      'La base para invertir, crecer o pedir financiamiento.',
+    ],
+  },
+  {
+    sigla: 'Cashflow',
+    nombre: 'Flujo de efectivo',
+    pregunta: '¿Tiene el dinero cuando lo necesita?',
+    texto: 'Entradas y salidas de dinero, semana a semana: liquidez y días de operación.',
+    puntos: [
+      'Cuántos días puede operar con la caja de hoy.',
+      'A dónde se va cada peso que entra.',
+      'Cuánto puede crecer sin quedarse sin efectivo.',
+    ],
+  },
+];
 
 const metas = [
   { titulo: 'Claridad', texto: 'Que sepa cuánto cuesta realmente lo que vende y dónde gana o pierde.' },
@@ -148,7 +174,7 @@ const especialidades = [
   {
     icono: 'landmark',
     nombre: 'Financiera',
-    descripcion: 'Automatización de la gestión financiera para PyMEs y FinOps para corporativos, con contabilidad y auditoría contable.',
+    descripcion: 'Empezamos por su P&L y su flujo de efectivo. Automatización de la gestión financiera para PyMEs y FinOps para corporativos, con contabilidad y auditoría contable.',
     razon: 'Es la condición de entrada: un sistema sobre un negocio que no cierra sus números solo automatiza la pérdida.',
   },
   {
@@ -309,38 +335,54 @@ const especialidades = [
     </div>
   </section>
 
-  <!-- PROPÓSITO Y VALORES -->
-  <section id="valores" class="bg-nieve text-obsidiana">
+  <!-- LO FINANCIERO, PRIMERO -->
+  <section id="finanzas" class="bg-hueso text-obsidiana">
     <div class="mx-auto max-w-6xl px-6 py-24">
       <div class="grid gap-12 lg:grid-cols-12">
         <div class="lg:col-span-5">
-          <p class="eyebrow mb-4 text-jade-oscuro">Lo que queremos lograr</p>
-          <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">
-            Que cada cliente decida con números claros y crezca sobre bases firmes.
-          </h2>
+          <p class="eyebrow mb-4 text-jade-oscuro">Lo financiero, primero</p>
+          <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">Todo empieza con dos reportes: P&amp;L y flujo de efectivo.</h2>
+          <p class="mt-6 text-lg leading-relaxed text-obsidiana/75">
+            Antes de construir cualquier sistema, ponemos en orden los números. En lo financiero siempre empezamos por el estado
+            de resultados (P&amp;L) y el flujo de efectivo (cashflow): juntos dicen si su negocio gana dinero y si tiene el
+            dinero cuando lo necesita.
+          </p>
         </div>
-        <dl class="grid gap-8 sm:grid-cols-2 lg:col-span-7 lg:pt-2">
-          {metas.map((m) => (
-            <div class="border-t-2 border-jade-oscuro pt-4">
-              <dt class="font-serif text-2xl font-bold">{m.titulo}</dt>
-              <dd class="mt-2 leading-relaxed text-obsidiana/70">{m.texto}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-
-      <div class="mt-24">
-        <p class="eyebrow mb-4 text-jade-oscuro">Nuestros valores</p>
-        <h2 class="font-serif text-4xl font-bold md:text-5xl">Lo que no negociamos.</h2>
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {valores.map((v) => (
+        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {reportes.map((r) => (
             <article class="rounded-2xl border border-obsidiana/10 bg-white p-7 shadow-sm">
-              <Icon name={v.icono} class="h-6 w-6 text-jade-oscuro" />
-              <h3 class="mt-4 font-serif text-xl font-bold">{v.nombre}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{v.texto}</p>
+              <p class="font-mono text-xs uppercase tracking-widest text-jade-oscuro">{r.sigla}</p>
+              <h3 class="mt-2 font-serif text-2xl font-bold">{r.nombre}</h3>
+              <p class="mt-4 font-semibold">{r.pregunta}</p>
+              <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{r.texto}</p>
+              <ul class="mt-5 space-y-2 border-t border-obsidiana/10 pt-5">
+                {r.puntos.map((punto) => (
+                  <li class="flex gap-3 text-sm text-obsidiana/80">
+                    <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-jade-oscuro"></span>
+                    {punto}
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
+      </div>
+
+      <blockquote class="mt-14 max-w-4xl border-l-4 border-jade-oscuro pl-6 font-serif text-2xl leading-snug md:text-3xl">
+        Un negocio puede tener utilidades y quedarse sin efectivo, o pérdidas en papel y la caja sana. Por eso los leemos juntos.
+      </blockquote>
+
+      <div class="mt-14">
+        <BrowserFrame
+          src={cashflow}
+          tono="claro"
+          alt="Análisis de flujo de caja: liquidez, días de cobertura, semáforos de salud financiera y a dónde va cada $100 cobrados (datos ficticios)."
+          sizes="(min-width: 1152px) 1104px, 100vw"
+        />
+        <p class="mt-4 text-sm text-obsidiana/60">
+          Un análisis de flujo de caja como los que entregamos: semáforos de salud financiera, liquidez, días de cobertura y a
+          dónde va cada peso cobrado. Versión de demostración con datos ficticios.
+        </p>
       </div>
     </div>
   </section>
@@ -378,6 +420,42 @@ const especialidades = [
             Hablemos <Icon name="arrow-right" class="h-4 w-4 transition group-hover:translate-x-1" />
           </span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPÓSITO Y VALORES -->
+  <section id="valores" class="bg-nieve text-obsidiana">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="eyebrow mb-4 text-jade-oscuro">Lo que queremos lograr</p>
+          <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">
+            Que cada cliente decida con números claros y crezca sobre bases firmes.
+          </h2>
+        </div>
+        <dl class="grid gap-8 sm:grid-cols-2 lg:col-span-7 lg:pt-2">
+          {metas.map((m) => (
+            <div class="border-t-2 border-jade-oscuro pt-4">
+              <dt class="font-serif text-2xl font-bold">{m.titulo}</dt>
+              <dd class="mt-2 leading-relaxed text-obsidiana/70">{m.texto}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="mt-24">
+        <p class="eyebrow mb-4 text-jade-oscuro">Nuestros valores</p>
+        <h2 class="font-serif text-4xl font-bold md:text-5xl">Lo que no negociamos.</h2>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {valores.map((v) => (
+            <article class="rounded-2xl border border-obsidiana/10 bg-white p-7 shadow-sm">
+              <Icon name={v.icono} class="h-6 w-6 text-jade-oscuro" />
+              <h3 class="mt-4 font-serif text-xl font-bold">{v.nombre}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{v.texto}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   </section>

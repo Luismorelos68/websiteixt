@@ -15,11 +15,12 @@ import login from '../../assets/hermes/login.png';
 import solicitudCredencial from '../../assets/hermes/solicitud-credencial.png';
 import solicitudCurp from '../../assets/hermes/solicitud-curp.png';
 import solicitudLeida from '../../assets/hermes/solicitud-leida.png';
+import cashflowCiclo from '../../assets/hermes/cashflow-ciclo.png';
 
 const ficha = [
   { termino: 'Cliente', valor: 'EquiFin' },
   { termino: 'Sector', valor: 'Microfinanzas' },
-  { termino: 'Qué hicimos', valor: 'Desarrollo a la medida, llenado inteligente con OCR + IA, reportes y acompañamiento' },
+  { termino: 'Qué hicimos', valor: 'Análisis financiero (P&L y flujo de caja), desarrollo a la medida con OCR + IA y acompañamiento' },
   { termino: 'Estado', valor: 'En producción y en mejora continua' },
 ];
 
@@ -101,6 +102,23 @@ const modulos = [
       },
     ],
   },
+  {
+    icono: 'wallet',
+    titulo: 'Análisis de flujo de caja',
+    texto:
+      'Lo financiero, primero: junto con su P&L, EquiFin cuenta con un análisis de su flujo de efectivo que muestra si la operación se fondea sola o consume caja.',
+    puntos: [
+      'Liquidez, días de cobertura y burn rate, con semáforos de salud financiera.',
+      'A dónde va cada $100 cobrados: operación, renovaciones y créditos nuevos.',
+      'Si la colocación del mes se fondea con los cobros o sale de la caja.',
+    ],
+    imagenes: [
+      {
+        src: cashflowCiclo,
+        alt: 'Análisis de liquidez contra el ciclo de crédito: autofinanciamiento, colocación del mes y a dónde va cada $100 cobrados (datos ficticios).',
+      },
+    ],
+  },
 ] as const;
 
 const forma = [
@@ -108,7 +126,7 @@ const forma = [
     icono: 'landmark',
     titulo: 'Primero, los números',
     texto:
-      'Cada cifra del tablero tiene una definición acordada con EquiFin —mora, cartera vigente, interés por cuota— y el sistema la muestra donde se usa.',
+      'Empezamos por el P&L y el flujo de efectivo. Cada cifra del tablero tiene una definición acordada con EquiFin —mora, cartera vigente, interés por cuota— y el sistema la muestra donde se usa.',
   },
   {
     icono: 'refresh-cw',
@@ -238,7 +256,7 @@ const forma = [
         ))}
 
         <article class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          <div class="lg:col-span-5 lg:order-last">
+          <div class="lg:col-span-5">
             <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro">
               <Icon name="scale" class="h-6 w-6" />
             </span>

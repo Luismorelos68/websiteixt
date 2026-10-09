@@ -25,7 +25,7 @@ const etapas = [
   {
     icono: 'trending-up',
     nombre: 'Crecer',
-    texto: 'Construimos el sistema por etapas, con entregas que su equipo usa y ajusta desde el principio.',
+    texto: 'Ajustamos o integramos los sistemas que ya usa y construimos los que falten, por etapas y con entregas que su equipo usa desde el principio.',
   },
   {
     icono: 'refresh-cw',
@@ -47,8 +47,8 @@ const formaDeTrabajo = [
   },
   {
     icono: 'puzzle',
-    titulo: 'Módulos a la medida',
-    texto: 'Cada módulo se adapta a las necesidades y a la forma de trabajar de su negocio.',
+    titulo: 'Ajustamos, integramos o construimos',
+    texto: 'No siempre hay que empezar de cero: ajustamos los sistemas que ya usa, los integramos entre sí o construimos módulos a la medida.',
   },
   {
     icono: 'wallet',
@@ -151,7 +151,7 @@ const especialidades = [
   {
     icono: 'code',
     nombre: 'Tecnológica',
-    descripcion: 'Software a la medida e integración de software de terceros, en la nube u on-premise: AWS, Azure y Google Cloud.',
+    descripcion: 'Ajuste e integración de los sistemas que ya usa y software a la medida cuando hace falta, en la nube u on-premise: AWS, Azure y Google Cloud.',
     razon: 'Convierte una decisión en algo que ocurre todos los días sin que nadie tenga que acordarse.',
   },
   {
@@ -172,12 +172,6 @@ const especialidades = [
     descripcion: 'Capacitación, desarrollo organizacional, administración de personal y procesos de talento.',
     razon: 'Los sistemas los operan personas: sin capacitación, un sistema es un gasto; con ella, un activo.',
   },
-  {
-    icono: 'heart-handshake',
-    nombre: 'Psicológica',
-    descripcion: 'Red de psicólogos con cédula, para empresas y para personas.',
-    razon: 'Las decisiones de negocio las toman personas bajo presión, y en la empresa familiar lo personal y lo empresarial se mezclan.',
-  },
 ] as const;
 ---
 
@@ -192,7 +186,8 @@ const especialidades = [
           Software que nace de entender sus números.
         </h1>
         <p class="mt-8 max-w-xl text-lg leading-relaxed text-hueso/80">
-          Primero ordenamos las finanzas de su negocio; después construimos el sistema que las sostiene.
+          <span class="text-hueso">Usted es el experto en su negocio; nosotros le acompañamos.</span> Primero ordenamos sus
+          números; después ajustamos, integramos o construimos los sistemas que los sostienen.
           <span class="text-jade">Y nos quedamos a su lado mientras crece.</span>
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
@@ -229,8 +224,8 @@ const especialidades = [
           <p class="eyebrow mb-4 text-jade-oscuro">Caso de éxito · Microfinanciera</p>
           <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">Más eficiencia operativa para una microfinanciera.</h2>
           <p class="mt-6 text-lg leading-relaxed text-obsidiana/75">
-            Nuestro cliente otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Con su equipo
-            diseñamos y construimos HERMES, el sistema donde hoy administran todo el recorrido: de la solicitud en campo a la
+            Nuestro cliente otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Ellos son los
+            expertos en microfinanzas; nosotros los acompañamos. Con su equipo diseñamos y construimos HERMES, el sistema donde hoy administran todo el recorrido: de la solicitud en campo a la
             cobranza semanal.
           </p>
           <div class="mt-8 flex gap-4 rounded-2xl border border-jade-oscuro/20 bg-white p-5">
@@ -288,11 +283,12 @@ const especialidades = [
     <div class="mx-auto max-w-6xl px-6 py-24">
       <p class="eyebrow mb-4">Acompañamiento personalizado</p>
       <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold text-hueso md:text-5xl">
-        No le entregamos un sistema y desaparecemos.
+        Usted es el experto. Nosotros le acompañamos.
       </h2>
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-hueso/75">
-        Cada negocio es distinto, así que cada proyecto también. Trabajamos a su lado y con su gente en cada etapa, de
-        principio a fin. Y es un ciclo: cuando termina, vuelve a empezar.
+        Nadie conoce su negocio mejor que usted y su equipo. Nuestro trabajo es acompañarlos: escuchar, ordenar los números
+        y ajustar o integrar los sistemas que ya usan, o construir los que falten. No le entregamos un sistema y
+        desaparecemos: es un ciclo que, cuando termina, vuelve a empezar.
       </p>
 
       <ol class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -381,13 +377,13 @@ const especialidades = [
   <section id="especialidades" class="bg-obsidiana">
     <div class="mx-auto max-w-6xl px-6 py-24">
       <p class="eyebrow mb-4">Especialidades</p>
-      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold text-hueso md:text-5xl">Cinco especialidades, un mismo equipo.</h2>
+      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold text-hueso md:text-5xl">Cuatro especialidades, un mismo equipo.</h2>
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-hueso/75">
         Los problemas de una empresa no respetan las fronteras de las profesiones: una rotación alta es un problema financiero
-        antes que de capital humano, y un sistema que nadie usa es psicológico antes que técnico.
+        antes que de capital humano, y un sistema que nadie usa es de capacitación antes que técnico.
       </p>
 
-      <div class="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-14 grid gap-4 md:grid-cols-2">
         {especialidades.map((e) => (
           <article class="rounded-2xl border border-white/10 bg-black/30 p-7 transition hover:border-jade/40">
             <Icon name={e.icono} class="h-7 w-7 text-jade" />
@@ -398,7 +394,7 @@ const especialidades = [
         ))}
         <a
           href={`${base}/contacto/`}
-          class="group flex flex-col justify-between rounded-2xl border border-dashed border-jade/40 p-7 transition hover:border-jade hover:bg-jade/5"
+          class="group flex flex-col justify-between gap-6 rounded-2xl border border-dashed border-jade/40 p-7 transition hover:border-jade hover:bg-jade/5 md:col-span-2 md:flex-row md:items-center"
         >
           <div>
             <p class="font-serif text-2xl font-bold text-hueso">¿No sabe por dónde empezar?</p>
@@ -406,7 +402,7 @@ const especialidades = [
               Cuéntenos qué está pasando y le decimos qué especialidad necesita primero.
             </p>
           </div>
-          <span class="mt-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-jade">
+          <span class="inline-flex shrink-0 items-center gap-2 font-mono text-xs uppercase tracking-widest text-jade">
             Hablemos <Icon name="arrow-right" class="h-4 w-4 transition group-hover:translate-x-1" />
           </span>
         </a>

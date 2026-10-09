@@ -3,16 +3,22 @@ import Base from '../layouts/Base.astro';
 import BrowserFrame from '../components/BrowserFrame.astro';
 import CtaContacto from '../components/CtaContacto.astro';
 import Icon from '../components/Icon.astro';
+import PhoneFrame from '../components/PhoneFrame.astro';
 import { base } from '../utils/base';
 import dashboard from '../assets/hermes/dashboard.png';
-import clientes from '../assets/hermes/clientes.png';
 import credito from '../assets/hermes/credito.png';
+import solicitudLeida from '../assets/hermes/solicitud-leida.png';
 
 const capacidades = [
   {
-    icono: 'gauge',
-    titulo: 'Cartera al día',
-    texto: 'Mora, cartera vigente y colocación del mes por gerente, contra la meta y con semáforo.',
+    icono: 'scan-text',
+    titulo: 'Solicitudes con OCR\u00a0+\u00a0IA',
+    texto: 'El gerente fotografía la credencial en campo; el sistema la lee, llena la solicitud y la valida.',
+  },
+  {
+    icono: 'activity',
+    titulo: 'Métricas en tiempo real',
+    texto: 'Mora, cartera vigente y colocación por gerente al momento, contra la meta y con semáforo.',
   },
   {
     icono: 'calendar-check',
@@ -28,6 +34,11 @@ const capacidades = [
     icono: 'scale',
     titulo: 'Reglas claras',
     texto: 'Las políticas de crédito viven en el sistema y se explican en pantalla, para que todos cuenten igual.',
+  },
+  {
+    icono: 'puzzle',
+    titulo: 'Módulos a la medida',
+    texto: 'Cada módulo se adapta a cómo trabaja el cliente, y se suman módulos nuevos cuando hacen falta.',
   },
 ] as const;
 
@@ -54,21 +65,36 @@ const etapas = [
   },
 ] as const;
 
-const compromisos = [
+const formaDeTrabajo = [
+  {
+    icono: 'route',
+    titulo: 'Seguimos el customer journey',
+    texto: 'Diseñamos cada pantalla siguiendo el recorrido real de su cliente y de su equipo, del primer contacto al último pago.',
+  },
+  {
+    icono: 'activity',
+    titulo: 'Métricas en tiempo real',
+    texto: 'Las cifras se actualizan al momento: no hay que esperar al cierre de mes para saber cómo va el negocio.',
+  },
+  {
+    icono: 'puzzle',
+    titulo: 'Módulos a la medida',
+    texto: 'Cada módulo se adapta a las necesidades y a la forma de trabajar de su negocio.',
+  },
+  {
+    icono: 'wallet',
+    titulo: 'Costo por módulo, con plan de pagos',
+    texto: 'Cotizamos por módulo, ya sea uno existente o uno nuevo, según lo que necesite. Y lo paga con un plan de pagos.',
+  },
+  {
+    icono: 'target',
+    titulo: 'Resultados, no horas',
+    texto: 'Trabajamos por resultados que lo dejen satisfecho, no por tiempo. Y cumplimos las fechas que acordamos.',
+  },
   {
     icono: 'user-round-check',
     titulo: 'Trato directo',
     texto: 'Habla con quienes diseñan y construyen su solución, sin intermediarios.',
-  },
-  {
-    icono: 'graduation-cap',
-    titulo: 'Su equipo, capacitado',
-    texto: 'Nadie se queda sin saber usar lo que construimos.',
-  },
-  {
-    icono: 'book-open',
-    titulo: 'Todo documentado',
-    texto: 'Entregables auditables: su equipo puede operar sin depender de nosotros.',
   },
 ] as const;
 
@@ -195,7 +221,8 @@ const especialidades = [
           <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">HERMES: la operación de EquiFin en un solo sistema.</h2>
           <p class="mt-6 text-lg leading-relaxed text-obsidiana/75">
             EquiFin otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Con su equipo diseñamos y
-            construimos HERMES, el sistema donde hoy administran clientes, grupos, créditos y cobranza semanal.
+            construimos HERMES, el sistema donde hoy administran todo el recorrido: de la solicitud en campo a la cobranza
+            semanal.
           </p>
           <a
             href={`${base}/casos/equifin/`}
@@ -218,18 +245,19 @@ const especialidades = [
         </div>
       </div>
 
-      <div class="mt-16 grid gap-6 md:grid-cols-2">
-        <BrowserFrame
-          src={clientes}
-          tono="claro"
-          alt="Lista de clientes en HERMES con código, nombre, CURP, gerente y estatus del crédito (datos ficticios)."
-          sizes="(min-width: 1152px) 540px, (min-width: 768px) 46vw, 100vw"
-        />
+      <div class="mt-16 grid items-center gap-10 md:grid-cols-12">
         <BrowserFrame
           src={credito}
           tono="claro"
+          class="md:col-span-8"
           alt="Detalle de un crédito en HERMES con su calendario de pagos semanal, la política de cobranza y el historial del cliente (datos ficticios)."
-          sizes="(min-width: 1152px) 540px, (min-width: 768px) 46vw, 100vw"
+          sizes="(min-width: 1152px) 720px, (min-width: 768px) 64vw, 100vw"
+        />
+        <PhoneFrame
+          src={solicitudLeida}
+          class="md:col-span-4"
+          alt="Solicitud en el celular del gerente: la credencial se leyó con OCR e IA y los datos se validaron (datos ficticios)."
+          pie="Solicitud en campo: la credencial se lee sola."
         />
       </div>
       <p class="mt-6 text-sm text-obsidiana/60">
@@ -264,16 +292,19 @@ const especialidades = [
         ))}
       </ol>
 
-      <div class="mt-8 grid gap-8 rounded-2xl border border-jade/20 bg-jade/5 p-8 md:grid-cols-3">
-        {compromisos.map((c) => (
-          <div class="flex gap-4">
-            <Icon name={c.icono} class="mt-1 h-6 w-6 shrink-0 text-jade" />
-            <div>
-              <h3 class="font-serif text-lg font-bold text-hueso">{c.titulo}</h3>
-              <p class="mt-1 text-sm leading-relaxed text-hueso/70">{c.texto}</p>
+      <div class="mt-8 rounded-2xl border border-jade/20 bg-jade/5 p-8">
+        <h3 class="font-serif text-2xl font-bold text-hueso">Así trabajamos</h3>
+        <div class="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+          {formaDeTrabajo.map((f) => (
+            <div class="flex gap-4">
+              <Icon name={f.icono} class="mt-1 h-6 w-6 shrink-0 text-jade" />
+              <div>
+                <h4 class="font-serif text-lg font-bold text-hueso">{f.titulo}</h4>
+                <p class="mt-1 text-sm leading-relaxed text-hueso/70">{f.texto}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   </section>

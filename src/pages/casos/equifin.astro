@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import BrowserFrame from '../../components/BrowserFrame.astro';
 import CtaContacto from '../../components/CtaContacto.astro';
 import Icon from '../../components/Icon.astro';
+import PhoneFrame from '../../components/PhoneFrame.astro';
 import dashboard from '../../assets/hermes/dashboard.png';
 import gerentes from '../../assets/hermes/dashboard-gerentes.png';
 import clientes from '../../assets/hermes/clientes.png';
@@ -11,34 +12,46 @@ import grupos from '../../assets/hermes/grupos.png';
 import credito from '../../assets/hermes/credito.png';
 import politica from '../../assets/hermes/politica.png';
 import login from '../../assets/hermes/login.png';
+import solicitudCredencial from '../../assets/hermes/solicitud-credencial.png';
+import solicitudCurp from '../../assets/hermes/solicitud-curp.png';
+import solicitudLeida from '../../assets/hermes/solicitud-leida.png';
 
 const ficha = [
   { termino: 'Cliente', valor: 'EquiFin' },
   { termino: 'Sector', valor: 'Microfinanzas' },
-  { termino: 'Qué hicimos', valor: 'Diseño y desarrollo a la medida, reglas de negocio, reportes y acompañamiento' },
+  { termino: 'Qué hicimos', valor: 'Desarrollo a la medida, llenado inteligente con OCR + IA, reportes y acompañamiento' },
   { termino: 'Estado', valor: 'En producción y en mejora continua' },
 ];
 
 const tamanoModulo = '(min-width: 1152px) 640px, (min-width: 1024px) 56vw, 100vw';
 
-const modulos = [
+const puntosProspectos = [
+  'Lectura automática de la credencial con OCR + IA: nombre, CURP, fecha de nacimiento y vigencia.',
+  'La CURP se confirma carácter por carácter, con avisos para el cero y la O, el uno y la I.',
+  'Antes de las fotos, se le lee el aviso de privacidad a la clienta y su consentimiento queda registrado.',
+  'Detecta solicitudes repetidas y guarda las incompletas 7 días antes de cancelarlas solas.',
+  'Los datos se comparan con reportes de otras instituciones; el crédito lo decide la oficina.',
+];
+
+const pasosSolicitud = [
   {
-    icono: 'gauge',
-    titulo: 'Tablero de cartera',
-    texto:
-      'La fotografía de la cartera, al día: porcentaje de mora, cartera vigente, pago semanal y colocación del mes, por gerente y contra la meta.',
-    puntos: [
-      'Semáforo de mora: en meta, atención o fuera de meta.',
-      'Metas con fecha de vigencia y cada cifra con su definición a la vista.',
-      'Exportación a Excel y CSV, tablero de riesgo, renovaciones y reporte gerencial.',
-    ],
-    imagenes: [
-      {
-        src: gerentes,
-        alt: 'Tabla de colocación por gerente en HERMES: porcentaje de mora, créditos, emprendedoras, mora, pagos en tiempo y cartera vigente (datos ficticios).',
-      },
-    ],
+    src: solicitudCredencial,
+    alt: 'Paso 1 de una solicitud en el celular: aviso de privacidad para la clienta y toma de fotos de la credencial (datos ficticios).',
+    pie: '1 · Aviso a la clienta y foto de la credencial',
   },
+  {
+    src: solicitudCurp,
+    alt: 'Confirmación de la CURP leída de la credencial, carácter por carácter (datos ficticios).',
+    pie: '2 · La CURP se confirma carácter por carácter',
+  },
+  {
+    src: solicitudLeida,
+    alt: 'Credencial leída: nombre, CURP, fecha de nacimiento y vigencia, con los datos ya consultados (datos ficticios).',
+    pie: '3 · Datos leídos y consultados',
+  },
+];
+
+const modulos = [
   {
     icono: 'users',
     titulo: 'Clientes y grupos',
@@ -71,6 +84,23 @@ const modulos = [
       },
     ],
   },
+  {
+    icono: 'activity',
+    titulo: 'Tablero en tiempo real',
+    texto:
+      'La fotografía de la cartera al momento: porcentaje de mora, cartera vigente, pago semanal y colocación del mes, por gerente y contra la meta.',
+    puntos: [
+      'Semáforo de mora: en meta, atención o fuera de meta.',
+      'Metas con fecha de vigencia y cada cifra con su definición a la vista.',
+      'Exportación a Excel y CSV, tablero de riesgo, renovaciones y reporte gerencial.',
+    ],
+    imagenes: [
+      {
+        src: gerentes,
+        alt: 'Tabla de colocación por gerente en HERMES: porcentaje de mora, créditos, emprendedoras, mora, pagos en tiempo y cartera vigente (datos ficticios).',
+      },
+    ],
+  },
 ] as const;
 
 const forma = [
@@ -90,12 +120,17 @@ const forma = [
     titulo: 'Cerca de quien lo usa',
     texto: 'Las mejoras salen del día a día de quienes cobran, autorizan y deciden.',
   },
+  {
+    icono: 'puzzle',
+    titulo: 'Módulos a la medida',
+    texto: 'Cada módulo se adaptó a cómo trabaja EquiFin, y los nuevos se suman cuando la operación los pide.',
+  },
 ] as const;
 ---
 
 <Base
   title="IXT · Caso EquiFin"
-  description="Cómo construimos HERMES, el sistema de gestión de microfinanzas de EquiFin: cartera, cobranza semanal, clientes, grupos y metas en un solo lugar."
+  description="Cómo construimos HERMES, el sistema de microfinanzas de EquiFin: solicitudes con OCR + IA, clientes, grupos, cobranza semanal y métricas en tiempo real."
 >
   <!-- PORTADA DEL CASO -->
   <section class="trama-fondo relative overflow-hidden border-b border-white/5">
@@ -109,7 +144,8 @@ const forma = [
         <div class="lg:col-span-7">
           <p class="text-lg leading-relaxed text-hueso/80">
             Junto con el equipo de EquiFin diseñamos y construimos <strong class="font-semibold text-hueso">HERMES</strong>, el
-            sistema con el que hoy administran clientes y grupos, cobran cada semana y miden su cartera contra sus metas.
+            sistema con el que hoy levantan solicitudes en campo, administran clientes y grupos, cobran cada semana y miden su
+            cartera en tiempo real.
           </p>
           <a href="https://equifin.com.mx" target="_blank" rel="noopener" class="btn-secundario mt-8">
             equifin.com.mx <Icon name="arrow-up-right" class="h-4 w-4" />
@@ -138,10 +174,42 @@ const forma = [
   <!-- MÓDULOS -->
   <section class="bg-hueso text-obsidiana">
     <div class="mx-auto max-w-6xl px-6 py-24">
-      <p class="eyebrow mb-4 text-jade-oscuro">Qué hace HERMES</p>
-      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold md:text-5xl">De la cartera completa al último pago de la semana.</h2>
+      <p class="eyebrow mb-4 text-jade-oscuro">Qué hace HERMES, paso a paso</p>
+      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold md:text-5xl">Del primer contacto con la clienta a su último pago.</h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-obsidiana/75">
+        HERMES sigue el customer journey de cada clienta: desde que el gerente la visita por primera vez hasta su último pago y
+        su siguiente renovación.
+      </p>
 
       <div class="mt-16 space-y-24">
+        <article>
+          <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div class="lg:col-span-6">
+              <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro">
+                <Icon name="scan-text" class="h-6 w-6" />
+              </span>
+              <h3 class="mt-5 text-balance font-serif text-3xl font-bold">Seguimiento de prospectos con llenado inteligente</h3>
+              <p class="mt-4 text-lg leading-relaxed text-obsidiana/75">
+                El gerente levanta la solicitud en campo, desde su celular: fotografía la credencial y el sistema la lee con OCR e
+                inteligencia artificial, llena los datos y los valida. Él solo confirma.
+              </p>
+            </div>
+            <ul class="space-y-3 lg:col-span-6 lg:pt-16">
+              {puntosProspectos.map((punto) => (
+                <li class="flex gap-3 text-obsidiana/80">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-jade-oscuro"></span>
+                  {punto}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="-mx-6 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
+            {pasosSolicitud.map((paso) => (
+              <PhoneFrame src={paso.src} alt={paso.alt} pie={paso.pie} class="w-[72%] shrink-0 snap-center md:w-auto" />
+            ))}
+          </div>
+        </article>
+
         {modulos.map((m, i) => (
           <article class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div class:list={['lg:col-span-5', i % 2 === 1 && 'lg:order-last']}>
@@ -216,7 +284,7 @@ const forma = [
         Lo construimos con su equipo, no solo para su equipo.
       </h2>
 
-      <div class="mt-14 grid gap-6 md:grid-cols-3">
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {forma.map((f) => (
           <article class="rounded-2xl border border-white/10 bg-black/30 p-7">
             <Icon name={f.icono} class="h-6 w-6 text-jade" />

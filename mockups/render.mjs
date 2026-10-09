@@ -7,7 +7,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const salida = path.join(dir, '..', 'src', 'assets', 'hermes');
 
-// Sin `selector` se captura la ventana completa; con `selector`, solo ese elemento.
+// Sin `selector` se captura la ventana completa; con `selector`, solo ese elemento. Las pantallas de celular
+// llevan `ancho: 390`.
 const capturas = [
   { pagina: 'dashboard.html', archivo: 'dashboard.png', alto: 900 },
   { pagina: 'dashboard.html', archivo: 'dashboard-gerentes.png', alto: 1400, selector: '#tabla-gerentes' },
@@ -16,13 +17,16 @@ const capturas = [
   { pagina: 'credito.html', archivo: 'credito.png', alto: 980 },
   { pagina: 'credito.html', archivo: 'politica.png', alto: 940, selector: '#politica' },
   { pagina: 'login.html', archivo: 'login.png', alto: 800 },
+  { pagina: 'solicitud-credencial.html', archivo: 'solicitud-credencial.png', ancho: 390, alto: 844 },
+  { pagina: 'solicitud-curp.html', archivo: 'solicitud-curp.png', ancho: 390, alto: 844 },
+  { pagina: 'solicitud-leida.html', archivo: 'solicitud-leida.png', ancho: 390, alto: 844 },
 ];
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ deviceScaleFactor: 2 });
 
-for (const { pagina, archivo, alto, selector } of capturas) {
-  await page.setViewportSize({ width: 1280, height: alto });
+for (const { pagina, archivo, ancho = 1280, alto, selector } of capturas) {
+  await page.setViewportSize({ width: ancho, height: alto });
   await page.goto(pathToFileURL(path.join(dir, 'hermes', pagina)).href, { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready);
   const destino = path.join(salida, archivo);

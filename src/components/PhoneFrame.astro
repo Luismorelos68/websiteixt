@@ -1,0 +1,32 @@
+---
+// Captura de una pantalla de celular dentro de un marco de teléfono. Las imágenes salen de mockups/.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  pie?: string;
+  sizes?: string;
+  class?: string;
+}
+
+const { src, alt, pie, sizes = '(min-width: 768px) 280px, 72vw', class: className } = Astro.props;
+---
+<figure class:list={['mx-auto max-w-[290px]', className]}>
+  <div class="rounded-[2.4rem] bg-obsidiana p-2 shadow-2xl shadow-obsidiana/25 ring-1 ring-obsidiana/20">
+    <div class="overflow-hidden rounded-[1.9rem] bg-white">
+      <Image
+        src={src}
+        alt={alt}
+        widths={[320, 580, 780].filter((w) => w <= src.width)}
+        sizes={sizes}
+        format="webp"
+        quality={80}
+        loading="lazy"
+        class="block h-auto w-full"
+      />
+    </div>
+  </div>
+  {pie && <figcaption class="mt-4 text-center text-sm leading-snug text-obsidiana/70">{pie}</figcaption>}
+</figure>

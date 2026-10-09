@@ -432,3 +432,41 @@ body {
   font-size: 19px;
   font-weight: 700;
 }
+
+/* Pantallas de celular (solicitudes en campo) */
+.hm-movil {
+  font-size: 16px;
+}
+
+.form-check-input:checked {
+  background-color: var(--hm-primario);
+  border-color: var(--hm-primario);
+}
+
+.hm-aviso {
+  border-radius: 12px;
+  color: #5c4a03;
+}
+
+.hm-curp {
+  font-family: var(--bs-font-monospace);
+  font-weight: 700;
+  font-size: 23px;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: #161a1d;
+}
+
+.hm-curp-input {
+  font-family: var(--bs-font-monospace);
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  border-width: 2px;
+}
+
+.hm-etiqueta {
+  font-weight: 400;
+  color: #495057;
+  border: 1px solid #dee2e6;
+  background: #f8f9fa;
+}

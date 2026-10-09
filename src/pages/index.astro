@@ -7,8 +7,8 @@ import PhoneFrame from '../components/PhoneFrame.astro';
 import { base } from '../utils/base';
 import { resultados, avisoConfidencialidad } from '../data/caso';
 import dashboard from '../assets/hermes/dashboard.png';
-import credito from '../assets/hermes/credito.png';
-import solicitudLeida from '../assets/hermes/solicitud-leida.png';
+import riesgo from '../assets/hermes/riesgo.png';
+import abono from '../assets/hermes/abono.png';
 import cashflow from '../assets/hermes/cashflow.png';
 
 const etapas = [
@@ -42,8 +42,8 @@ const formaDeTrabajo = [
   },
   {
     icono: 'activity',
-    titulo: 'Métricas en tiempo real',
-    texto: 'Las cifras se actualizan al momento: no hay que esperar al cierre de mes para saber cómo va el negocio.',
+    titulo: 'Monitoreo en tiempo real',
+    texto: 'Tableros que se actualizan al momento y semáforos que avisan a tiempo: no hay que esperar al cierre de mes para saber cómo va el negocio.',
   },
   {
     icono: 'puzzle',
@@ -72,8 +72,8 @@ const formaDeTrabajo = [
   },
   {
     icono: 'lock',
-    titulo: 'Confidencialidad',
-    texto: 'No publicamos el nombre ni los datos de nuestros clientes, y firmamos acuerdo de confidencialidad.',
+    titulo: 'Seguridad y confidencialidad',
+    texto: 'Sesiones controladas, bitácora de cambios y datos personales protegidos. Y no publicamos el nombre ni los datos de nuestros clientes.',
   },
   {
     icono: 'graduation-cap',
@@ -225,8 +225,9 @@ const especialidades = [
           <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">Más eficiencia operativa para una microfinanciera.</h2>
           <p class="mt-6 text-lg leading-relaxed text-obsidiana/75">
             Nuestro cliente otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Ellos son los
-            expertos en microfinanzas; nosotros los acompañamos. Con su equipo diseñamos y construimos HERMES, el sistema donde hoy administran todo el recorrido: de la solicitud en campo a la
-            cobranza semanal.
+            expertos en microfinanzas; nosotros los acompañamos. Con su equipo construimos HERMES, el sistema que sigue el
+            recorrido de cada clienta, de la solicitud en campo al último pago, con cobranza oportuna, monitoreo en tiempo real,
+            un dashboard de riesgo y seguridad en cada pantalla.
           </p>
           <div class="mt-8 flex gap-4 rounded-2xl border border-jade-oscuro/20 bg-white p-5">
             <Icon name="lock" class="mt-0.5 h-5 w-5 shrink-0 text-jade-oscuro" />
@@ -261,17 +262,18 @@ const especialidades = [
 
       <div class="mt-16 grid items-center gap-10 md:grid-cols-12">
         <BrowserFrame
-          src={credito}
+          src={riesgo}
           tono="claro"
           class="md:col-span-8"
-          alt="Detalle de un crédito en HERMES con su calendario de pagos semanal, la política de cobranza y el historial del cliente (datos ficticios)."
+          alt="Dashboard de riesgo de HERMES: porcentaje de mora, saldos de créditos y cuotas con atraso, cartera en jurídico y antigüedad del atraso (datos ficticios)."
           sizes="(min-width: 1152px) 720px, (min-width: 768px) 64vw, 100vw"
+          pie="Dashboard de riesgo: cuánto está en riesgo hoy y qué tan viejo es el atraso."
         />
         <PhoneFrame
-          src={solicitudLeida}
+          src={abono}
           class="md:col-span-4"
-          alt="Solicitud en el celular del gerente: la credencial se leyó con OCR e IA y los datos se validaron (datos ficticios)."
-          pie="Solicitud en campo: la credencial se lee sola."
+          alt="Registro de un abono desde el celular del gerente: cuota con atraso, abono parcial, fecha y hora del pago (datos ficticios)."
+          pie="Cobranza en campo: cada abono, con fecha y hora."
         />
       </div>
       <p class="mt-6 text-sm text-obsidiana/60">Versión de demostración, con la marca de IXT y datos ficticios.</p>

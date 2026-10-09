@@ -7,24 +7,24 @@ export const resultados = [
     texto: 'La credencial se fotografía en campo y los datos se llenan solos con OCR + IA. El gerente solo confirma.',
   },
   {
+    icono: 'hand-coins',
+    titulo: 'Cobranza oportuna',
+    texto: 'Un mismo corte diario para todos: cada abono queda con fecha y hora, y las cuotas atrasadas se ven el mismo día.',
+  },
+  {
     icono: 'activity',
-    titulo: 'Decisiones con cifras del momento',
-    texto: 'Mora, cartera y colocación por gerente en tiempo real, sin esperar al cierre de mes.',
+    titulo: 'Monitoreo en tiempo real',
+    texto: 'Cada gerente ve su cartera y dirección ve todas, contra la meta y con semáforo, sin esperar al cierre de mes.',
   },
   {
-    icono: 'calendar-check',
-    titulo: 'Cobranza semanal al día',
-    texto: 'Cada pago queda registrado con fecha y hora, y lo pendiente se ve de inmediato.',
+    icono: 'shield-alert',
+    titulo: 'Riesgo a la vista',
+    texto: 'El dashboard de riesgo dice cuánto está en riesgo, desde cuándo y en qué cartera, hasta la clienta y la cuota.',
   },
   {
-    icono: 'users',
-    titulo: 'Expedientes completos',
-    texto: 'Alertas cuando a un cliente o a un grupo le falta información, y solicitudes repetidas detectadas al momento.',
-  },
-  {
-    icono: 'scale',
-    titulo: 'Todos cuentan igual',
-    texto: 'Las reglas de crédito las aplica el sistema y se explican en pantalla.',
+    icono: 'shield-check',
+    titulo: 'Datos protegidos',
+    texto: 'Sesiones por dispositivo con cierre automático, bitácora de cambios y expedientes protegidos conforme a la LFPDPPP.',
   },
   {
     icono: 'wallet',

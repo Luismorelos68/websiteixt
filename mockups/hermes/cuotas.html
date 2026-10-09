@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Cuotas atrasadas (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+  </head>
+  <body>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!-- Las 10 cuotas atrasadas de la cartera comercial del ejemplo: suman $11,579.00. Nombres y celulares inventados. -->
+    <main class="container-fluid px-4 py-3">
+      <div class="hm-breadcrumb mb-2"><a href="#">Módulos</a> / <a href="#">Dashboard de riesgo</a> / Cuotas</div>
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div class="d-flex align-items-center gap-3">
+          <h1 class="h3 mb-0"><i class="bi bi-search me-2"></i>Cuotas</h1>
+          <span class="text-primary"><i class="bi bi-calendar-event me-1"></i>Hoy</span>
+          <button class="btn btn-sm btn-hm"><i class="bi bi-funnel me-1"></i>Buscar cuotas</button>
+        </div>
+        <button class="btn btn-hm"><i class="bi bi-list-check me-1"></i>Cobrar por lista</button>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row g-3 align-items-end mb-3">
+            <div class="col-5">
+              <label class="form-label mb-1">Buscar clienta</label>
+              <div class="input-group"><input class="form-control" placeholder="Nombre o ID de clienta" /><span class="input-group-text bg-white"><i class="bi bi-search"></i></span></div>
+            </div>
+            <div class="col-4">
+              <label class="form-label mb-1">Gerente</label>
+              <select class="form-select"><option>— Todos —</option></select>
+            </div>
+            <div class="col-auto"><button class="btn btn-outline-secondary"><i class="bi bi-x-circle me-1"></i>Limpiar</button></div>
+          </div>
+          <div class="d-flex flex-wrap gap-2 mb-2">
+            <span class="pildora">Cuotas pendientes</span><span class="pildora pildora-activa">Cuotas atrasadas</span><span class="pildora">Cuotas por vencer</span
+            ><span class="pildora">Cuotas pagadas</span><span class="pildora">Adelantadas</span><span class="pildora">En jurídico</span><span class="pildora">Todas</span>
+            <span class="mx-2 border-start"></span>
+            <span class="pildora">Hoy</span><span class="pildora">Esta semana</span><span class="pildora">Semana pasada</span><span class="pildora">Próxima semana</span
+            ><span class="pildora">Rango</span><span class="pildora pildora-activa">Cualquier fecha</span>
+          </div>
+          <div class="d-flex flex-wrap align-items-center gap-4 small">
+            <div class="form-check mb-0"><input class="form-check-input" type="checkbox" /><label class="form-check-label">Incluir créditos ya cerrados</label></div>
+            <div class="form-check mb-0"><input class="form-check-input" type="checkbox" /><label class="form-check-label">Solo con abono parcial</label></div>
+            <span class="d-flex align-items-center gap-2"
+              >Saldo pendiente de la cuota: de <input class="form-control form-control-sm" style="width: 110px" placeholder="$ mínimo" /> a
+              <input class="form-control form-control-sm" style="width: 110px" placeholder="$ máximo" /><button class="btn btn-sm btn-outline-secondary">Aplicar</button></span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <div><strong>10 cuotas</strong> · <strong>$11,579.00</strong> de saldo pendiente · Cuotas atrasadas · cualquier fecha (fecha en que vence)</div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-people me-1"></i>Agrupar por clienta</button>
+          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-download me-1"></i>Descargar</button>
+          <button class="btn btn-sm btn-outline-secondary">CSV</button>
+        </div>
+      </div>
+
+      <table class="table table-hm" style="font-size: 14.5px">
+        <thead>
+          <tr>
+            <th>Clienta</th>
+            <th>Gerente</th>
+            <th class="text-center">Cuota</th>
+            <th class="text-end">Monto</th>
+            <th>Programada</th>
+            <th>Celular</th>
+            <th>Deposita en</th>
+            <th class="text-end">Saldo del crédito</th>
+            <th class="text-end">Pagado</th>
+          </tr>
+        </thead>
+        <tbody id="cuotas"></tbody>
+      </table>
+    </main>
+
+    <script>
+      // Celulares con un 0 después de la lada: ese rango no se asigna en México, así que no pertenecen a nadie.
+      const cuotas = [
+        ['BEATRIZ FLORES NAVA', 402, 'P402-FONB300195XW-R226', 'Paola Ríos Calderón', '13/16', '$1,260.00', 'Mar 15/09/2026', '55 0142 7731', '', 'Cta. Centro', '$4,410.00', '4 sin cubrir', '$630.00', 'falta $630.00'],
+        ['BEATRIZ FLORES NAVA', 402, 'P402-FONB300195XW-R226', 'Paola Ríos Calderón', '14/16', '$1,260.00', 'Mar 22/09/2026', '55 0142 7731', '', 'Cta. Centro', '$4,410.00', '4 sin cubrir'],
+        ['BEATRIZ FLORES NAVA', 402, 'P402-FONB300195XW-R226', 'Paola Ríos Calderón', '15/16', '$1,260.00', 'Mar 29/09/2026', '55 0142 7731', '', 'Cta. Centro', '$4,410.00', '4 sin cubrir'],
+        ['BEATRIZ FLORES NAVA', 402, 'P402-FONB300195XW-R226', 'Paola Ríos Calderón', '16/16', '$1,260.00', 'Mar 06/10/2026', '55 0142 7731', '', 'Cta. Centro', '$4,410.00', '4 sin cubrir'],
+        ['GRUPO ESTRELLAS', 438, 'P438-GE6YB-T326', 'Paola Ríos Calderón', '9/16', '$1,428.00', 'Mar 22/09/2026', '56 0318 2204', 'Lucía · responsable', 'Cta. Norte', '$11,424.00', '8 sin cubrir'],
+        ['GRUPO ESTRELLAS', 438, 'P438-GE6YB-T326', 'Paola Ríos Calderón', '10/16', '$1,428.00', 'Mar 29/09/2026', '56 0318 2204', 'Lucía · responsable', 'Cta. Norte', '$11,424.00', '8 sin cubrir'],
+        ['GRUPO ESTRELLAS', 438, 'P438-GE6YB-T326', 'Paola Ríos Calderón', '11/16', '$1,428.00', 'Mar 06/10/2026', '56 0318 2204', 'Lucía · responsable', 'Cta. Norte', '$11,424.00', '8 sin cubrir'],
+        ['GRUPO MANANTIAL', 455, 'P455-GP3LN-K226', 'Paola Ríos Calderón', '11/16', '$4,860.00', 'Lun 05/10/2026', '55 0267 1189', 'Teresa · responsable', 'Cta. Centro', '$25,260.00', '6 sin cubrir', '$3,900.00', 'falta $960.00'],
+        ['LORENA OROZCO PAZ', 461, 'P461-OOPL250990HT-V126', 'Héctor Salinas Fuentes', '9/16', '$1,015.00', 'Mar 06/10/2026', '55 0489 3320', '', 'Cta. Norte', '$8,120.00', '8 sin cubrir'],
+        ['MÓNICA SALAS BRITO', 470, 'P470-SABM110584QX-N326', 'Paola Ríos Calderón', '9/16', '$910.00', 'Mié 07/10/2026', '56 0721 5546', '', 'Cta. Centro', '$7,280.00', '8 sin cubrir'],
+      ];
+      document.getElementById('cuotas').innerHTML = cuotas
+        .map(
+          ([clienta, id, folio, gerente, cuota, monto, programada, celular, contacto, cuenta, saldo, sinCubrir, pagado, falta]) => `
+          <tr>
+            <td>${clienta}<div class="small"><span class="text-secondary">${id} ·</span> <a href="#">crédito ${folio}</a></div></td>
+            <td>${gerente}</td>
+            <td class="text-center">${cuota}</td>
+            <td class="text-end">${monto}</td>
+            <td>${programada}</td>
+            <td><a href="#">${celular}</a>${contacto ? `<div class="small text-secondary">${contacto}</div>` : ''}</td>
+            <td>${cuenta}</td>
+            <td class="text-end">${saldo}<div class="small text-secondary">${sinCubrir}</div></td>
+            <td class="text-end">${pagado ? `${pagado}<div class="small text-secondary">${falta}</div>` : '<span class="text-secondary">—</span>'}</td>
+          </tr>`,
+        )
+        .join('');
+    </script>
+  </body>
+</html>

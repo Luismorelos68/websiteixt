@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Módulos (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+  </head>
+  <body>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!-- Usuario de dirección inventado. -->
+    <main class="container-fluid px-4 py-3">
+      <div class="alert alert-success d-flex justify-content-between align-items-center py-2 mb-3">
+        <span>Ha iniciado sesión como Laura Vega.</span><i class="bi bi-x-lg"></i>
+      </div>
+
+      <div class="hm-hero d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <div class="hm-hero-eyebrow">HERMES · Sistema de gestión · v2.45</div>
+          <h1 class="fw-semibold mt-2 mb-1" style="font-size: 34px">Módulos</h1>
+          <div class="fs-5 opacity-90">Hola, Laura — elige un módulo para comenzar.</div>
+        </div>
+        <svg class="hm-logo-hero" xmlns="http://www.w3.org/2000/svg" viewBox="32.5 -7.5 115 115" fill="currentColor" aria-hidden="true">
+          <path d="M37.5-2.5h25v25h-25zM117.5-2.5h25v25h-25zM57.5 17.5h25v25h-25zM97.5 17.5h25v25h-25zM57.5 57.5h25v25h-25zM97.5 57.5h25v25h-25zM37.5 77.5h25v25h-25zM117.5 77.5h25v25h-25z" />
+          <path fill-rule="evenodd" d="M73 33h34v34H73zM84 44v12h12V44z" />
+        </svg>
+      </div>
+
+      <div class="row g-3" id="modulos"></div>
+    </main>
+
+    <script>
+      const sep = ' <span class="sep">·</span> ';
+      const modulos = [
+        ['bi-person-vcard', 'Clientes', 'Expedientes individuales: alta, consulta, edición y baja.', ['Lista', 'Nuevo cliente']],
+        ['bi-cake2', 'Cumpleaños', 'Felicita a tus clientas en su día: el detalle que cuida la relación.', ['Cumpleañeras del mes'], true],
+        ['bi-people-fill', 'Grupos', 'Grupos solidarios: integrantes, responsable y membresía.', ['Lista', 'Nuevo grupo']],
+        ['bi-file-earmark-person', 'Solicitudes de alta', 'Bandeja de revisión: aprobar o rechazar solicitudes de campo.', ['Bandeja']],
+        ['bi-cash-coin', 'Préstamos', 'Originación, dispersión, ciclo de vida del crédito y cartera en jurídico.', ['Activos', 'Solicitudes', 'Histórico', 'Visitas de renovación', 'Visitas de seguimiento', 'Jurídico']],
+        ['bi-cash-stack', 'Pagos', 'Cobranza diaria: registro de pagos, cuotas atrasadas y adelantos.', ['Del día', 'Atrasadas', 'Registrados hoy']],
+        ['bi-exclamation-circle', 'Multas y atrasos', 'Penalizaciones por atraso y el registro de atrasos.', ['Multas', 'Registro de atrasos']],
+        ['bi-person-badge', 'Gerentes', 'Expediente y gestión: solo los activos comerciales reciben cartera.', ['Lista', 'Nuevo gerente']],
+        ['bi-bank', 'Cuentas de depósito', 'Las cuentas donde depositan las clientas: se ofrecen en el alta y se imprimen en su tarjeta de pagos.', ['Catálogo', 'Nueva cuenta']],
+        ['bi-safe', 'Finanzas internas', 'Fondeo, compromisos y pagos de interés. Solo dirección.', ['Resumen', 'Fondeo']],
+        ['bi-speedometer2', 'Dashboard', 'Indicadores del día y de la cartera: cobrado, atrasado, jurídico y multas.', ['Cartera', 'Dashboard de riesgo', 'Renovaciones', 'Gerencial', 'Metas']],
+        ['bi-briefcase', 'Mi tablero', 'Tu cartera, tus pagos en tiempo y forma y cómo va el equipo.', []],
+      ];
+      document.getElementById('modulos').innerHTML = modulos
+        .map(
+          ([icono, titulo, texto, enlaces, destacado]) => `
+          <div class="col-4">
+            <div class="hm-modulo ${destacado ? 'hm-modulo-destacado' : ''}">
+              <span class="hm-modulo-icono"><i class="bi ${icono}"></i></span>
+              <div class="min-w-0">
+                <h3>${titulo}</h3>
+                <p>${texto}</p>
+                <div class="hm-links">${enlaces.map((e) => `<a href="#">${e}</a>`).join(sep)}</div>
+              </div>
+            </div>
+          </div>`,
+        )
+        .join('');
+    </script>
+  </body>
+</html>

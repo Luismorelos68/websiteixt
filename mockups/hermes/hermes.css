@@ -470,3 +470,339 @@ body {
   border: 1px solid #dee2e6;
   background: #f8f9fa;
 }
+
+/* Encabezado con degradado jade (módulos, detalle de préstamo, cobranza) */
+.hm-hero {
+  background: linear-gradient(115deg, #0b5540 0%, #0f6b4f 45%, #3bae88 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 22px 28px;
+}
+
+.hm-hero-eyebrow {
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.hm-hero a {
+  color: #fff;
+}
+
+.hm-hero .badge-claro {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-weight: 500;
+}
+
+.hm-hero .btn-claro {
+  background: #fff;
+  color: #0b100d;
+  border-color: #fff;
+  font-weight: 600;
+}
+
+.hm-hero .btn-contorno {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.hm-logo-hero {
+  width: 76px;
+  height: 76px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.hm-breadcrumb {
+  font-size: 15px;
+}
+
+.hm-breadcrumb a {
+  color: #0d6efd;
+}
+
+/* Inicio: tarjetas de módulos */
+.hm-modulo {
+  border: 1px solid #e3e6df;
+  border-radius: 14px;
+  background: #fff;
+  padding: 20px 20px 16px;
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.hm-modulo-icono {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: #e6f2ec;
+  color: var(--hm-primario);
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  flex-shrink: 0;
+}
+
+.hm-modulo h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 2px 0 6px;
+  color: #161a1d;
+}
+
+.hm-modulo p {
+  color: #5c636a;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.hm-links {
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+.hm-links a {
+  color: var(--hm-primario);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.hm-links .sep {
+  color: #c4cac4;
+  margin: 0 2px;
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+.hm-modulo-destacado {
+  background: #fbf7ec;
+  border-color: #e2d3a6;
+}
+
+.hm-modulo-destacado .hm-modulo-icono {
+  background: #c8a95a;
+  color: #fff;
+}
+
+.hm-modulo-destacado .hm-links a {
+  color: #8a6d1f;
+}
+
+/* Riesgo y tableros */
+.hm-seccion {
+  font-size: 19px;
+  font-weight: 600;
+  color: #1d2b3a;
+}
+
+.hm-nota {
+  font-size: 13.5px;
+  color: #5c636a;
+}
+
+.banda {
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.banda-valor {
+  font-weight: 800;
+  font-size: 19px;
+  color: #1d2b3a;
+}
+
+.banda-label {
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  color: #6c757d;
+  text-transform: uppercase;
+}
+
+.barra-cobro {
+  display: flex;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.punto {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin-right: 6px;
+}
+
+.c-tiempo {
+  color: #1f6e4a;
+}
+
+.c-tarde {
+  color: #a8571c;
+}
+
+.c-atraso {
+  color: #c8344a;
+}
+
+.bg-tiempo {
+  background: #1f6e4a;
+}
+
+.bg-tarde {
+  background: #a8571c;
+}
+
+.bg-atraso {
+  background: #c8344a;
+}
+
+.badge-juridico {
+  background: #6b1d24;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.badge-temprano {
+  border: 1px solid #ced4da;
+  background: #f8f9fa;
+  color: #212529;
+  font-size: 11.5px;
+}
+
+.tabla-limpia th {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #495057;
+  font-weight: 600;
+  vertical-align: bottom;
+}
+
+.tabla-limpia td {
+  vertical-align: middle;
+}
+
+.celda-marcada {
+  background: #fff3cd !important;
+  outline: 2px solid #f1c40f;
+  outline-offset: -2px;
+}
+
+/* Filtros tipo píldora */
+.pildora {
+  display: inline-block;
+  border: 1px solid #adb5bd;
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 14px;
+  color: #495057;
+  background: #fff;
+}
+
+.pildora-activa {
+  background: #1d2b3a;
+  border-color: #1d2b3a;
+  color: #fff;
+}
+
+/* Préstamo activo dentro de un expediente */
+.hm-activo {
+  border: 2px solid var(--hm-primario);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.hm-dato-label {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.hm-dato {
+  font-size: 17px;
+}
+
+.nav-tabs .nav-link {
+  color: #0d6efd;
+}
+
+.nav-tabs .nav-link.active {
+  color: #212529;
+}
+
+/* Tarjetas de resumen del préstamo */
+.resumen {
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  text-align: center;
+  padding: 12px;
+  background: #fff;
+  height: 100%;
+}
+
+.resumen-valor {
+  font-weight: 800;
+  font-size: 23px;
+  color: #161a1d;
+}
+
+.resumen-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #6c757d;
+  text-transform: uppercase;
+}
+
+/* Cumpleaños */
+.dia {
+  width: 46px;
+  border: 1px solid #f0c9c9;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 1.1;
+  padding: 5px 0;
+  color: var(--hm-primario);
+  border-color: #b9dccb;
+}
+
+.dia strong {
+  display: block;
+  font-size: 21px;
+}
+
+.dia small {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #6c757d;
+}
+
+.fila-pasada {
+  opacity: 0.55;
+}
+
+.fila-hoy {
+  --bs-table-bg: #eef7f2;
+}
+
+.badge-renovar {
+  background: #e9c46a;
+  color: #3d2e00;
+}
+
+.badge-corriente {
+  background: #e3f1e8;
+  color: #1f6e4a;
+  border: 1px solid #b9dccb;
+}

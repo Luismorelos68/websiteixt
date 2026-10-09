@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Detalle de grupo (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+  </head>
+  <body>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!--
+      Un grupo inventado (el mismo de la lista de grupos). grupo.html muestra la pestaña Préstamos y
+      grupo.html#historial, la bitácora de movimientos de integrantes.
+    -->
+    <main class="container-fluid px-4 py-3">
+      <div class="d-flex justify-content-between align-items-start">
+        <div class="d-flex align-items-center gap-3">
+          <a class="btn btn-sm btn-outline-secondary"><i class="bi bi-arrow-left"></i> Grupos</a>
+          <h1 class="h3 mb-0"><i class="bi bi-people-fill text-marca me-2"></i>GRUPO GIRASOLES</h1>
+          <span class="hm-code fs-6">G4KMR</span>
+          <span class="badge text-bg-success">Activo con préstamo</span>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil me-1"></i>Editar</button>
+          <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash me-1"></i>Dar de baja</button>
+        </div>
+      </div>
+
+      <div class="card my-3">
+        <div class="card-body py-2 d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-clock-history me-1"></i><strong>Historial de crédito del grupo</strong> · 2 ciclos cerrados · último cierre 25/09/2026 —
+            <span class="badge text-bg-success">Finiquitado</span></span>
+          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-card-list me-1"></i>Ver todos los ciclos</button>
+        </div>
+      </div>
+
+      <div class="hm-activo mb-3">
+        <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
+          <span class="fs-5"><i class="bi bi-cash-coin text-marca me-2"></i>Préstamo activo · <a href="#">P476-G4KMR-L226</a></span>
+          <span class="badge text-bg-success">Activo</span>
+        </div>
+        <div class="row px-3 py-2 g-2">
+          <div class="col-3"><div class="hm-dato-label">Monto otorgado</div><div class="hm-dato fw-bold">$36,000.00</div></div>
+          <div class="col-3"><div class="hm-dato-label">Saldo actual</div><div class="hm-dato fw-bold text-primary">$43,200.00</div></div>
+          <div class="col-3"><div class="hm-dato-label">Cuota semanal</div><div class="hm-dato fw-bold">$2,880.00</div></div>
+          <div class="col-3"><div class="hm-dato-label">Próximo pago</div><div class="hm-dato fw-bold">12/10/2026 <span class="fw-normal text-secondary fs-6">$2,880.00</span></div></div>
+          <div class="col-3"><div class="hm-dato-label">Semanas</div><div class="hm-dato">1 de 16</div></div>
+          <div class="col-3"><div class="hm-dato-label">Gerente</div><div class="hm-dato">Sofía Méndez Rangel</div></div>
+          <div class="col-3"><div class="hm-dato-label">Integrantes</div><div class="hm-dato">4</div></div>
+          <div class="col-3 d-flex align-items-end"><span class="text-success hm-dato"><i class="bi bi-check-circle me-1"></i>Sin mora</span></div>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs" id="pestanas">
+        <li class="nav-item"><a class="nav-link">Datos</a></li>
+        <li class="nav-item"><a class="nav-link" data-pestana="prestamos"><i class="bi bi-cash-coin me-1"></i>Préstamos <span class="badge text-bg-secondary">1</span></a></li>
+        <li class="nav-item"><a class="nav-link">Integrantes <span class="badge text-bg-secondary">4</span></a></li>
+        <li class="nav-item"><a class="nav-link">Comentarios</a></li>
+        <li class="nav-item"><a class="nav-link" data-pestana="historial">Historial</a></li>
+      </ul>
+
+      <div id="prestamos" class="pt-3">
+        <div class="row g-4">
+          <div class="col-6">
+            <div class="text-secondary mb-1">Financiero</div>
+            <table class="table table-sm mb-0">
+              <tbody>
+                <tr><th>Monto otorgado</th><td>$36,000.00</td></tr>
+                <tr><th>Saldo actual (real)</th><td class="text-primary fw-semibold">$43,200.00</td></tr>
+                <tr><th>Monto total</th><td>$46,080.00</td></tr>
+                <tr><th>Interés total</th><td>$8,689.66</td></tr>
+                <tr><th>IVA <i class="bi bi-info-circle small text-secondary"></i></th><td>$1,390.34</td></tr>
+                <tr><th>Multas por atraso</th><td>$0.00</td></tr>
+                <tr><th>Cuota semanal</th><td>$2,880.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-6">
+            <div class="text-secondary mb-1">Operativo</div>
+            <table class="table table-sm mb-0">
+              <tbody>
+                <tr><th>Número de préstamo</th><td><a href="#">P476-G4KMR-L226</a></td></tr>
+                <tr><th>Estado</th><td><span class="badge text-bg-success">Activo</span></td></tr>
+                <tr><th>Gerente</th><td>Sofía Méndez Rangel</td></tr>
+                <tr><th>Plazo</th><td>16 semanas</td></tr>
+                <tr><th>Semanas pagadas</th><td>1 / 16 <span class="text-secondary">(15 pendientes)</span></td></tr>
+                <tr><th>Próximo pago</th><td>12/10/2026 · $2,880.00</td></tr>
+                <tr><th>Atraso</th><td class="text-success">Sin atraso</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+          <div class="col-6">
+            <div class="text-secondary mb-1">Aportación por integrante</div>
+            <table class="table table-sm mb-0">
+              <thead><tr><th>Integrante</th><th>Rol</th><th class="text-end">Monto asignado</th></tr></thead>
+              <tbody>
+                <tr><td>305 - ROSARIO DELGADO PINEDA</td><td><span class="badge text-bg-info">Responsable</span></td><td class="text-end">$14,000.00</td></tr>
+                <tr><td>311 - CECILIA VARGAS LEÓN</td><td>Integrante</td><td class="text-end">$9,000.00</td></tr>
+                <tr><td>318 - IRMA NÚÑEZ SOLÍS</td><td>Integrante</td><td class="text-end">$7,000.00</td></tr>
+                <tr><td>342 - GLORIA ACOSTA RUIZ</td><td>Integrante</td><td class="text-end">$6,000.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-6">
+            <div class="text-secondary mb-1"><i class="bi bi-check2-circle me-1"></i>Créditos cerrados <span class="badge text-bg-secondary">2</span> · cuentan como ciclo</div>
+            <table class="table table-sm mb-0">
+              <thead><tr><th>Crédito</th><th class="text-end">Monto</th><th>Otorgado</th><th>Cierre</th><th>Pagos</th><th>Cómo cerró</th></tr></thead>
+              <tbody>
+                <tr><td class="text-nowrap"><a href="#">P391-G4KMR-F126</a></td><td class="text-end">$30,000.00</td><td>08/06/2026</td><td>25/09/2026</td><td>16/16</td><td><span class="badge text-bg-success">Finiquitado</span></td></tr>
+                <tr><td class="text-nowrap"><a href="#">P244-G4KMR-C226</a></td><td class="text-end">$24,000.00</td><td>16/02/2026</td><td>05/06/2026</td><td>16/16</td><td><span class="badge text-bg-success">Finiquitado</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="historial" class="pt-3">
+        <h2 class="h5 mb-1">Movimientos de integrantes</h2>
+        <p class="text-secondary mb-2">Altas de integrantes (desde su fecha de alta), bajas, cambios de responsable y de gerente.</p>
+        <table class="table align-middle mb-0">
+          <thead class="table-light">
+            <tr><th>Tipo</th><th>Integrante</th><th>Rol</th><th>Motivo / Grupo destino</th><th>Fecha</th><th>Usuario</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="badge text-bg-success">Alta</span></td><td>ROSARIO DELGADO PINEDA</td><td>Responsable</td><td>—</td><td>12/02/2026 10:15</td><td>s.mendez</td></tr>
+            <tr><td><span class="badge text-bg-success">Alta</span></td><td>CECILIA VARGAS LEÓN</td><td>Integrante</td><td>—</td><td>12/02/2026 10:15</td><td>s.mendez</td></tr>
+            <tr><td><span class="badge text-bg-success">Alta</span></td><td>IRMA NÚÑEZ SOLÍS</td><td>Integrante</td><td>—</td><td>12/02/2026 10:16</td><td>s.mendez</td></tr>
+            <tr><td><span class="badge text-bg-danger">Baja</span></td><td>NORMA ESQUIVEL ROJAS</td><td>Integrante</td><td>Cambio de domicilio</td><td>02/06/2026 17:40</td><td>s.mendez</td></tr>
+            <tr><td><span class="badge text-bg-success">Alta</span></td><td>GLORIA ACOSTA RUIZ</td><td>Integrante</td><td>—</td><td>05/06/2026 12:02</td><td>s.mendez</td></tr>
+            <tr><td><span class="badge text-bg-primary">Cambio de gerente</span></td><td>Todo el grupo</td><td>—</td><td>De Tomás Aguirre León a Sofía Méndez Rangel</td><td>01/09/2026 09:30</td><td>l.vega</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script>
+      const activa = location.hash === '#historial' ? 'historial' : 'prestamos';
+      document.getElementById(activa === 'historial' ? 'prestamos' : 'historial').remove();
+      document.querySelector(`[data-pestana="${activa}"]`).classList.add('active');
+    </script>
+  </body>
+</html>

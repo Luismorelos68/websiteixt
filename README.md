@@ -19,7 +19,7 @@ npm run preview   # sirve dist/ para revisarlo antes de publicar
 src/
   pages/        index, casos/microfinanciera, contacto, 404 y robots.txt
   layouts/      Base.astro: <head>, metaetiquetas SEO/Open Graph, navbar y footer
-  components/   Navbar (con menú móvil), Footer, CtaContacto, LogoIxt, BrowserFrame, PhoneFrame e Icon
+  components/   Navbar (con menú móvil), Footer, CtaContacto, LogoIxt, BrowserFrame, PhoneFrame, Capitulo (capítulos del caso) e Icon
   data/         correos de contacto (contacto.ts) y resultados del caso de éxito (caso.ts)
   assets/       capturas de HERMES con marca IXT y datos ficticios (se generan en mockups/)
   styles/       global.css: Tailwind, @font-face de DejaVu y botones

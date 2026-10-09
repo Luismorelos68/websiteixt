@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Cumpleaños del mes (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+  </head>
+  <body>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!-- Hoy es viernes 9 de octubre de 2026 en todas las pantallas de ejemplo. Nombres inventados. -->
+    <main class="container-fluid px-4 py-3">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0"><i class="bi bi-cake2 text-marca me-2"></i>Cumpleaños de octubre <span class="badge text-bg-warning align-middle">27</span></h1>
+        <div class="d-flex gap-2">
+          <select class="form-select" style="width: 230px"><option>Todas las carteras</option></select>
+          <button class="btn btn-outline-secondary text-nowrap"><i class="bi bi-download me-1"></i>Descargar lista <i class="bi bi-caret-down-fill small"></i></button>
+        </div>
+      </div>
+      <div class="btn-group w-100 mb-3">
+        <button class="btn btn-outline-secondary">« Septiembre</button>
+        <button class="btn btn-hm">Octubre 2026</button>
+        <button class="btn btn-outline-secondary">Noviembre »</button>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <button class="btn btn-outline-secondary"><i class="bi bi-calendar3 me-1"></i>Calendario del mes <span class="badge text-bg-warning">27</span></button>
+        <span class="text-secondary">27 clientas · 27 con celular</span>
+      </div>
+
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th style="width: 70px">Día</th>
+            <th>Clienta</th>
+            <th>Su crédito</th>
+            <th>Gerente</th>
+            <th class="text-end">Felicitar</th>
+          </tr>
+        </thead>
+        <tbody id="cumpleanos"></tbody>
+      </table>
+    </main>
+
+    <script>
+      const corriente = '<span class="badge badge-corriente">Grupo al corriente</span>';
+      const individual = (pago, saldo) => `Crédito individual · <i class="bi bi-check-square-fill text-success"></i> Al corriente · ${pago} · ${saldo}`;
+      const renovar = ' <span class="badge badge-renovar"><i class="bi bi-star-fill me-1"></i>Ofrecer renovación</span>';
+      // [día, abreviatura, nombre, apellido, edad, crédito, gerente, estado]; estado: pasada, aun, hoy o próxima.
+      const filas = [
+        [3, 'SÁB', 'Elena', 'Cabrera', 34, `Crédito grupal · GRUPO AURORA · responsable · ${corriente}`, 'Héctor Salinas Fuentes', 'pasada'],
+        [5, 'LUN', 'Rocío', 'Valdez', 41, individual('7/16', '$3,780.00'), 'Paola Ríos Calderón', 'pasada'],
+        [7, 'MIÉ', 'Guadalupe', 'Torres', 29, `Crédito grupal · GRUPO GIRASOLES · ${corriente}`, 'Sofía Méndez Rangel', 'aun'],
+        [8, 'JUE', 'Mariana', 'Ochoa', 52, individual('12/16', '$1,960.00') + renovar, 'Tomás Aguirre León', 'aun'],
+        [9, 'VIE', 'Verónica', 'Ibarra', 38, `Crédito grupal · GRUPO LAS LUCIÉRNAGAS · responsable · ${corriente}`, 'Sofía Méndez Rangel', 'hoy'],
+        [10, 'SÁB', 'Silvia', 'Montes', 45, individual('13/16', '$1,260.00') + renovar, 'Héctor Salinas Fuentes'],
+        [11, 'DOM', 'Yolanda', 'Cortés', 33, '<span class="text-secondary">Sin crédito vivo</span>', ''],
+        [11, 'DOM', 'Diana', 'Fuentes', 27, 'Crédito grupal · GRUPO LA COLMENA · <span class="badge badge-juridico">Grupo en jurídico</span> · <em>hoy solo felicita</em>', 'Jurídico'],
+        [12, 'LUN', 'Josefina', 'Lara', 48, individual('4/16', '$5,040.00'), 'Paola Ríos Calderón'],
+        [13, 'MAR', 'Alma', 'Guerrero', 31, `Crédito grupal · GRUPO RAÍCES · ${corriente}`, 'Héctor Salinas Fuentes'],
+      ];
+      document.getElementById('cumpleanos').innerHTML = filas
+        .map(([dia, abrev, nombre, apellido, edad, credito, gerente, estado]) => {
+          const clase = estado === 'pasada' ? 'fila-pasada' : estado === 'hoy' ? 'fila-hoy' : '';
+          const nota = estado === 'aun' ? ' <span class="text-secondary">· aún puedes felicitar</span>' : estado === 'hoy' ? ' <span class="badge text-bg-success">hoy</span>' : '';
+          return `<tr class="${clase}">
+            <td><div class="dia"><strong>${dia}</strong><small>${abrev}</small></div></td>
+            <td><span class="fw-semibold text-marca">${nombre}</span> <span class="text-marca">${apellido}</span><div class="small text-secondary">cumple ${edad}${nota}</div></td>
+            <td class="small">${credito}</td>
+            <td class="small">${gerente}</td>
+            <td class="text-end text-nowrap">
+              <div class="btn-group"><button class="btn btn-sm btn-hm"><i class="bi bi-clipboard me-1"></i>Copiar</button><button class="btn btn-sm btn-hm dropdown-toggle dropdown-toggle-split"></button></div>
+              <button class="btn btn-sm btn-outline-success ms-1"><i class="bi bi-whatsapp"></i></button>
+              <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-telephone"></i></button>
+            </td>
+          </tr>`;
+        })
+        .join('');
+    </script>
+  </body>
+</html>

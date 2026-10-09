@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Documentos del expediente (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+  </head>
+  <body>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!-- Expediente de la misma clienta inventada de las solicitudes en campo (Martha Elena Ruiz Díaz). -->
+    <main class="container-fluid px-4 py-3">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <a class="btn btn-sm btn-outline-secondary mb-2"><i class="bi bi-arrow-left"></i> Clientes</a>
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-person-circle fs-3"></i>
+            <span class="btn btn-sm btn-outline-secondary"><i class="bi bi-camera"></i></span>
+            <h1 class="h3 mb-0">MARTHA ELENA RUIZ DÍAZ</h1>
+            <button class="btn btn-sm btn-outline-secondary ms-1"><i class="bi bi-person-lock me-1"></i>Restringir crédito</button>
+          </div>
+          <div class="small mt-1"><span class="hm-code">RUDM140279KQ</span> · ID 488</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-hm"><i class="bi bi-pencil me-1"></i>Editar</button>
+          <button class="btn btn-outline-danger"><i class="bi bi-trash me-1"></i>Eliminar</button>
+        </div>
+      </div>
+
+      <div class="card my-3">
+        <div class="card-body py-2 d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-clock-history me-1"></i><strong>Historial de crédito</strong> · primer crédito</span>
+          <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-card-list me-1"></i>Ver todos los ciclos</button>
+        </div>
+      </div>
+
+      <div class="hm-activo mb-3">
+        <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
+          <span class="fs-5"><i class="bi bi-cash-coin text-marca me-2"></i>Préstamo activo · <a href="#">P488-RUDM140279KQ-B126</a></span>
+          <span class="badge text-bg-success">Activo</span>
+        </div>
+        <div class="row px-3 py-2 g-2">
+          <div class="col-3"><div class="hm-dato-label">Monto otorgado</div><div class="hm-dato fw-bold">$5,000.00</div></div>
+          <div class="col-3"><div class="hm-dato-label">Saldo actual</div><div class="hm-dato fw-bold text-primary">$5,600.00</div></div>
+          <div class="col-3"><div class="hm-dato-label">Cuota semanal</div><div class="hm-dato fw-bold">$350.00</div></div>
+          <div class="col-3"><div class="hm-dato-label">Próximo pago</div><div class="hm-dato fw-bold">12/10/2026</div></div>
+          <div class="col-3"><div class="hm-dato-label">Semanas</div><div class="hm-dato">0 de 16</div></div>
+          <div class="col-3"><div class="hm-dato-label">Gerente</div><div class="hm-dato">Sofía Méndez Rangel</div></div>
+          <div class="col-3"><div class="hm-dato-label">Producto</div><div class="hm-dato">Crédito individual</div></div>
+          <div class="col-3 d-flex align-items-end"><span class="text-success hm-dato"><i class="bi bi-check-circle me-1"></i>Sin mora</span></div>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link"><i class="bi bi-card-text me-1"></i>Datos</a></li>
+        <li class="nav-item"><a class="nav-link"><i class="bi bi-cash-coin me-1"></i>Préstamo activo</a></li>
+        <li class="nav-item"><a class="nav-link"><i class="bi bi-folder2 me-1"></i>Préstamos <span class="badge text-bg-secondary">1</span></a></li>
+        <li class="nav-item"><a class="nav-link"><i class="bi bi-people me-1"></i>Referencias <span class="badge text-bg-secondary">2</span></a></li>
+        <li class="nav-item"><a class="nav-link active"><i class="bi bi-folder2-open me-1"></i>Documentos <span class="badge text-bg-warning">4/6</span></a></li>
+        <li class="nav-item"><a class="nav-link"><i class="bi bi-chat-dots me-1"></i>Comentarios <span class="badge text-bg-secondary">0</span></a></li>
+      </ul>
+
+      <div class="border border-top-0 p-3">
+        <div class="alert alert-warning py-2 mb-3">
+          <i class="bi bi-exclamation-triangle me-1"></i><strong>Faltan documentos del expediente:</strong> Comprobante de domicilio, Fotografía de la clienta.
+          No detienen el alta: captúralos en la próxima visita.
+        </div>
+        <table class="table align-middle mb-2">
+          <thead class="table-light">
+            <tr>
+              <th>Documento</th>
+              <th>Estado</th>
+              <th>Subido</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="documentos"></tbody>
+        </table>
+        <div class="small bg-body-tertiary border rounded px-3 py-2 mb-3">
+          <i class="bi bi-file-earmark-text me-1"></i><strong>Pagaré firmado</strong>: vive en el préstamo (se captura al firmar el crédito), no en el expediente de la clienta.
+        </div>
+        <p class="small text-secondary mb-1">
+          <i class="bi bi-hand-index me-1"></i>Tip: puedes arrastrar <strong>varios archivos a la vez</strong> y soltarlos sobre un renglón: el primero se asigna a
+          ese documento y los demás se reparten en orden a los renglones vacíos.
+        </p>
+        <p class="small text-secondary mb-0">
+          <i class="bi bi-shield-check me-1"></i>Estos documentos son datos personales protegidos por ley. Úsalos solo para el trámite de la clienta: nunca los
+          reenvíes por WhatsApp ni los guardes fuera del sistema.
+        </p>
+      </div>
+    </main>
+
+    <script>
+      const ESTADO = {
+        regla: '<span class="badge text-bg-success"><i class="bi bi-check-circle-fill me-1"></i>En regla</span>',
+        pendiente: '<span class="badge text-bg-secondary"><i class="bi bi-circle me-1"></i>Pendiente</span>',
+        revisar: '<span class="badge text-bg-warning"><i class="bi bi-hourglass-split me-1"></i>Por revisar</span>',
+      };
+      const ver = '<button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye me-1"></i>Ver</button>';
+      const enRegla = '<button class="btn btn-sm btn-outline-success"><i class="bi bi-check-lg me-1"></i>En regla</button>';
+      const rechazar = '<button class="btn btn-sm btn-outline-danger"><i class="bi bi-x-lg me-1"></i>Rechazar</button>';
+      const borrar = '<button class="btn btn-sm btn-outline-dark"><i class="bi bi-trash"></i></button>';
+      const reponer = '<button class="btn btn-sm btn-outline-primary"><i class="bi bi-upload me-1"></i>Reponer</button>';
+      const subir = '<button class="btn btn-sm btn-hm"><i class="bi bi-upload me-1"></i>Subir</button>';
+      const documentos = [
+        ['INE (ambas caras)', 'Un solo archivo con frente y reverso: sirve la copia en una hoja o el PDF del escáner.<div><i class="bi bi-calendar-check me-1"></i>Vigente hasta 2031</div>', 'regla', 's.mendez · 06/10/26', '05/10/26 18:12'],
+        ['Comprobante de domicilio', 'Luz, agua o predial; de los últimos 3 meses.', 'pendiente'],
+        ['Estado de cuenta bancario', 'Puede llegar por WhatsApp y subirse de galería.', 'revisar', 'subido por s.mendez', '05/10/26 18:15'],
+        ['Fotografía de la clienta', 'De frente, con buena luz. Pídele permiso antes.', 'pendiente'],
+        ['Fachada del negocio o casa', 'Tómala desde la banqueta, que se vea la entrada.', 'regla', 'l.vega · 06/10/26', '05/10/26 18:20'],
+        ['Constancia de privacidad (LFPDPPP)', 'Firmada por la clienta al levantar la solicitud.', 'regla', 's.mendez · 06/10/26', '05/10/26 18:09'],
+      ];
+      document.getElementById('documentos').innerHTML = documentos
+        .map(([nombre, ayuda, estado, quien = '', cuando = '—']) => {
+          const acciones =
+            estado === 'pendiente' ? subir : estado === 'revisar' ? [ver, enRegla, rechazar, borrar, reponer].join(' ') : [ver, rechazar, borrar, reponer].join(' ');
+          return `<tr>
+            <td><div class="fw-semibold">${nombre}</div><div class="small text-secondary">${ayuda}</div></td>
+            <td>${ESTADO[estado]}${quien ? `<div class="small text-secondary">${quien}</div>` : ''}</td>
+            <td class="small">${cuando}</td>
+            <td class="text-end"><div class="d-inline-flex flex-wrap justify-content-end gap-1" style="max-width: 330px">${acciones}</div></td>
+          </tr>`;
+        })
+        .join('');
+    </script>
+  </body>
+</html>

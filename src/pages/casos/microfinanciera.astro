@@ -1,39 +1,58 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import BrowserFrame from '../../components/BrowserFrame.astro';
+import Capitulo from '../../components/Capitulo.astro';
 import CtaContacto from '../../components/CtaContacto.astro';
 import Icon from '../../components/Icon.astro';
 import PhoneFrame from '../../components/PhoneFrame.astro';
 import { resultados, avisoConfidencialidad } from '../../data/caso';
 import dashboard from '../../assets/hermes/dashboard.png';
-import gerentes from '../../assets/hermes/dashboard-gerentes.png';
-import clientes from '../../assets/hermes/clientes.png';
-import grupos from '../../assets/hermes/grupos.png';
-import credito from '../../assets/hermes/credito.png';
-import politica from '../../assets/hermes/politica.png';
-import login from '../../assets/hermes/login.png';
 import solicitudCredencial from '../../assets/hermes/solicitud-credencial.png';
 import solicitudCurp from '../../assets/hermes/solicitud-curp.png';
 import solicitudLeida from '../../assets/hermes/solicitud-leida.png';
+import documentos from '../../assets/hermes/documentos.png';
+import grupo from '../../assets/hermes/grupo.png';
+import credito from '../../assets/hermes/credito.png';
+import cuotas from '../../assets/hermes/cuotas.png';
+import abono from '../../assets/hermes/abono.png';
+import cumpleanos from '../../assets/hermes/cumpleanos.png';
+import prestamo from '../../assets/hermes/prestamo.png';
+import miTablero from '../../assets/hermes/mi-tablero.png';
+import miTableroDias from '../../assets/hermes/mi-tablero-dias.png';
+import riesgo from '../../assets/hermes/riesgo.png';
+import riesgoTendencia from '../../assets/hermes/riesgo-tendencia.png';
+import riesgoCobro from '../../assets/hermes/riesgo-cobro.png';
+import riesgoAtraso from '../../assets/hermes/riesgo-atraso.png';
 import cashflowCiclo from '../../assets/hermes/cashflow-ciclo.png';
+import sesiones from '../../assets/hermes/sesiones.png';
+import grupoHistorial from '../../assets/hermes/grupo-historial.png';
+import modulos from '../../assets/hermes/modulos.png';
 
 const ficha = [
   { termino: 'Cliente', valor: 'Microfinanciera (nombre confidencial)' },
   { termino: 'Sector', valor: 'Microfinanzas' },
-  { termino: 'Qué hicimos', valor: 'Análisis financiero (P&L y flujo de caja), desarrollo a la medida con OCR + IA y acompañamiento' },
+  { termino: 'Qué hicimos', valor: 'Análisis financiero (P&L y flujo de caja), desarrollo a la medida con OCR + IA, seguridad, monitoreo y acompañamiento' },
   { termino: 'Estado', valor: 'En producción y en mejora continua' },
 ];
 
-const tamanoModulo = '(min-width: 1152px) 640px, (min-width: 1024px) 56vw, 100vw';
+// Anchos de las imágenes según dónde van: a todo lo ancho, junto al texto (7 de 12 columnas) o en dos columnas.
+const tamanoCompleto = '(min-width: 1152px) 1104px, 100vw';
+const tamanoLado = '(min-width: 1152px) 640px, (min-width: 1024px) 56vw, 100vw';
+const tamanoMitad = '(min-width: 1152px) 528px, (min-width: 1024px) 45vw, 100vw';
 
-const puntosProspectos = [
-  'Lectura automática de la credencial con OCR + IA: nombre, CURP, fecha de nacimiento y vigencia.',
-  'La CURP se confirma carácter por carácter, con avisos para el cero y la O, el uno y la I.',
-  'Antes de las fotos, se le lee el aviso de privacidad a la clienta y su consentimiento queda registrado.',
-  'Detecta solicitudes repetidas y guarda las incompletas 7 días antes de cancelarlas solas.',
-  'Los datos se comparan con reportes de otras instituciones; el crédito lo decide la oficina.',
-];
+const recorrido = [
+  { id: 'solicitud', numero: '01', icono: 'scan-text', nombre: 'La solicitud' },
+  { id: 'expediente', numero: '02', icono: 'folder-lock', nombre: 'El expediente' },
+  { id: 'credito', numero: '03', icono: 'calendar-check', nombre: 'El crédito' },
+  { id: 'cobro', numero: '04', icono: 'hand-coins', nombre: 'El cobro' },
+  { id: 'relacion', numero: '05', icono: 'cake', nombre: 'La relación' },
+] as const;
+
+const vistaDireccion = [
+  { id: 'monitoreo', numero: '06', icono: 'gauge', nombre: 'El monitoreo' },
+  { id: 'riesgo', numero: '07', icono: 'shield-alert', nombre: 'El riesgo' },
+  { id: 'caja', numero: '08', icono: 'wallet', nombre: 'La caja' },
+] as const;
 
 const pasosSolicitud = [
   {
@@ -53,72 +72,36 @@ const pasosSolicitud = [
   },
 ];
 
-const modulos = [
+const seguridad = [
   {
-    icono: 'users',
-    titulo: 'Clientes y grupos',
-    texto:
-      'Cada emprendedora tiene su expediente, con su gerente y el estatus de su crédito. Los grupos se administran igual, con sus integrantes y su historial.',
-    puntos: [
-      'Búsqueda por nombre, CURP o código.',
-      'Alertas cuando a un expediente le falta información.',
-      'Créditos individuales y grupales en el mismo sistema.',
-    ],
-    imagenes: [
-      { src: clientes, alt: 'Lista de clientes en HERMES con código, nombre, CURP, gerente y estatus (datos ficticios).' },
-      { src: grupos, alt: 'Lista de grupos en HERMES con integrantes, gerente y estatus del crédito grupal (datos ficticios).' },
-    ],
+    icono: 'monitor-smartphone',
+    titulo: 'Sesiones bajo control',
+    texto: 'Cada usuario ve en qué dispositivos tiene su cuenta abierta y cierra las que no reconozca. Dirección ve las sesiones de todo el equipo.',
   },
   {
-    icono: 'calendar-check',
-    titulo: 'Créditos y cobranza semanal',
-    texto:
-      'Cada crédito muestra su calendario semana a semana: qué se pagó a tiempo, qué se adelantó, qué falta y si hubo multa.',
-    puntos: [
-      'Cada pago registrado con fecha y hora.',
-      'Historial de ciclos para decidir renovaciones.',
-      'Semáforo de renovación en cada crédito.',
-    ],
-    imagenes: [
-      {
-        src: credito,
-        alt: 'Detalle de un crédito en HERMES: calendario de pagos semanal, datos del crédito, política e historial del cliente (datos ficticios).',
-      },
-    ],
+    icono: 'timer',
+    titulo: 'Cierre automático',
+    texto: 'Una sesión sin actividad se cierra sola a las 3 horas.',
   },
   {
-    icono: 'activity',
-    titulo: 'Tablero en tiempo real',
-    texto:
-      'La fotografía de la cartera al momento: porcentaje de mora, cartera vigente, pago semanal y colocación del mes, por gerente y contra la meta.',
-    puntos: [
-      'Semáforo de mora: en meta, atención o fuera de meta.',
-      'Metas con fecha de vigencia y cada cifra con su definición a la vista.',
-      'Exportación a Excel y CSV, tablero de riesgo, renovaciones y reporte gerencial.',
-    ],
-    imagenes: [
-      {
-        src: gerentes,
-        alt: 'Tabla de colocación por gerente en HERMES: porcentaje de mora, créditos, emprendedoras, mora, pagos en tiempo y cartera vigente (datos ficticios).',
-      },
-    ],
+    icono: 'key-round',
+    titulo: 'Acceso por rol',
+    texto: 'Entrada con Google o con cuenta propia, y cada quien ve lo que le toca: el gerente, su cartera; las finanzas internas, solo dirección.',
   },
   {
-    icono: 'wallet',
-    titulo: 'Análisis de flujo de caja',
-    texto:
-      'Lo financiero, primero: junto con su P&L, el cliente cuenta con un análisis de su flujo de efectivo que muestra si la operación se fondea sola o consume caja.',
-    puntos: [
-      'Liquidez, días de cobertura y burn rate, con semáforos de salud financiera.',
-      'A dónde va cada $100 cobrados: operación, renovaciones y créditos nuevos.',
-      'Si la colocación del mes se fondea con los cobros o sale de la caja.',
-    ],
-    imagenes: [
-      {
-        src: cashflowCiclo,
-        alt: 'Análisis de liquidez contra el ciclo de crédito: autofinanciamiento, colocación del mes y a dónde va cada $100 cobrados (datos ficticios).',
-      },
-    ],
+    icono: 'history',
+    titulo: 'Bitácora de cambios',
+    texto: 'Altas, bajas y cambios de responsable o de gerente quedan registrados con fecha y usuario.',
+  },
+  {
+    icono: 'folder-lock',
+    titulo: 'Datos personales protegidos',
+    texto: 'Aviso de privacidad leído a la clienta, consentimiento registrado y constancia en su expediente, conforme a la LFPDPPP.',
+  },
+  {
+    icono: 'lock',
+    titulo: 'Confidencialidad',
+    texto: 'Firmamos acuerdo de confidencialidad, y lo que mostramos en público es una versión de demostración con datos ficticios.',
   },
 ] as const;
 
@@ -127,12 +110,13 @@ const forma = [
     icono: 'landmark',
     titulo: 'Primero, los números',
     texto:
-      'Empezamos por el P&L y el flujo de efectivo. Cada cifra del tablero tiene una definición acordada con el cliente —mora, cartera vigente, interés por cuota— y el sistema la muestra donde se usa.',
+      'Empezamos por el P&L y el flujo de efectivo. Cada cifra del tablero tiene una definición acordada con el cliente —mora, cartera vigente, pagos en tiempo y forma— y el sistema la muestra donde se usa.',
   },
   {
     icono: 'refresh-cw',
     titulo: 'Mejora continua',
-    texto: 'HERMES cambia al ritmo de la operación: metas nuevas, reglas nuevas y reportes nuevos. Hoy va en su versión 2.45.',
+    texto:
+      'HERMES cambia al ritmo de la operación: metas nuevas, reglas nuevas y reportes nuevos. Migramos la información del sistema anterior y hoy va en su versión 2.45.',
   },
   {
     icono: 'messages-square',
@@ -150,23 +134,27 @@ const forma = [
 <Base
   title="IXT · Caso de éxito: microfinanciera"
   imagen="og-caso.jpg"
-  imagenAlt="HERMES: del primer contacto al último pago. Solicitudes con OCR + IA, cobranza semanal y métricas en tiempo real."
-  description="Cómo una microfinanciera ganó eficiencia operativa con HERMES: solicitudes con OCR + IA, cobranza semanal, métricas en tiempo real y análisis de flujo de caja."
+  imagenAlt="HERMES: del primer contacto al último pago. Solicitudes con OCR + IA, cobranza oportuna, monitoreo en tiempo real y dashboard de riesgo."
+  description="La historia de cómo una microfinanciera ganó eficiencia operativa con HERMES: solicitudes con OCR + IA, cobranza oportuna, monitoreo en tiempo real, dashboard de riesgo y seguridad en cada pantalla."
 >
   <!-- PORTADA DEL CASO -->
   <section class="trama-fondo relative overflow-hidden border-b border-white/5">
     <div class="pointer-events-none absolute -left-40 top-0 h-[30rem] w-[30rem] rounded-full bg-jade/10 blur-3xl" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-6xl px-6 pt-16 md:pt-24">
       <p class="eyebrow mb-6">Caso de éxito · Microfinanzas</p>
-      <h1 class="max-w-4xl text-balance font-serif text-[2.6rem] font-bold leading-[1.05] text-hueso sm:text-5xl md:text-6xl">
+      <h1 class="max-w-4xl text-balance font-serif text-[length:clamp(1.9rem,9.4vw,2.6rem)] font-bold leading-[1.05] text-hueso sm:text-5xl md:text-6xl">
         Más eficiencia operativa para una microfinanciera.
       </h1>
       <div class="mt-10 grid gap-10 lg:grid-cols-12">
         <div class="lg:col-span-7">
-          <p class="text-lg leading-relaxed text-hueso/80">
-            Nuestro cliente otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Ellos son los
-            expertos en microfinanzas; nosotros los acompañamos. Con su equipo diseñamos y construimos <strong class="font-semibold text-hueso">HERMES</strong>, el sistema con el que hoy
-            levantan solicitudes en campo, administran clientes y grupos, cobran cada semana y miden su cartera en tiempo real.
+          <p class="text-xl leading-relaxed text-hueso/90">
+            Cada semana, cada clienta de una microfinanciera paga su cuota. Detrás de ese pago hay un gerente en campo, un
+            expediente, un calendario y una decisión de dirección. Esta es la historia de cómo ordenamos todo eso en un solo
+            sistema: <strong class="font-semibold text-hueso">HERMES</strong>.
+          </p>
+          <p class="mt-5 text-lg leading-relaxed text-hueso/75">
+            Ellos son los expertos en microfinanzas; nosotros los acompañamos. Empezamos por sus números, migramos la información
+            de su sistema anterior y, con su equipo, construimos HERMES módulo por módulo.
           </p>
           <div class="mt-8 flex gap-4 rounded-2xl border border-jade/25 bg-jade/5 p-5">
             <Icon name="lock" class="mt-0.5 h-5 w-5 shrink-0 text-jade" />
@@ -185,129 +173,416 @@ const forma = [
           ))}
         </dl>
       </div>
-
-      <h2 class="eyebrow mb-6 mt-16">Resultados en eficiencia operativa</h2>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {resultados.map((r) => (
-          <article class="rounded-2xl border border-white/10 bg-black/30 p-6">
-            <Icon name={r.icono} class="h-6 w-6 text-jade" />
-            <h3 class="mt-4 font-serif text-xl font-bold text-hueso">{r.titulo}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-hueso/70">{r.texto}</p>
-          </article>
-        ))}
-      </div>
     </div>
     <div class="relative mx-auto max-w-6xl px-6 pb-20 pt-14">
       <BrowserFrame
         src={dashboard}
         alt="Tablero de HERMES: porcentaje de mora, créditos, emprendedoras, mora, cartera vigente, pago semanal y colocación del mes (datos ficticios)."
-        sizes="(min-width: 1152px) 1104px, 100vw"
+        sizes={tamanoCompleto}
         prioridad
       />
     </div>
   </section>
 
-  <!-- MÓDULOS -->
+  <!-- EL PUNTO DE PARTIDA Y EL MAPA DE LA HISTORIA -->
+  <section class="bg-nieve text-obsidiana">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <div class="grid gap-10 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="eyebrow mb-4 text-jade-oscuro">El punto de partida</p>
+          <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">Una promesa que se cumple cada semana.</h2>
+        </div>
+        <div class="space-y-5 text-lg leading-relaxed text-obsidiana/75 lg:col-span-7 lg:pt-10">
+          <p>
+            Una microfinanciera vive de una promesa semanal: la clienta paga su cuota y la institución vuelve a prestarle.
+            Cumplirla con decenas de grupos y varios gerentes en campo exige saber, a tiempo, quién pagó, quién no y desde cuándo.
+          </p>
+          <p>
+            El sistema anterior no registraba todos los abonos ni la hora de cada pago. Sin esos datos, nadie podía decir con
+            certeza si una cuota había llegado a tiempo.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="eyebrow mb-6 mt-20 text-jade-oscuro">La historia, en dos partes</h3>
+      <div class="space-y-4">
+        <div class="rounded-2xl border border-obsidiana/10 bg-white p-6 shadow-sm">
+          <p class="font-serif text-xl font-bold">Primera parte · El recorrido de la clienta</p>
+          <ol class="mt-5 grid gap-3 sm:grid-cols-5">
+            {recorrido.map((paso) => (
+              <li>
+                <a
+                  href={`#${paso.id}`}
+                  class="flex h-full items-center gap-3 rounded-xl border border-obsidiana/10 p-3 transition hover:border-jade-oscuro hover:bg-jade/5 sm:flex-col sm:items-start"
+                >
+                  <span class="inline-flex rounded-lg bg-jade/15 p-2 text-jade-oscuro"><Icon name={paso.icono} class="h-5 w-5" /></span>
+                  <span>
+                    <span class="block font-mono text-[11px] text-obsidiana/50">{paso.numero}</span>
+                    <span class="block font-semibold leading-tight">{paso.nombre}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <p class="mt-4 flex items-center gap-2 text-sm text-obsidiana/60">
+            <Icon name="refresh-cw" class="h-4 w-4 shrink-0 text-jade-oscuro" /> Con la renovación, el recorrido vuelve a empezar.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-obsidiana p-6 text-hueso shadow-sm">
+          <p class="font-serif text-xl font-bold">Segunda parte · La vista de dirección</p>
+          <ol class="mt-5 grid gap-3 sm:grid-cols-3">
+            {vistaDireccion.map((paso) => (
+              <li>
+                <a
+                  href={`#${paso.id}`}
+                  class="flex h-full items-center gap-3 rounded-xl border border-white/10 p-3 transition hover:border-jade hover:bg-jade/5"
+                >
+                  <span class="inline-flex rounded-lg bg-jade/10 p-2 text-jade"><Icon name={paso.icono} class="h-5 w-5" /></span>
+                  <span>
+                    <span class="block font-mono text-[11px] text-hueso/50">{paso.numero}</span>
+                    <span class="block font-semibold leading-tight">{paso.nombre}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <p class="mt-4 flex items-center gap-2 text-sm text-hueso/60">
+            <Icon name="activity" class="h-4 w-4 shrink-0 text-jade" /> Todo en tiempo real: sin esperar al cierre de mes.
+          </p>
+        </div>
+      </div>
+      <a
+        href="#seguridad"
+        class="mt-4 flex items-center gap-3 rounded-2xl border border-dashed border-jade-oscuro/40 p-5 transition hover:border-jade-oscuro hover:bg-white"
+      >
+        <Icon name="shield-check" class="h-6 w-6 shrink-0 text-jade-oscuro" />
+        <span class="text-obsidiana/75">
+          <strong class="font-semibold text-obsidiana">En todo el recorrido: seguridad y privacidad.</strong> Sesiones bajo control, bitácora de
+          cambios y datos personales protegidos.
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PRIMERA PARTE: EL RECORRIDO DE LA CLIENTA -->
   <section class="bg-hueso text-obsidiana">
     <div class="mx-auto max-w-6xl px-6 py-24">
-      <p class="eyebrow mb-4 text-jade-oscuro">Qué hace HERMES, paso a paso</p>
-      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold md:text-5xl">Del primer contacto con la clienta a su último pago.</h2>
+      <p class="eyebrow mb-4 text-jade-oscuro">Primera parte</p>
+      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold md:text-5xl">El recorrido de la clienta.</h2>
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-obsidiana/75">
-        HERMES sigue el customer journey de cada clienta: desde que el gerente la visita por primera vez hasta su último pago y
-        su siguiente renovación.
+        HERMES sigue el customer journey de cada clienta: de la primera visita del gerente a su último pago, y de vuelta a
+        empezar con la renovación.
       </p>
 
-      <div class="mt-16 space-y-24">
-        <article>
-          <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
-            <div class="lg:col-span-6">
-              <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro">
-                <Icon name="scan-text" class="h-6 w-6" />
-              </span>
-              <h3 class="mt-5 text-balance font-serif text-3xl font-bold">Seguimiento de prospectos con llenado inteligente</h3>
-              <p class="mt-4 text-lg leading-relaxed text-obsidiana/75">
-                El gerente levanta la solicitud en campo, desde su celular: fotografía la credencial y el sistema la lee con OCR e
-                inteligencia artificial, llena los datos y los valida. Él solo confirma.
-              </p>
-            </div>
-            <ul class="space-y-3 lg:col-span-6 lg:pt-16">
-              {puntosProspectos.map((punto) => (
-                <li class="flex gap-3 text-obsidiana/80">
-                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-jade-oscuro"></span>
-                  {punto}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="-mx-6 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
+      <div class="mt-20 space-y-28">
+        <Capitulo
+          id="solicitud"
+          numero="01"
+          icono="scan-text"
+          etiqueta="La solicitud"
+          titulo="El primer contacto se levanta en campo, desde el celular."
+          reto="Capturar a mano una credencial en la calle toma tiempo y se presta a errores: basta una O en lugar de un cero para que el expediente nazca mal."
+          texto="El gerente fotografía la credencial y HERMES la lee con OCR e inteligencia artificial: llena los datos y los valida. Él solo confirma."
+          puntos={[
+            'Lectura automática de la credencial con OCR + IA: nombre, CURP, fecha de nacimiento y vigencia.',
+            'La CURP se confirma carácter por carácter, con avisos para el cero y la O, el uno y la I.',
+            'Antes de las fotos, se le lee el aviso de privacidad a la clienta y su consentimiento queda registrado.',
+            'Detecta solicitudes repetidas y guarda las incompletas 7 días antes de cancelarlas solas.',
+            'Los datos se comparan con reportes de otras instituciones; el crédito lo decide la oficina.',
+          ]}
+          apilado
+        >
+          <div class="-mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
             {pasosSolicitud.map((paso) => (
               <PhoneFrame src={paso.src} alt={paso.alt} pie={paso.pie} class="w-[72%] shrink-0 snap-center md:w-auto" />
             ))}
           </div>
-        </article>
+        </Capitulo>
 
-        {modulos.map((m, i) => (
-          <article class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-            <div class:list={['lg:col-span-5', i % 2 === 1 && 'lg:order-last']}>
-              <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro">
-                <Icon name={m.icono} class="h-6 w-6" />
-              </span>
-              <h3 class="mt-5 font-serif text-3xl font-bold">{m.titulo}</h3>
-              <p class="mt-4 text-lg leading-relaxed text-obsidiana/75">{m.texto}</p>
-              <ul class="mt-6 space-y-3">
-                {m.puntos.map((punto) => (
-                  <li class="flex gap-3 text-obsidiana/80">
-                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-jade-oscuro"></span>
-                    {punto}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div class="space-y-5 lg:col-span-7">
-              {m.imagenes.map((imagen) => (
-                <BrowserFrame src={imagen.src} alt={imagen.alt} tono="claro" sizes={tamanoModulo} />
-              ))}
-            </div>
-          </article>
-        ))}
+        <Capitulo
+          id="expediente"
+          numero="02"
+          icono="folder-lock"
+          etiqueta="El expediente"
+          titulo="Un expediente completo, y protegido."
+          reto="Un expediente incompleto se descubre cuando ya es tarde: al renovar, al cobrar o en una auditoría."
+          texto="Cada documento tiene su estado —en regla, por revisar o pendiente— y HERMES avisa qué falta. Lo que falta no detiene el alta: queda pendiente para la próxima visita."
+          puntos={[
+            'La INE se guarda con su año de vigencia.',
+            'La constancia de privacidad firmada por la clienta queda en su expediente, conforme a la LFPDPPP.',
+            'Cada documento se revisa: queda en regla o se rechaza, con quién lo revisó y cuándo.',
+            'Un recordatorio en pantalla: son datos personales protegidos; no se reenvían por WhatsApp ni se guardan fuera del sistema.',
+          ]}
+        >
+          <BrowserFrame
+            src={documentos}
+            tono="claro"
+            sizes={tamanoLado}
+            alt="Expediente de una clienta en HERMES: préstamo activo y documentos con su estado (en regla, por revisar o pendiente), incluida la constancia de privacidad (datos ficticios)."
+            pie="El expediente de la misma clienta de la solicitud: lo que falta se pide en la próxima visita."
+          />
+        </Capitulo>
 
-        <article class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          <div class="lg:col-span-5">
-            <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro">
-              <Icon name="scale" class="h-6 w-6" />
-            </span>
-            <h3 class="mt-5 font-serif text-3xl font-bold">Reglas del negocio, explicadas en pantalla</h3>
-            <p class="mt-4 text-lg leading-relaxed text-obsidiana/75">
-              Las políticas de crédito viven dentro del sistema y se explican donde se usan, para que dirección, gerentes y
-              cobranza cuenten igual.
-            </p>
-            <ul class="mt-6 space-y-3">
-              {['Contador de cuotas fuera de tiempo en cada crédito.', 'Política y semáforo de renovación, cada uno con su propia regla.', 'Definiciones con versión y fecha de vigencia.'].map((punto) => (
-                <li class="flex gap-3 text-obsidiana/80">
-                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-jade-oscuro"></span>
-                  {punto}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="lg:col-span-7">
-            <Image
-              src={politica}
-              alt="Tarjeta de HERMES que explica la política de cuotas fuera de tiempo de un crédito (datos ficticios)."
-              widths={[480, 960]}
-              sizes="(min-width: 640px) 480px, 100vw"
-              format="webp"
-              quality={80}
-              loading="lazy"
-              class="mx-auto block h-auto w-full max-w-[480px] rounded-xl shadow-2xl shadow-obsidiana/15"
+        <Capitulo
+          id="credito"
+          numero="03"
+          icono="calendar-check"
+          etiqueta="El crédito"
+          titulo="Cada crédito, semana a semana."
+          reto="En un crédito grupal la cuota no es de una sola persona: es de un grupo, con una responsable, varias integrantes y montos distintos."
+          texto="Cada crédito, individual o grupal, tiene su calendario semanal, su saldo real y su próximo pago a la vista. En los grupos se ve cuánto le tocó a cada integrante, quién es la responsable y cómo cerró cada ciclo."
+          puntos={[
+            'Calendario de pagos: a tiempo, adelantado, con excedente o pendiente.',
+            'Monto asignado por integrante y responsable del grupo.',
+            'Historial de ciclos: cómo cerró cada crédito.',
+            'Las reglas del negocio se explican donde se usan, para que todos cuenten igual.',
+          ]}
+          apilado
+        >
+          <div class="grid gap-8 lg:grid-cols-2 lg:gap-12">
+            <BrowserFrame
+              src={grupo}
+              tono="claro"
+              sizes={tamanoMitad}
+              alt="Detalle de un grupo en HERMES: préstamo activo, datos financieros y operativos, aportación por integrante y créditos cerrados (datos ficticios)."
+              pie="Un grupo: su préstamo activo, la aportación de cada integrante y sus ciclos cerrados."
+            />
+            <BrowserFrame
+              src={credito}
+              tono="claro"
+              sizes={tamanoMitad}
+              alt="Detalle de un crédito individual en HERMES: calendario de pagos semanal, datos del crédito, política e historial de la clienta (datos ficticios)."
+              pie="Un crédito individual: su calendario semanal y la política, explicada en pantalla."
             />
           </div>
-        </article>
+        </Capitulo>
+
+        <Capitulo
+          id="cobro"
+          numero="04"
+          icono="hand-coins"
+          etiqueta="El cobro"
+          titulo="Cada pago, a tiempo y a la vista."
+          reto="Una cuota pagada a las seis de la tarde del día de pago, ¿llegó a tiempo? Si cada quien cuenta distinto, nadie sabe en realidad cómo va la cobranza."
+          texto="La regla es una y la aplica el sistema: el corte es a las 2:00 pm y, desde las 2:01, la cuota del día cuenta como atrasada. El gerente registra cada abono desde su celular, con fecha y hora, y las cuotas atrasadas aparecen el mismo día para darles un seguimiento oportuno."
+          puntos={[
+            'Cuotas pendientes, atrasadas, por vencer o adelantadas, por gerente y por fecha.',
+            'Abonos parciales: cuánto se pagó y cuánto falta.',
+            'Si la clienta paga de más, el excedente se adelanta solo a las cuotas siguientes.',
+            'La multa por atraso se propone sola y se cobra aparte, sin frenar el abono.',
+            'Cobro por lista y descarga en CSV.',
+          ]}
+          apilado
+        >
+          <div class="grid items-start gap-10 md:grid-cols-12">
+            <BrowserFrame
+              src={cuotas}
+              tono="claro"
+              class="md:col-span-8"
+              sizes="(min-width: 1152px) 720px, (min-width: 768px) 64vw, 100vw"
+              alt="Búsqueda de cuotas atrasadas en HERMES: clienta, gerente, cuota, monto, fecha programada, celular, saldo del crédito y lo pagado (datos ficticios)."
+              pie="Las cuotas atrasadas de toda la cartera, con lo que falta de cada una."
+            />
+            <PhoneFrame
+              src={abono}
+              class="md:col-span-4"
+              alt="Registro de un abono desde el celular: cuota con 4 días de atraso, abono parcial, monto, fecha y hora del pago (datos ficticios)."
+              pie="El abono se registra en campo, con fecha y hora."
+            />
+          </div>
+        </Capitulo>
+
+        <Capitulo
+          id="relacion"
+          numero="05"
+          icono="cake"
+          etiqueta="La relación"
+          titulo="La relación no termina en el cobro."
+          reto="Una clienta que paga puntual merece algo más que un recibo, y es la primera a quien conviene volver a prestar."
+          texto="HERMES recuerda los cumpleaños de las clientas, con su crédito y su gerente a la vista, para felicitarlas por WhatsApp o por teléfono. Y cuando un crédito va al corriente, el semáforo de renovación dice si puede renovar y por cuánto: el recorrido vuelve a empezar."
+          puntos={[
+            'Cumpleañeras del mes por cartera, con el mensaje listo para copiar.',
+            'Aviso para ofrecer renovación a quien va al corriente.',
+            'Si el grupo está en jurídico, el sistema lo advierte: ese día solo se felicita.',
+            'Semáforo de renovación y pagos en tiempo y forma en cada crédito.',
+          ]}
+          invertido
+        >
+          <div class="space-y-8">
+            <BrowserFrame
+              src={cumpleanos}
+              tono="claro"
+              sizes={tamanoLado}
+              alt="Cumpleaños del mes en HERMES: clientas con su crédito, su gerente y botones para felicitarlas por WhatsApp o por teléfono (datos ficticios)."
+              pie="Las cumpleañeras del mes, con aviso para ofrecer renovación."
+            />
+            <BrowserFrame
+              src={prestamo}
+              tono="claro"
+              sizes={tamanoLado}
+              alt="Detalle de un préstamo en HERMES: saldo, pagos cubiertos, pagos en tiempo y forma, próximo pago y semáforo de renovación (datos ficticios)."
+              pie="Un crédito al corriente: el semáforo de renovación dice hasta cuánto puede renovar."
+            />
+          </div>
+        </Capitulo>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGUNDA PARTE: LA VISTA DE DIRECCIÓN -->
+  <section class="trama-fondo border-b border-white/5">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4">Segunda parte</p>
+      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold text-hueso md:text-5xl">La vista de dirección.</h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-hueso/75">
+        Mientras los gerentes cobran en campo, dirección ve la cartera completa en tiempo real: qué está en riesgo, desde
+        cuándo, en qué cartera y si la caja alcanza para seguir prestando.
+      </p>
+
+      <div class="mt-20 space-y-28">
+        <Capitulo
+          id="monitoreo"
+          numero="06"
+          icono="gauge"
+          etiqueta="Monitoreo en tiempo real"
+          titulo="Todos ven las mismas cifras, al momento."
+          reto="Esperar al cierre de mes para saber cómo va la cartera es enterarse tarde."
+          texto="Cada gerente tiene su tablero y dirección ve todas las carteras: mora, pagos en tiempo y forma, cartera vigente, colocación del mes y lo que hay por cobrar hoy. Todo contra la meta y con semáforo."
+          puntos={[
+            'Fotografía del día al corte, con la definición de cada cifra en pantalla.',
+            'Semáforo contra la meta —en meta, atención o fuera de meta— y cada meta con su fecha de vigencia.',
+            'Cuotas por día y por cartera, con aviso cuando una cartera rebasa el límite acordado.',
+            'Exportación a Excel y CSV, y reporte gerencial.',
+          ]}
+          tono="oscuro"
+        >
+          <div class="space-y-8">
+            <BrowserFrame
+              src={miTablero}
+              sizes={tamanoLado}
+              alt="Mi tablero en HERMES, vista de dirección: cartera vigente, colocación del mes, créditos, emprendedoras, porcentaje de mora y tabla de carteras comerciales (datos ficticios)."
+              pie="Mi tablero: la fotografía de hoy al corte, cartera por cartera."
+            />
+            <BrowserFrame
+              src={miTableroDias}
+              sizes={tamanoLado}
+              alt="Cuotas por día de cada cartera, de lunes a miércoles, con la celda que rebasa el límite marcada (datos ficticios)."
+              pie="Cuotas por día: la carga de cada cartera, con la celda que rebasa el límite marcada."
+            />
+          </div>
+        </Capitulo>
+
+        <Capitulo
+          id="riesgo"
+          numero="07"
+          icono="shield-alert"
+          etiqueta="Dashboard de riesgo"
+          titulo="Seis preguntas que dirección responde cada mañana."
+          reto="Un porcentaje de mora, solo, no dice si el atraso es de ayer o de hace tres meses, ni en qué cartera está."
+          texto="El dashboard de riesgo está ordenado como las preguntas que se hace quien dirige una cartera, y cada respuesta baja hasta la clienta, el gerente y la cuota."
+          puntos={[
+            '¿Cuánto está en riesgo hoy?',
+            '¿Qué tan viejo es el atraso?',
+            '¿Dónde está el atraso?',
+            '¿Cómo se mueve el riesgo?',
+            '¿Qué tan puntual paga la cartera?',
+            '¿Cómo se está cobrando lo exigible?',
+          ]}
+          tono="oscuro"
+          apilado
+        >
+          <BrowserFrame
+            src={riesgo}
+            sizes={tamanoCompleto}
+            alt="Dashboard de riesgo de HERMES: porcentaje de mora, saldos de créditos y cuotas con atraso por bandas de días, cartera en jurídico y antigüedad del atraso (datos ficticios)."
+            pie="¿Cuánto está en riesgo hoy? ¿Qué tan viejo es el atraso? Saldos con atraso por bandas de días, con la cartera en jurídico aparte."
+          />
+          <div class="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-12">
+            <BrowserFrame
+              src={riesgoTendencia}
+              sizes={tamanoMitad}
+              alt="Gráfica de la tendencia del porcentaje de mora: foto diaria, cierre de cada semana y cartera con 8 días o más de atraso (datos ficticios)."
+              pie="¿Cómo se mueve el riesgo? El % de mora de cada día y al cierre de cada semana."
+            />
+            <BrowserFrame
+              src={riesgoCobro}
+              sizes={tamanoMitad}
+              alt="Puntualidad de la cartera: pagos en tiempo y forma, composición del cobro según la hora en que llegó el dinero y cobranza de lo exigible (datos ficticios)."
+              pie="¿Qué tan puntual paga la cartera? Pagos en tiempo y forma, a qué hora llegó el dinero y cuánto se ha cobrado de lo exigible."
+            />
+          </div>
+          <BrowserFrame
+            src={riesgoAtraso}
+            class="mt-10"
+            sizes={tamanoCompleto}
+            alt="Tabla de dónde está el atraso: días de atraso, clienta, gerente, folio, cuota desde la que se atrasó, cuotas atrasadas y saldos (datos ficticios)."
+            pie="¿Dónde está el atraso? Clienta por clienta, con su gerente, desde qué cuota y cuánto debe."
+          />
+        </Capitulo>
+
+        <Capitulo
+          id="caja"
+          numero="08"
+          icono="wallet"
+          etiqueta="La caja"
+          titulo="¿Alcanza la caja para seguir prestando?"
+          reto="Una cartera puede verse sana y aun así consumir la caja, si la colocación crece más rápido que los cobros."
+          texto="Lo financiero, primero: junto con su P&L, la microfinanciera cuenta con un análisis de su flujo de efectivo que muestra si la operación se fondea sola o consume caja."
+          puntos={[
+            'Liquidez, días de cobertura y burn rate, con semáforos de salud financiera.',
+            'A dónde va cada $100 cobrados: operación, renovaciones y créditos nuevos.',
+            'Si la colocación del mes se fondea con los cobros o sale de la caja.',
+          ]}
+          tono="oscuro"
+          invertido
+        >
+          <BrowserFrame
+            src={cashflowCiclo}
+            sizes={tamanoLado}
+            alt="Análisis de liquidez contra el ciclo de crédito: autofinanciamiento, colocación del mes y a dónde va cada $100 cobrados (datos ficticios)."
+            pie="La liquidez contra el ciclo de crédito: a dónde va cada $100 cobrados."
+          />
+        </Capitulo>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGURIDAD Y PRIVACIDAD -->
+  <section id="seguridad" class="bg-nieve text-obsidiana">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4 text-jade-oscuro">Seguridad y privacidad</p>
+      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold md:text-5xl">La seguridad no es un módulo: está en cada pantalla.</h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-obsidiana/75">
+        Las clientas confían sus datos a la microfinanciera, y la microfinanciera nos confió los suyos. Por eso HERMES protege la
+        información desde el primer contacto hasta el último pago.
+      </p>
+
+      <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {seguridad.map((s) => (
+          <article class="rounded-2xl border border-obsidiana/10 bg-white p-6 shadow-sm">
+            <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro"><Icon name={s.icono} class="h-5 w-5" /></span>
+            <h3 class="mt-4 font-serif text-xl font-bold">{s.titulo}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{s.texto}</p>
+          </article>
+        ))}
       </div>
 
-      <p class="mt-20 text-sm text-obsidiana/60">
-        {avisoConfidencialidad}
-      </p>
+      <div class="mt-14 grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
+        <BrowserFrame
+          src={sesiones}
+          tono="claro"
+          sizes={tamanoMitad}
+          alt="Mis sesiones abiertas en HERMES: cada dispositivo con su IP, su hora de inicio y su última actividad, y el botón para cerrarla (datos ficticios)."
+          pie="Mis sesiones abiertas: cada dispositivo, con su IP, su inicio y su última actividad."
+        />
+        <BrowserFrame
+          src={grupoHistorial}
+          tono="claro"
+          sizes={tamanoMitad}
+          alt="Historial de un grupo en HERMES: altas, bajas y cambio de gerente, cada uno con su fecha y el usuario que lo hizo (datos ficticios)."
+          pie="La bitácora de un grupo: quién hizo cada cambio y cuándo."
+        />
+      </div>
     </div>
   </section>
 
@@ -332,19 +607,42 @@ const forma = [
       <div class="mt-20 grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:col-span-7">
           <BrowserFrame
-            src={login}
-            alt="Pantalla de inicio de sesión de HERMES, con acceso por Google o con cuenta propia."
-            sizes={tamanoModulo}
+            src={modulos}
+            sizes={tamanoLado}
+            alt="Pantalla de inicio de HERMES con sus doce módulos: clientes, cumpleaños, grupos, solicitudes de alta, préstamos, pagos, multas y atrasos, gerentes, cuentas de depósito, finanzas internas, dashboard y mi tablero."
           />
         </div>
         <div class="lg:col-span-5">
-          <Icon name="shield-check" class="h-7 w-7 text-jade" />
-          <h3 class="mt-5 font-serif text-3xl font-bold text-hueso">Listo para el día a día</h3>
+          <Icon name="layout-grid" class="h-7 w-7 text-jade" />
+          <h3 class="mt-5 font-serif text-3xl font-bold text-hueso">Todo en un solo lugar</h3>
           <p class="mt-4 text-lg leading-relaxed text-hueso/75">
-            Acceso con Google o con cuenta propia, desde la computadora o el celular.
+            Hoy HERMES reúne doce módulos en una sola pantalla de inicio: de clientes, grupos y préstamos a pagos, multas,
+            tableros y los cumpleaños de las clientas. Desde la computadora o el celular.
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- EL RESULTADO -->
+  <section class="bg-hueso text-obsidiana">
+    <div class="mx-auto max-w-6xl px-6 py-24">
+      <p class="eyebrow mb-4 text-jade-oscuro">El resultado</p>
+      <h2 class="max-w-3xl text-balance font-serif text-4xl font-bold md:text-5xl">Más eficiencia operativa, semana tras semana.</h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-obsidiana/75">
+        Hoy la operación diaria vive en HERMES: de la solicitud en campo al último pago, con las cifras al momento y la
+        información protegida.
+      </p>
+      <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {resultados.map((r) => (
+          <article class="rounded-2xl border border-obsidiana/10 bg-white p-6 shadow-sm">
+            <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro"><Icon name={r.icono} class="h-5 w-5" /></span>
+            <h3 class="mt-4 font-serif text-xl font-bold">{r.titulo}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{r.texto}</p>
+          </article>
+        ))}
+      </div>
+      <p class="mt-12 text-sm text-obsidiana/60">{avisoConfidencialidad}</p>
     </div>
   </section>
 

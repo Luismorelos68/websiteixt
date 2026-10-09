@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Mis sesiones (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+  </head>
+  <body>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!-- Las IP son de los rangos reservados para documentación (RFC 5737): no pertenecen a nadie. -->
+    <main class="container-fluid px-4 py-4">
+      <div class="hm-breadcrumb mb-2"><a href="#">Módulos</a> / Mis sesiones</div>
+      <h1 class="h3 mb-2"><i class="bi bi-shield-lock text-marca me-2"></i>Mis sesiones abiertas</h1>
+      <p class="text-secondary mb-3" style="max-width: 980px">
+        Cada renglón es un dispositivo o navegador donde tu cuenta está abierta. Tener más de una es normal (la computadora de la oficina y tu
+        celular, por ejemplo). Si ves alguna que no reconoces, ciérrala. Una sesión sin actividad se cierra sola a las 3 horas.
+      </p>
+      <div class="card card-hm mb-3">
+        <table class="table mb-0 align-middle">
+          <thead class="table-light">
+            <tr>
+              <th class="ps-3">Dispositivo</th>
+              <th>IP</th>
+              <th>Inició</th>
+              <th>Última actividad</th>
+              <th class="text-end pe-3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ps-3"><i class="bi bi-laptop me-2 text-secondary"></i>Chrome · Windows <span class="badge text-bg-success ms-1">Este dispositivo</span></td>
+              <td class="text-secondary">203.0.113.24</td>
+              <td>09 oct 08:12</td>
+              <td>Ahora</td>
+              <td class="text-end pe-3"></td>
+            </tr>
+            <tr>
+              <td class="ps-3"><i class="bi bi-phone me-2 text-secondary"></i>Safari · iPhone</td>
+              <td class="text-secondary">198.51.100.17</td>
+              <td>09 oct 07:58</td>
+              <td>Hace 25 min</td>
+              <td class="text-end pe-3"><button class="btn btn-sm btn-outline-danger"><i class="bi bi-box-arrow-right me-1"></i>Cerrar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+          <span class="text-secondary">Tienes 2 sesiones abiertas.</span>
+          <button class="btn btn-outline-secondary">Cerrar las demás</button>
+        </div>
+        <a href="#" class="text-primary"><i class="bi bi-people me-1"></i>Sesiones abiertas de todos</a>
+      </div>
+    </main>
+  </body>
+</html>

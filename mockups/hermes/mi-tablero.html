@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Mi tablero (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+  </head>
+  <body>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!-- Las mismas cifras inventadas del dashboard: los totales cuadran entre sí. -->
+    <main class="container-fluid px-4 py-3">
+      <h1 class="h3 mb-1"><i class="bi bi-briefcase text-marca me-2"></i>Mi tablero <span class="text-secondary fs-5 fw-normal">· 09/10/2026</span></h1>
+      <p class="text-secondary mb-3">
+        Fotografía de hoy al corte de las 2:00 pm: la cuota que vence hoy cuenta como atrasada a partir de las 2:01. Vista de dirección: todas las
+        carteras comerciales.
+      </p>
+
+      <h2 class="h5 mb-3"><i class="bi bi-people text-marca me-1"></i>La organización <small class="text-secondary fw-normal fs-6 ms-1">carteras comerciales · sin jurídico ni especiales</small></h2>
+
+      <div class="row g-3">
+        <div class="col-3">
+          <div class="kpi kpi-ok"><div class="kpi-value kpi-value-sm">$3,284,560.00</div><div class="kpi-label">Cartera vigente</div></div>
+        </div>
+        <div class="col-3">
+          <div class="kpi"><div class="kpi-value kpi-value-sm">$164,000.00</div><div class="kpi-label">Colocación del mes</div><div class="kpi-foot">8 créditos este mes</div></div>
+        </div>
+        <div class="col-3">
+          <div class="kpi"><div class="kpi-value kpi-value-sm">186</div><div class="kpi-label">Créditos</div></div>
+        </div>
+        <div class="col-3">
+          <div class="kpi"><div class="kpi-value kpi-value-sm">352</div><div class="kpi-label">Emprendedoras/es</div><div class="kpi-foot">cada persona cuenta una vez</div></div>
+        </div>
+        <div class="col-3">
+          <div class="kpi"><div class="kpi-value kpi-value-sm">$4,512,000.00</div><div class="kpi-label">Monto otorgado</div><div class="kpi-foot">incluye la retención para liquidar</div></div>
+        </div>
+        <div class="col-3">
+          <div class="kpi"><div class="kpi-value kpi-value-sm">$392,840.00</div><div class="kpi-label">Monto de pago semanal</div></div>
+        </div>
+        <div class="col-3">
+          <div class="kpi kpi-warn">
+            <span class="chip"><i class="bi bi-exclamation-triangle-fill"></i>Atención</span>
+            <div class="kpi-value kpi-value-sm mt-1">1.72%</div>
+            <div class="kpi-label">% de mora</div>
+            <div class="kpi-foot">saldo completo de los créditos con atraso</div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="kpi kpi-danger">
+            <span class="chip chip-danger"><i class="bi bi-calendar-x text-danger"></i>5 créditos con atraso</span>
+            <div class="kpi-value kpi-value-sm mt-1">$56,494.00</div>
+            <div class="kpi-label">Mora</div>
+            <div class="kpi-foot">de toda la cartera comercial</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="small text-secondary mt-3 mb-3">
+        <strong>Semáforo del % de mora:</strong> <i class="bi bi-check-circle-fill text-success"></i> <strong class="text-success">En meta</strong> hasta
+        1.25% · <i class="bi bi-exclamation-triangle-fill text-warning"></i> <strong class="text-warning-emphasis">Atención</strong> hasta 2.50% ·
+        <i class="bi bi-exclamation-circle-fill text-danger"></i> <strong class="text-danger">Fuera de meta</strong> arriba de 2.50%. Meta vigente desde
+        el 01/10/2026. <strong>% DE MORA:</strong> de los créditos con al menos una cuota atrasada, su saldo <em>completo</em>, no solo la cuota.
+      </p>
+
+      <div id="carteras-y-dias">
+        <div class="card mb-3">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+            <span class="fw-semibold fs-5"><i class="bi bi-table text-marca me-2"></i>Carteras comerciales</span>
+            <span class="text-secondary">toca una cartera para ver su tablero</span>
+          </div>
+          <table class="table tabla-limpia tabla-gerentes mb-0">
+            <thead>
+              <tr>
+                <th>Cartera</th>
+                <th class="text-end">% de mora</th>
+                <th class="text-end">En tiempo y forma</th>
+                <th class="text-end">Cartera vigente</th>
+                <th class="text-end">Colocación del mes</th>
+                <th class="text-end">Por cobrar hoy<br /><small class="fw-normal">cuotas</small></th>
+              </tr>
+            </thead>
+            <tbody id="carteras"></tbody>
+          </table>
+          <div class="card-body border-top hm-nota">
+            <strong>En tiempo y forma</strong> es del mes en curso (del 1 al 28 de octubre); el «≤» marca un techo, porque los créditos del sistema anterior no
+            registraban todos los abonos. <strong>Por cobrar hoy</strong> cuenta las cuotas programadas para hoy: cuotas, no pesos.
+          </div>
+        </div>
+
+        <div class="card" id="cuotas-dia">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+            <span class="fw-semibold fs-5"><i class="bi bi-calendar-week text-marca me-2"></i>Cuotas por día</span>
+            <span class="text-secondary">créditos y emprendedoras/es con cuota cada día</span>
+          </div>
+          <table class="table tabla-limpia tabla-gerentes mb-0">
+            <thead>
+              <tr>
+                <th>Cartera</th>
+                <th class="text-end">Lunes</th>
+                <th class="text-end">Martes</th>
+                <th class="text-end">Miércoles</th>
+              </tr>
+            </thead>
+            <tbody id="dias"></tbody>
+          </table>
+          <div class="card-body border-top hm-nota">
+            <i class="bi bi-info-circle me-1"></i>El día de cada crédito es el de su calendario de pagos. Por regla, una cartera no debería pasar de
+            <strong>20 créditos con cuota el mismo día</strong>: la celda que lo pasa se marca. Las emprendedoras de cada día no se suman entre días.
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const carteras = [
+        ['SOFÍA MÉNDEZ', '0.00%', '≤ 96.2%', '$942,300.00', '$52,000.00'],
+        ['HÉCTOR SALINAS', '0.93%', '≤ 91.7%', '$868,450.00', '$46,000.00'],
+        ['PAOLA RÍOS', '4.67%', '≤ 86.7%', '$1,035,610.00', '$40,000.00', true],
+        ['TOMÁS AGUIRRE', '0.00%', '≤ 95.1%', '$438,200.00', '$26,000.00'],
+      ];
+      document.getElementById('carteras').innerHTML =
+        carteras
+          .map(
+            ([nombre, mora, tiempo, vigente, colocacion, alerta]) => `
+          <tr>
+            <td><a href="#">${nombre}</a></td>
+            <td class="text-end ${alerta ? 'text-danger fw-semibold' : ''}">${mora}</td>
+            <td class="text-end ${alerta ? 'text-danger fw-semibold' : ''}">${tiempo}</td>
+            <td class="text-end">${vigente}</td>
+            <td class="text-end">${colocacion}</td>
+            <td class="text-end">0</td>
+          </tr>`,
+          )
+          .join('') +
+        `<tr class="table-light fw-semibold"><td>Subtotal comercial</td><td class="text-end text-warning-emphasis">1.72%</td><td class="text-end">≤ 92.5%</td>
+          <td class="text-end">$3,284,560.00</td><td class="text-end">$164,000.00</td><td class="text-end">0</td></tr>`;
+
+      // Créditos por día (suman 52, 48, 45 y 41) y emprendedoras de cada día.
+      const dias = [
+        ['SOFÍA MÉNDEZ', [21, 38], [17, 33], [14, 27]],
+        ['HÉCTOR SALINAS', [16, 33], [17, 34], [15, 29]],
+        ['PAOLA RÍOS', [14, 29], [16, 33], [15, 30]],
+        ['TOMÁS AGUIRRE', [13, 27], [14, 28], [14, 28]],
+      ];
+      const celda = ([creditos, emp]) =>
+        `<td class="text-end ${creditos > 20 ? 'celda-marcada' : ''}">${creditos}<br><small class="text-secondary">${emp} emp.</small></td>`;
+      document.getElementById('dias').innerHTML =
+        dias.map(([nombre, ...d]) => `<tr><td>${nombre}</td>${d.map(celda).join('')}</tr>`).join('') +
+        `<tr class="table-light fw-semibold"><td>CRÉDITOS por día</td><td class="text-end">64</td><td class="text-end">64</td><td class="text-end">58</td></tr>
+         <tr><td>EMPRENDEDORAS/ES por día</td><td class="text-end">125</td><td class="text-end">126</td><td class="text-end">112</td></tr>`;
+    </script>
+  </body>
+</html>

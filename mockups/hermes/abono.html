@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Registrar abono (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+    <style>
+      .hm-hero {
+        padding: 16px 18px;
+      }
+      .form-label {
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .form-text {
+        font-size: 12.5px;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body class="hm-movil">
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+    <!-- El abono que completa la cuota 11 de un grupo inventado: $3,900.00 ya pagados de $4,860.00. -->
+    <main class="px-3 py-3">
+      <div class="hm-hero mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="hm-hero-eyebrow" style="font-size: 11px">HERMES · Cobranza</div>
+          <button class="btn btn-sm btn-contorno py-0"><i class="bi bi-arrow-left"></i> Volver</button>
+        </div>
+        <div class="d-flex align-items-center gap-2 mt-2">
+          <span class="fw-semibold" style="font-size: 22px">Registrar abono</span><span class="badge badge-claro" style="font-size: 14px">Cuota 11 de 16</span>
+        </div>
+        <div class="mt-1"><a href="#" class="fw-semibold">P455-GP3LN-K226</a> <span class="badge badge-claro">GRUPO MANANTIAL</span></div>
+      </div>
+
+      <div class="card card-hm">
+        <div class="card-header py-2"><span><i class="bi bi-cash me-2"></i>Completar la cuota 11</span></div>
+        <div class="card-body">
+          <div class="mb-1"><strong>Cuota programada:</strong> $4,860.00</div>
+          <div class="mb-1"><strong>Fecha programada:</strong> 05/10/2026</div>
+          <div class="mb-3"><strong>Situación:</strong> <span class="text-danger fw-semibold">4 días de atraso</span></div>
+          <div class="alert alert-info py-2 small mb-3">
+            <strong>Abono parcial</strong> — Ya pagado: $3,900.00 / $4,860.00 | <strong>Pendiente: $960.00</strong>
+            <div class="progress mt-2" style="height: 8px"><div class="progress-bar" style="width: 80%; background: #1f6e4a"></div></div>
+          </div>
+          <label class="form-label">¿Cuánto te pagó?</label>
+          <input class="form-control form-control-lg" value="960.00" />
+          <div class="form-text">Si te pagó más que la cuota, el excedente se adelanta solo a las cuotas siguientes.</div>
+          <label class="form-label mt-3">Fecha de pago</label>
+          <input class="form-control text-center" value="9 oct 2026" />
+          <label class="form-label mt-3">Hora del pago</label>
+          <input class="form-control" value="11:42" />
+          <div class="form-text">
+            En formato de 24 horas: 14:30 = 2:30 pm. En el día programado, desde las 14:01 el pago cuenta como atraso.
+          </div>
+          <label class="form-label mt-3">Forma de pago</label>
+          <div class="d-flex gap-4">
+            <div class="form-check"><input class="form-check-input" type="radio" checked /><label class="form-check-label">Transferencia / depósito</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" /><label class="form-check-label">Efectivo</label></div>
+          </div>
+          <label class="form-label mt-2 text-danger">Multa por atraso</label>
+          <input class="form-control" value="0" />
+          <div class="form-text">Esta cuota ya tiene su multa de esta semana; por eso la propuesta es $0.00 y este abono no genera otra.</div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

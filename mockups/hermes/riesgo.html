@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>HERMES · Dashboard de riesgo (recreación con datos ficticios)</title>
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght.css" />
+    <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="hermes.css" />
+  </head>
+  <body>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
+
+    <!--
+      Cifras inventadas y coherentes con el dashboard: cartera vigente de $3,284,560.00 y 5 créditos con atraso
+      que suman $56,494.00 (1.72%). Las 4 bandas de antigüedad suman el saldo de cuotas en atraso.
+    -->
+    <main class="container-fluid px-4 py-3">
+      <div class="hm-breadcrumb mb-2"><a href="#">Módulos</a> / <a href="#">Dashboard</a> / Riesgo de pagos</div>
+
+      <section id="hoy">
+        <h1 class="h3 mb-3"><i class="bi bi-shield-exclamation text-marca me-2"></i>Riesgo de pagos <span class="text-secondary fs-5 fw-normal">· 09/10/2026</span></h1>
+        <h2 class="hm-seccion mb-3">¿Cuánto está en riesgo hoy?</h2>
+        <div class="row g-3">
+          <div class="col-3">
+            <div class="kpi kpi-warn">
+              <div><span class="chip"><i class="bi bi-exclamation-triangle-fill"></i>Atención</span> <span class="kpi-meta">meta desde 01/oct</span></div>
+              <div class="kpi-value kpi-value-sm mt-2">1.72%</div>
+              <div class="kpi-label">% de mora</div>
+              <div class="kpi-foot">PAR-1: $56,494.00 de $3,284,560.00</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="kpi kpi-danger">
+              <span class="chip chip-danger"><i class="bi bi-calendar-x text-danger"></i>5 créditos con atraso</span>
+              <div class="kpi-value kpi-value-sm mt-2">$56,494.00</div>
+              <div class="kpi-label">Saldo de créditos con atraso</div>
+              <div class="kpi-foot">misma cifra que MORA del tablero · incluye lo por vencer</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="kpi kpi-danger">
+              <span class="chip chip-danger"><i class="bi bi-exclamation-diamond text-danger"></i>3 créditos de 1 a 7 días</span>
+              <div class="kpi-value kpi-value-sm mt-2">$40,660.00</div>
+              <div class="kpi-label">Saldo de créditos con 1 a 7 días de atraso</div>
+              <div class="kpi-foot">la parte fresca del atraso</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="kpi kpi-danger">
+              <div class="kpi-meta"><i class="bi bi-dash-circle me-1"></i>Sin meta definida</div>
+              <div class="kpi-value kpi-value-sm mt-2">$15,834.00</div>
+              <div class="kpi-label">Cartera con 8 días o más de atraso</div>
+              <div class="kpi-foot">2 créditos · con la banda de 1 a 7 suma el saldo total</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="kpi kpi-danger">
+              <span class="chip chip-danger"><i class="bi bi-calendar-x text-danger"></i>51 cuotas atrasadas</span>
+              <div class="kpi-value kpi-value-sm mt-2">$61,929.00</div>
+              <div class="kpi-label">Saldo de cuotas en atraso</div>
+              <div class="kpi-foot">lo de hoy aún no cuenta (corte 2:00 pm) · antigüedad abajo</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="kpi kpi-danger">
+              <span class="chip chip-danger"><i class="bi bi-calendar-x text-danger"></i>6 cuotas de 1 a 7 días</span>
+              <div class="kpi-value kpi-value-sm mt-2">$6,853.00</div>
+              <div class="kpi-label">Cuotas con 1 a 7 días de atraso</div>
+              <div class="kpi-foot">la banda más reciente</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="kpi">
+              <div class="kpi-meta"><i class="bi bi-dash-circle me-1"></i>Sin meta definida</div>
+              <div class="kpi-value kpi-value-sm mt-2">$58,750.00</div>
+              <div class="kpi-label">Cartera en jurídico</div>
+              <div class="kpi-foot">6 créditos · 6 clientas</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="kpi">
+              <div class="kpi-meta"><i class="bi bi-dash-circle me-1"></i>Sin meta definida</div>
+              <div class="kpi-value kpi-value-sm mt-2">46</div>
+              <div class="kpi-label">Cuotas en jurídico</div>
+              <div class="kpi-foot">ya fuera de la cobranza normal</div>
+            </div>
+          </div>
+        </div>
+        <p class="hm-nota mt-3 mb-4">
+          Fotografía de hoy. El % DE MORA sube y baja con la semana de cobro: es presión de cobranza, no deterioro. En la primera fila, la banda de 1
+          a 7 días y la de 8 o más suman, exactas, el «Saldo de créditos con atraso». La segunda fila baja a cuotas: solo la porción vencida.
+        </p>
+
+        <h2 class="hm-seccion mb-3">¿Qué tan viejo es el atraso?</h2>
+        <div class="row g-3">
+          <div class="col-3"><div class="banda"><div class="banda-valor">$6,853.00</div><div class="banda-label">1-7 días (hoy solo tras el corte)</div><div class="mt-1">6 cuotas</div></div></div>
+          <div class="col-3"><div class="banda"><div class="banda-valor">$9,486.00</div><div class="banda-label">8-30 días</div><div class="mt-1">8 cuotas</div></div></div>
+          <div class="col-3"><div class="banda"><div class="banda-valor">$17,240.00</div><div class="banda-label">31-90 días</div><div class="mt-1">13 cuotas</div></div></div>
+          <div class="col-3"><div class="banda"><div class="banda-valor">$28,350.00</div><div class="banda-label">Más de 90 días</div><div class="mt-1">24 cuotas</div></div></div>
+        </div>
+        <p class="hm-nota mt-2 mb-0">
+          Las 4 bandas suman el «Saldo de cuotas en atraso» de arriba ($61,929.00 · 51 cuotas), toda la cartera incluida. Fotografía de hoy.
+        </p>
+      </section>
+
+      <section id="tendencia" class="card mt-4">
+        <div class="card-header bg-white py-3 fw-semibold fs-5"><i class="bi bi-graph-down-arrow text-marca me-2"></i>Tendencia del % de mora</div>
+        <div class="card-body">
+          <p class="hm-nota">
+            La línea tenue es la foto diaria del % DE MORA: sube y baja con el ciclo lunes-miércoles de vencimientos. Los puntos oscuros son el
+            <strong>cierre de cada semana</strong>, la serie comparable. La punteada es la cartera con 8 días o más de atraso.
+          </p>
+          <svg id="grafica" viewBox="0 0 1180 300" width="100%" role="img" aria-label="Tendencia del porcentaje de mora (datos ficticios)"></svg>
+          <div class="d-flex justify-content-center gap-4 small text-secondary mt-1">
+            <span><span class="punto" style="background: #adb5bd"></span>% de mora (foto diaria)</span>
+            <span><span class="punto" style="background: #1d2b3a"></span>% de mora al cierre de semana</span>
+            <span><span class="punto" style="background: #a8571c"></span>Cartera con 8 días o más de atraso</span>
+          </div>
+        </div>
+        <div class="card-footer bg-white hm-nota">Un hueco en la línea es un día sin foto.</div>
+      </section>
+
+      <section id="puntualidad" class="mt-4">
+        <h2 class="hm-seccion mb-1">¿Cómo se mueve el riesgo?</h2>
+        <h3 class="h6 fw-semibold mb-1">¿Qué tan puntual paga la cartera?</h3>
+        <p class="hm-nota mb-2">
+          Mes operativo en curso: cuotas programadas del 1 al 28 de octubre de 2026, la misma cifra por gerente que la columna «En tiempo y forma» de
+          Mi tablero.
+        </p>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div class="btn-group btn-group-sm text-nowrap">
+            <button class="btn btn-hm text-nowrap">Mes operativo</button><button class="btn btn-outline-secondary text-nowrap">Últimos 30 días</button
+            ><button class="btn btn-outline-secondary text-nowrap">Últimos 90 días</button><button class="btn btn-outline-secondary">Todo</button>
+          </div>
+          <span class="small text-secondary text-nowrap">Cuotas del</span><input class="form-control form-control-sm" style="width: 110px" /><span class="small text-secondary">al</span
+          ><input class="form-control form-control-sm" style="width: 110px" /><button class="btn btn-sm btn-outline-secondary">Aplicar</button>
+        </div>
+        <div class="kpi kpi-warn py-3" style="border-top: 3px solid #a8571c">
+          <div class="d-flex justify-content-center align-items-center gap-2">
+            <span class="kpi-value">≤ 92.5%</span><span class="chip"><i class="bi bi-exclamation-triangle-fill"></i>Atención</span><span class="kpi-meta">meta desde 15/sep</span>
+          </div>
+          <div class="fs-6">Pagos en tiempo y forma (pool de la cartera comercial)</div>
+          <div class="small text-secondary">172 de 186 cuotas pagadas o atrasadas en 184 créditos. Las 5 atrasadas sin pagar al corte cuentan en contra.</div>
+        </div>
+
+        <h3 class="h6 fw-semibold mt-4 mb-1">Composición del cobro</h3>
+        <p class="mb-2">De cada 10 cuotas cobradas con hora conocida, hasta <strong>9</strong> llegan antes de las 2:00 pm del día de pago.</p>
+        <div class="barra-cobro mb-3">
+          <span class="bg-tiempo" style="width: 91.6%"></span><span class="bg-tarde" style="width: 6.1%"></span><span class="bg-atraso" style="width: 2.3%"></span>
+        </div>
+        <div class="row g-2 small">
+          <div class="col-4"><span class="punto bg-tiempo"></span><strong class="c-tiempo">≤ 164 de 179 · 92%</strong><div class="text-secondary ms-3">llegaron antes de las 2:00 pm del día de pago</div></div>
+          <div class="col-4"><span class="punto bg-tarde"></span><strong class="c-tarde">11 de 179 · 6%</strong><div class="text-secondary ms-3">llegaron el mismo día, pero después de las 2:00 pm</div></div>
+          <div class="col-4"><span class="punto bg-atraso"></span><strong class="c-atraso">4 de 179 · 2%</strong><div class="text-secondary ms-3">llegaron otro día, ya con atraso</div></div>
+        </div>
+        <p class="hm-nota mt-3 mb-0">
+          <i class="bi bi-square text-danger me-1"></i><strong class="text-danger">5 cuotas atrasadas sin pagar al corte</strong>: cuentan en contra del %; no hay
+          dinero que clasificar en las bandas. La hora del pago se conoce en cada cobro capturado en la app.
+        </p>
+
+        <h3 class="h6 fw-semibold mt-4 mb-2">¿Cómo se está cobrando lo exigible?</h3>
+        <div class="card">
+          <div class="card-body py-2">
+            <div class="hm-nota mb-2">Cuotas de los últimos 56 días con su semana de cobranza ya cumplida:</div>
+            <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+              <div>Operación comercial<div class="small text-secondary">faltan $2,940.00</div></div>
+              <div class="text-end"><strong>99.4%</strong> cobrado de lo exigible<div class="small text-secondary">pérdida anualizada 0.9%</div></div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>Con el libro de jurídico<div class="small text-secondary">faltan $61,380.00</div></div>
+              <div class="text-end"><strong>96.4%</strong> cobrado<div class="small text-secondary">pérdida anualizada 9.8%</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="donde" class="mt-4">
+        <h2 class="hm-seccion mb-2">¿Dónde está el atraso?</h2>
+        <table class="table tabla-limpia mb-0" style="font-size: 14.5px">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th class="text-end">Días de atraso</th>
+              <th>Clienta</th>
+              <th>Gerente</th>
+              <th>Folio</th>
+              <th>Atraso desde</th>
+              <th class="text-end">Cuotas atrasadas</th>
+              <th class="text-end">Saldo de cuotas en atraso</th>
+              <th class="text-end">Saldo del crédito</th>
+            </tr>
+          </thead>
+          <tbody id="atrasos"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script>
+      // ¿Dónde está el atraso? Clientas, grupos y folios inventados.
+      const juridico = '<span class="badge badge-juridico ms-1">JURÍDICO</span>';
+      const atrasos = [
+        [236, 'GRUPO LA COLMENA' + juridico, 'JURÍDICO', 118, 'Cuota 7 de 16', 'pagó 6 completas · ciclo 2', 10, '$16,800.00', '$16,800.00'],
+        [151, 'ROSA ELENA PIÑA MORALES' + juridico, 'JURÍDICO', 204, 'Cuota 3 de 16 <span class="badge badge-temprano">Atraso temprano</span>', 'pagó 2 completas · 1er crédito', 14, '$6,720.00', '$6,720.00'],
+        [63, 'GRUPO LAS ABEJAS' + juridico, 'JURÍDICO', 317, 'Cuota 12 de 16', 'pagó 11 completas · ciclo 3', 5, '$9,350.00', '$9,350.00'],
+        [24, 'BEATRIZ FLORES NAVA', 'PAOLA RÍOS', 402, 'Cuota 13 de 16', 'pagó 12 completas · la #13 quedó parcial · ciclo 2', 4, '$4,410.00', '$4,410.00'],
+        [17, 'GRUPO ESTRELLAS', 'PAOLA RÍOS', 438, 'Cuota 9 de 16', 'pagó 8 completas · ciclo 4', 3, '$4,284.00', '$11,424.00'],
+        [4, 'GRUPO MANANTIAL', 'PAOLA RÍOS', 455, 'Cuota 11 de 16', 'pagó 10 completas · la #11 quedó parcial · ciclo 2', 1, '$960.00', '$25,260.00'],
+        [3, 'LORENA OROZCO PAZ', 'HÉCTOR SALINAS', 461, 'Cuota 9 de 16', 'pagó 8 completas · 1er crédito', 1, '$1,015.00', '$8,120.00'],
+        [2, 'MÓNICA SALAS BRITO', 'PAOLA RÍOS', 470, 'Cuota 9 de 16', 'pagó 8 completas · ciclo 3', 1, '$910.00', '$7,280.00'],
+      ];
+      document.getElementById('atrasos').innerHTML = atrasos
+        .map(
+          ([dias, clienta, gerente, folio, desde, detalle, cuotas, saldoCuotas, saldo], i) => `
+          <tr>
+            <td class="text-secondary">${i + 1}</td>
+            <td class="text-end fw-bold">${dias}</td>
+            <td>${clienta}</td>
+            <td>${gerente}</td>
+            <td class="text-nowrap"><a href="#">${folio}</a> <i class="bi bi-box-arrow-up-right small text-primary"></i></td>
+            <td>${desde}<div class="small text-secondary">${detalle}</div></td>
+            <td class="text-end">${cuotas}</td>
+            <td class="text-end">${saldoCuotas}</td>
+            <td class="text-end">${saldo}</td>
+          </tr>`,
+        )
+        .join('');
+
+      // Tendencia inventada: del 24 de agosto (lunes) al 9 de octubre de 2026 (viernes), 47 días.
+      const W = 1180, H = 300, izq = 46, der = 16, arriba = 14, abajo = 34, dias = 47, maximo = 6;
+      const x = (d) => izq + (d / (dias - 1)) * (W - izq - der);
+      const y = (v) => arriba + (1 - v / maximo) * (H - arriba - abajo);
+      let semilla = 11;
+      const azar = () => (semilla = (semilla * 16807) % 2147483647) / 2147483647;
+      const base = (d) => 3.05 - (1.4 * d) / (dias - 1);
+      const pico = [0.55, 1.2, 1.8, 0.6, 0.12, 0, 0]; // de lunes a domingo
+      const sinFoto = 17;
+      const diario = Array.from({ length: dias }, (_, d) =>
+        d === sinFoto ? null : base(d) + pico[d % 7] * (0.75 + 0.5 * azar()) + (azar() - 0.5) * 0.14,
+      );
+      diario[dias - 1] = 1.72;
+      const ocho = Array.from({ length: dias }, (_, d) => {
+        if (d === sinFoto) return null;
+        const escalon = [1.22, 1.1, 0.95, 0.82, 0.7, 0.55, 0.48][Math.floor(d / 7)];
+        return escalon + (d % 7 === 2 ? 0.08 : 0);
+      });
+      const cierres = [6, 13, 20, 27, 34, 41];
+
+      const trazo = (serie) => {
+        let d = '', abierto = false;
+        serie.forEach((v, i) => {
+          if (v === null) { abierto = false; return; }
+          d += `${abierto ? 'L' : 'M'}${x(i).toFixed(1)} ${y(v).toFixed(1)} `;
+          abierto = true;
+        });
+        return d;
+      };
+      const etiquetas = [[0, '24 ago'], [6, '30 ago'], [12, '5 sep'], [18, '11 sep'], [24, '17 sep'], [30, '23 sep'], [36, '29 sep'], [42, '5 oct']];
+      let svg = '';
+      for (let v = 0; v <= maximo; v++) {
+        svg += `<line x1="${izq}" x2="${W - der}" y1="${y(v)}" y2="${y(v)}" stroke="#e9ecef" />`;
+        svg += `<text x="${izq - 10}" y="${y(v) + 4}" text-anchor="end" font-size="12" fill="#6c757d">${v}%</text>`;
+      }
+      etiquetas.forEach(([d, t]) => (svg += `<text x="${x(d)}" y="${H - 10}" text-anchor="middle" font-size="12" fill="#6c757d">${t}</text>`));
+      [21, 38].forEach((d) => {
+        svg += `<line x1="${x(d)}" x2="${x(d)}" y1="${arriba}" y2="${H - abajo}" stroke="#6c757d" stroke-dasharray="4 4" />`;
+        svg += `<text x="${x(d) + 6}" y="${arriba + 10}" font-size="11" fill="#6c757d">meta nueva</text>`;
+      });
+      svg += `<path d="${trazo(diario)}" fill="none" stroke="#adb5bd" stroke-width="1.6" />`;
+      svg += `<path d="${trazo(ocho)}" fill="none" stroke="#a8571c" stroke-width="2" stroke-dasharray="6 5" />`;
+      const puntos = cierres.map((d) => [x(d), y(diario[d])]);
+      svg += `<polyline points="${puntos.map((p) => p.join(',')).join(' ')}" fill="none" stroke="#1d2b3a" stroke-width="2.4" />`;
+      puntos.forEach(([px, py]) => (svg += `<circle cx="${px}" cy="${py}" r="5.5" fill="#1d2b3a" />`));
+      document.getElementById('grafica').innerHTML = svg;
+    </script>
+  </body>
+</html>

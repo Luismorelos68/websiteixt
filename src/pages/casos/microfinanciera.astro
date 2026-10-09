@@ -5,6 +5,7 @@ import BrowserFrame from '../../components/BrowserFrame.astro';
 import CtaContacto from '../../components/CtaContacto.astro';
 import Icon from '../../components/Icon.astro';
 import PhoneFrame from '../../components/PhoneFrame.astro';
+import { resultados, avisoConfidencialidad } from '../../data/caso';
 import dashboard from '../../assets/hermes/dashboard.png';
 import gerentes from '../../assets/hermes/dashboard-gerentes.png';
 import clientes from '../../assets/hermes/clientes.png';
@@ -18,7 +19,7 @@ import solicitudLeida from '../../assets/hermes/solicitud-leida.png';
 import cashflowCiclo from '../../assets/hermes/cashflow-ciclo.png';
 
 const ficha = [
-  { termino: 'Cliente', valor: 'EquiFin' },
+  { termino: 'Cliente', valor: 'Microfinanciera (nombre confidencial)' },
   { termino: 'Sector', valor: 'Microfinanzas' },
   { termino: 'Qué hicimos', valor: 'Análisis financiero (P&L y flujo de caja), desarrollo a la medida con OCR + IA y acompañamiento' },
   { termino: 'Estado', valor: 'En producción y en mejora continua' },
@@ -106,7 +107,7 @@ const modulos = [
     icono: 'wallet',
     titulo: 'Análisis de flujo de caja',
     texto:
-      'Lo financiero, primero: junto con su P&L, EquiFin cuenta con un análisis de su flujo de efectivo que muestra si la operación se fondea sola o consume caja.',
+      'Lo financiero, primero: junto con su P&L, el cliente cuenta con un análisis de su flujo de efectivo que muestra si la operación se fondea sola o consume caja.',
     puntos: [
       'Liquidez, días de cobertura y burn rate, con semáforos de salud financiera.',
       'A dónde va cada $100 cobrados: operación, renovaciones y créditos nuevos.',
@@ -126,7 +127,7 @@ const forma = [
     icono: 'landmark',
     titulo: 'Primero, los números',
     texto:
-      'Empezamos por el P&L y el flujo de efectivo. Cada cifra del tablero tiene una definición acordada con EquiFin —mora, cartera vigente, interés por cuota— y el sistema la muestra donde se usa.',
+      'Empezamos por el P&L y el flujo de efectivo. Cada cifra del tablero tiene una definición acordada con el cliente —mora, cartera vigente, interés por cuota— y el sistema la muestra donde se usa.',
   },
   {
     icono: 'refresh-cw',
@@ -141,35 +142,39 @@ const forma = [
   {
     icono: 'puzzle',
     titulo: 'Módulos a la medida',
-    texto: 'Cada módulo se adaptó a cómo trabaja EquiFin, y los nuevos se suman cuando la operación los pide.',
+    texto: 'Cada módulo se adaptó a cómo trabaja el cliente, y los nuevos se suman cuando la operación los pide.',
   },
 ] as const;
 ---
 
 <Base
-  title="IXT · Caso EquiFin"
-  imagen="og-equifin.jpg"
+  title="IXT · Caso de éxito: microfinanciera"
+  imagen="og-caso.jpg"
   imagenAlt="HERMES: del primer contacto al último pago. Solicitudes con OCR + IA, cobranza semanal y métricas en tiempo real."
-  description="Cómo construimos HERMES, el sistema de microfinanzas de EquiFin: solicitudes con OCR + IA, clientes, grupos, cobranza semanal y métricas en tiempo real."
+  description="Cómo una microfinanciera ganó eficiencia operativa con HERMES: solicitudes con OCR + IA, cobranza semanal, métricas en tiempo real y análisis de flujo de caja."
 >
   <!-- PORTADA DEL CASO -->
   <section class="trama-fondo relative overflow-hidden border-b border-white/5">
     <div class="pointer-events-none absolute -left-40 top-0 h-[30rem] w-[30rem] rounded-full bg-jade/10 blur-3xl" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-6xl px-6 pt-16 md:pt-24">
-      <p class="eyebrow mb-6">Caso · Microfinanzas</p>
+      <p class="eyebrow mb-6">Caso de éxito · Microfinanzas</p>
       <h1 class="max-w-4xl text-balance font-serif text-[2.6rem] font-bold leading-[1.05] text-hueso sm:text-5xl md:text-6xl">
-        EquiFin: su operación de microcréditos en un solo sistema.
+        Más eficiencia operativa para una microfinanciera.
       </h1>
       <div class="mt-10 grid gap-10 lg:grid-cols-12">
         <div class="lg:col-span-7">
           <p class="text-lg leading-relaxed text-hueso/80">
-            Junto con el equipo de EquiFin diseñamos y construimos <strong class="font-semibold text-hueso">HERMES</strong>, el
-            sistema con el que hoy levantan solicitudes en campo, administran clientes y grupos, cobran cada semana y miden su
-            cartera en tiempo real.
+            Nuestro cliente otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Con su equipo
+            diseñamos y construimos <strong class="font-semibold text-hueso">HERMES</strong>, el sistema con el que hoy
+            levantan solicitudes en campo, administran clientes y grupos, cobran cada semana y miden su cartera en tiempo real.
           </p>
-          <a href="https://equifin.com.mx" target="_blank" rel="noopener" class="btn-secundario mt-8">
-            equifin.com.mx <Icon name="arrow-up-right" class="h-4 w-4" />
-          </a>
+          <div class="mt-8 flex gap-4 rounded-2xl border border-jade/25 bg-jade/5 p-5">
+            <Icon name="lock" class="mt-0.5 h-5 w-5 shrink-0 text-jade" />
+            <p class="text-sm leading-relaxed text-hueso/80">
+              <strong class="font-semibold text-hueso">Su privacidad, primero.</strong>
+              {avisoConfidencialidad}
+            </p>
+          </div>
         </div>
         <dl class="grid grid-cols-2 gap-x-6 gap-y-6 text-sm lg:col-span-5">
           {ficha.map(({ termino, valor }) => (
@@ -179,6 +184,17 @@ const forma = [
             </div>
           ))}
         </dl>
+      </div>
+
+      <h2 class="eyebrow mb-6 mt-16">Resultados en eficiencia operativa</h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {resultados.map((r) => (
+          <article class="rounded-2xl border border-white/10 bg-black/30 p-6">
+            <Icon name={r.icono} class="h-6 w-6 text-jade" />
+            <h3 class="mt-4 font-serif text-xl font-bold text-hueso">{r.titulo}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-hueso/70">{r.texto}</p>
+          </article>
+        ))}
       </div>
     </div>
     <div class="relative mx-auto max-w-6xl px-6 pb-20 pt-14">
@@ -290,8 +306,7 @@ const forma = [
       </div>
 
       <p class="mt-20 text-sm text-obsidiana/60">
-        Las pantallas de esta página son de una versión de demostración, con la marca de IXT y datos ficticios. La información
-        de EquiFin y de sus clientes es confidencial.
+        {avisoConfidencialidad}
       </p>
     </div>
   </section>

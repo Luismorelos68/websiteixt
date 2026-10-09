@@ -1,0 +1,25 @@
+---
+// Ícono de IXT en línea (mismo dibujo que public/brand/icono-jade.svg, sin máscara ni ids): se pinta con el
+// HTML, sin pedir un archivo aparte, así que no puede quedar roto aunque falle la carga de imágenes.
+interface Props {
+  class?: string;
+  /** Texto para lectores de pantalla; sin él, el ícono es decorativo. */
+  titulo?: string;
+}
+
+const { class: className = 'h-8 w-8 text-jade', titulo } = Astro.props;
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="32.5 -7.5 115 115"
+  fill="currentColor"
+  class={className}
+  role={titulo ? 'img' : undefined}
+  aria-label={titulo}
+  aria-hidden={titulo ? undefined : 'true'}
+>
+  <path
+    d="M37.5-2.5h25v25h-25zM117.5-2.5h25v25h-25zM57.5 17.5h25v25h-25zM97.5 17.5h25v25h-25zM57.5 57.5h25v25h-25zM97.5 57.5h25v25h-25zM37.5 77.5h25v25h-25zM117.5 77.5h25v25h-25z"
+  />
+  <path fill-rule="evenodd" d="M73 33h34v34H73zM84 44v12h12V44z" />
+</svg>

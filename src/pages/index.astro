@@ -5,43 +5,11 @@ import CtaContacto from '../components/CtaContacto.astro';
 import Icon from '../components/Icon.astro';
 import PhoneFrame from '../components/PhoneFrame.astro';
 import { base } from '../utils/base';
+import { resultados, avisoConfidencialidad } from '../data/caso';
 import dashboard from '../assets/hermes/dashboard.png';
 import credito from '../assets/hermes/credito.png';
 import solicitudLeida from '../assets/hermes/solicitud-leida.png';
 import cashflow from '../assets/hermes/cashflow.png';
-
-const capacidades = [
-  {
-    icono: 'scan-text',
-    titulo: 'Solicitudes con OCR\u00a0+\u00a0IA',
-    texto: 'El gerente fotografía la credencial en campo; el sistema la lee, llena la solicitud y la valida.',
-  },
-  {
-    icono: 'activity',
-    titulo: 'Métricas en tiempo real',
-    texto: 'Mora, cartera vigente y colocación por gerente al momento, contra la meta y con semáforo.',
-  },
-  {
-    icono: 'calendar-check',
-    titulo: 'Cobranza semanal',
-    texto: 'Calendario de pagos de cada crédito: en tiempo, adelantado o pendiente, con multas e historial.',
-  },
-  {
-    icono: 'users',
-    titulo: 'Clientes y grupos',
-    texto: 'Expedientes de cada emprendedora y de cada grupo, con alertas cuando falta información.',
-  },
-  {
-    icono: 'scale',
-    titulo: 'Reglas claras',
-    texto: 'Las políticas de crédito viven en el sistema y se explican en pantalla, para que todos cuenten igual.',
-  },
-  {
-    icono: 'puzzle',
-    titulo: 'Módulos a la medida',
-    texto: 'Cada módulo se adapta a cómo trabaja el cliente, y se suman módulos nuevos cuando hacen falta.',
-  },
-] as const;
 
 const etapas = [
   {
@@ -85,7 +53,12 @@ const formaDeTrabajo = [
   {
     icono: 'wallet',
     titulo: 'Costo por módulo, con plan de pagos',
-    texto: 'Cotizamos por módulo, ya sea uno existente o uno nuevo, según lo que necesite. Lo paga con un plan de pagos y le emitimos factura.',
+    texto: 'Cotizamos por módulo, ya sea uno existente o uno nuevo, según lo que necesite, y lo paga con un plan de pagos.',
+  },
+  {
+    icono: 'file-check',
+    titulo: 'Emitimos factura',
+    texto: 'Le entregamos factura por nuestros servicios.',
   },
   {
     icono: 'target',
@@ -96,6 +69,16 @@ const formaDeTrabajo = [
     icono: 'user-round-check',
     titulo: 'Trato directo',
     texto: 'Habla con quienes diseñan y construyen su solución, sin intermediarios.',
+  },
+  {
+    icono: 'lock',
+    titulo: 'Confidencialidad',
+    texto: 'No publicamos el nombre ni los datos de nuestros clientes, y firmamos acuerdo de confidencialidad.',
+  },
+  {
+    icono: 'graduation-cap',
+    titulo: 'Su equipo, capacitado',
+    texto: 'Nadie se queda sin saber usar lo que construimos.',
   },
 ] as const;
 
@@ -133,6 +116,11 @@ const metas = [
 
 const valores = [
   {
+    icono: 'lock',
+    nombre: 'Confidencialidad',
+    texto: 'Nuestros clientes cuidan su privacidad y nosotros también: no publicamos sus nombres ni sus datos, firmamos acuerdo de confidencialidad y tratamos su información conforme a la LFPDPPP.',
+  },
+  {
     icono: 'eye',
     nombre: 'Saber ver',
     texto: 'Entendemos antes de proponer. Ixtlamatini es el que conoce porque vio, no porque le contaron.',
@@ -146,11 +134,6 @@ const valores = [
     icono: 'compass',
     nombre: 'Independencia',
     texto: 'No recibimos comisiones de proveedores ni de instituciones financieras: recomendamos lo que le conviene a usted.',
-  },
-  {
-    icono: 'lock',
-    nombre: 'Confidencialidad',
-    texto: 'Acuerdo firmado y su información tratada con estándares del sector financiero, conforme a la LFPDPPP.',
   },
   {
     icono: 'file-search',
@@ -214,8 +197,8 @@ const especialidades = [
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
           <a href={`${base}/contacto/`} class="btn-primario">Agendar conversación</a>
-          <a href={`${base}/casos/equifin/`} class="btn-secundario">
-            Ver el caso EquiFin <Icon name="arrow-right" class="h-4 w-4" />
+          <a href={`${base}/casos/microfinanciera/`} class="btn-secundario">
+            Ver caso de éxito <Icon name="arrow-right" class="h-4 w-4" />
           </a>
         </div>
         <p class="mt-6 font-mono text-xs uppercase tracking-widest text-hueso/50">Primera conversación sin costo</p>
@@ -229,45 +212,55 @@ const especialidades = [
           prioridad
         />
         <a
-          href={`${base}/casos/equifin/`}
+          href={`${base}/casos/microfinanciera/`}
           class="absolute -bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-jade/30 bg-obsidiana/90 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-jade shadow-lg backdrop-blur transition hover:border-jade"
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-jade"></span> HERMES · en operación en EquiFin
+          <span class="h-1.5 w-1.5 rounded-full bg-jade"></span> Caso real · Microfinanciera
         </a>
       </div>
     </div>
   </section>
 
-  <!-- CASO EQUIFIN -->
-  <section id="equifin" class="bg-hueso text-obsidiana">
+  <!-- CASO DE ÉXITO -->
+  <section id="caso" class="bg-hueso text-obsidiana">
     <div class="mx-auto max-w-6xl px-6 py-24">
       <div class="grid gap-12 lg:grid-cols-12">
         <div class="lg:col-span-5">
-          <p class="eyebrow mb-4 text-jade-oscuro">Lo que hemos construido</p>
-          <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">HERMES: la operación de EquiFin en un solo sistema.</h2>
+          <p class="eyebrow mb-4 text-jade-oscuro">Caso de éxito · Microfinanciera</p>
+          <h2 class="text-balance font-serif text-4xl font-bold md:text-5xl">Más eficiencia operativa para una microfinanciera.</h2>
           <p class="mt-6 text-lg leading-relaxed text-obsidiana/75">
-            EquiFin otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Con su equipo diseñamos y
-            construimos HERMES, el sistema donde hoy administran todo el recorrido: de la solicitud en campo a la cobranza
-            semanal.
+            Nuestro cliente otorga microcréditos individuales y grupales a emprendedoras y emprendedores. Con su equipo
+            diseñamos y construimos HERMES, el sistema donde hoy administran todo el recorrido: de la solicitud en campo a la
+            cobranza semanal.
           </p>
+          <div class="mt-8 flex gap-4 rounded-2xl border border-jade-oscuro/20 bg-white p-5">
+            <Icon name="lock" class="mt-0.5 h-5 w-5 shrink-0 text-jade-oscuro" />
+            <p class="text-sm leading-relaxed text-obsidiana/75">
+              <strong class="font-semibold text-obsidiana">Su privacidad, primero.</strong>
+              {avisoConfidencialidad}
+            </p>
+          </div>
           <a
-            href={`${base}/casos/equifin/`}
+            href={`${base}/casos/microfinanciera/`}
             class="mt-8 inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider text-jade-oscuro underline decoration-jade decoration-2 underline-offset-8 transition hover:text-obsidiana"
           >
             Conozca el caso completo <Icon name="arrow-right" class="h-4 w-4" />
           </a>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-          {capacidades.map((c) => (
-            <article class="rounded-2xl border border-obsidiana/10 bg-white p-6 shadow-sm">
-              <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro">
-                <Icon name={c.icono} class="h-5 w-5" />
-              </span>
-              <h3 class="mt-4 font-serif text-xl font-bold">{c.titulo}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{c.texto}</p>
-            </article>
-          ))}
+        <div class="lg:col-span-7">
+          <h3 class="eyebrow mb-4 text-jade-oscuro">Resultados en eficiencia operativa</h3>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {resultados.map((r) => (
+              <article class="rounded-2xl border border-obsidiana/10 bg-white p-6 shadow-sm">
+                <span class="inline-flex rounded-xl bg-jade/15 p-2.5 text-jade-oscuro">
+                  <Icon name={r.icono} class="h-5 w-5" />
+                </span>
+                <h4 class="mt-4 font-serif text-xl font-bold">{r.titulo}</h4>
+                <p class="mt-2 text-sm leading-relaxed text-obsidiana/70">{r.texto}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -286,10 +279,7 @@ const especialidades = [
           pie="Solicitud en campo: la credencial se lee sola."
         />
       </div>
-      <p class="mt-6 text-sm text-obsidiana/60">
-        Pantallas de una versión de demostración, con la marca de IXT y datos ficticios: la información de EquiFin y de sus
-        clientes es confidencial.
-      </p>
+      <p class="mt-6 text-sm text-obsidiana/60">Versión de demostración, con la marca de IXT y datos ficticios.</p>
     </div>
   </section>
 

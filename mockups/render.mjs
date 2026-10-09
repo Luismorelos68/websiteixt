@@ -29,7 +29,7 @@ const capturas = [
 // Vistas previas para WhatsApp y redes (Open Graph): 1200×630, JPG ligero (WhatsApp pide menos de 300 KB).
 const vistasPrevias = [
   { pagina: 'inicio.html', archivo: 'og.jpg' },
-  { pagina: 'caso-equifin.html', archivo: 'og-equifin.jpg' },
+  { pagina: 'caso.html', archivo: 'og-caso.jpg' },
 ];
 
 const browser = await chromium.launch();

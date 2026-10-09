@@ -1,4 +1,5 @@
 ---
+import LogoIxt from './LogoIxt.astro';
 import { base } from '../utils/base';
 import { correoContacto, correoVentas } from '../data/contacto';
 
@@ -9,7 +10,7 @@ const mes = ahora.toLocaleDateString('es-MX', { month: 'long' });
 const actualizado = `${mes.charAt(0).toUpperCase()}${mes.slice(1)} ${year}`;
 
 const secciones = [
-  { href: `${base}/casos/equifin/`, label: 'Caso EquiFin' },
+  { href: `${base}/casos/microfinanciera/`, label: 'Caso de éxito' },
   { href: `${base}/#acompanamiento`, label: 'Cómo trabajamos' },
   { href: `${base}/#finanzas`, label: 'Finanzas' },
   { href: `${base}/#especialidades`, label: 'Especialidades' },
@@ -20,7 +21,7 @@ const secciones = [
 <footer class="border-t border-white/5 bg-obsidiana">
   <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-4">
     <div class="md:col-span-2">
-      <img src={`${base}/brand/icono-jade.svg`} alt="IXT" class="h-10 w-10" />
+      <LogoIxt class="h-10 w-10 text-jade" titulo="IXT" />
       <p class="mt-6 max-w-md text-sm leading-relaxed text-hueso/70">
         IXT viene de <em class="not-italic text-hueso">ixtli</em> —rostro, ojo, superficie— y
         <em class="not-italic text-hueso">mati</em> —conocer. Significa el que sabe con los ojos:

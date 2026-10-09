@@ -1,8 +1,9 @@
 ---
+import LogoIxt from './LogoIxt.astro';
 import { base } from '../utils/base';
 
 const links = [
-  { href: `${base}/casos/equifin/`, label: 'Caso EquiFin' },
+  { href: `${base}/casos/microfinanciera/`, label: 'Caso de éxito' },
   { href: `${base}/#acompanamiento`, label: 'Cómo trabajamos' },
   { href: `${base}/#finanzas`, label: 'Finanzas' },
   { href: `${base}/#especialidades`, label: 'Especialidades' },
@@ -17,7 +18,7 @@ const actual = (href: string) => (href === paginaActual ? 'page' : undefined);
 <header class="sticky top-0 z-50 border-b border-white/5 bg-obsidiana/80 backdrop-blur-lg">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Principal">
     <a href={`${base}/`} class="flex items-center gap-3" aria-label="Inicio IXT">
-      <img src={`${base}/brand/icono-jade.svg`} alt="" class="h-8 w-8" />
+      <LogoIxt class="h-8 w-8 text-jade" />
       <span class="font-serif text-xl font-bold tracking-tight text-hueso">IXT</span>
     </a>
     <div class="flex items-center gap-2 lg:gap-8">

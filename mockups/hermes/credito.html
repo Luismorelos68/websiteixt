@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/wght-italic.css" />
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="equifin.css" />
+    <link rel="stylesheet" href="hermes.css" />
   </head>
   <body class="bg-body-tertiary">
-    <nav class="ef-navbar"><span class="ef-logo">EquiFin</span><span class="ef-burger"><i class="bi bi-list"></i></span></nav>
+    <nav class="hm-navbar"><span class="hm-marca"><img src="../../public/brand/icono-jade.svg" alt="" />IXT<span class="hm-producto">HERMES</span></span><span class="hm-burger"><i class="bi bi-list"></i></span></nav>
 
     <main class="container-fluid px-4 py-3">
       <div class="d-flex align-items-end justify-content-between mb-3">
         <div>
           <a class="btn btn-sm btn-outline-secondary mb-2 bg-white"><i class="bi bi-arrow-left"></i> Clientes</a>
-          <h1 class="h4 mb-1">Crédito <span class="ef-code fs-5">P412-BACA120586PK-P530</span></h1>
+          <h1 class="h4 mb-1">Crédito <span class="hm-code fs-5">P412-BACA120586PK-P530</span></h1>
           <div class="text-secondary">AMELIA BARRERA CASTILLO · Gerente: Sofía Méndez Rangel</div>
         </div>
         <span class="badge text-bg-success fs-6">Activo con préstamo</span>
@@ -24,7 +24,7 @@
 
       <div class="row g-3">
         <div class="col-8">
-          <div class="card card-ef">
+          <div class="card card-hm">
             <div class="card-header py-3">
               <span><i class="bi bi-calendar3 me-2"></i>Calendario de pagos</span>
               <span class="fw-semibold small">8 pagados · 8 pendientes</span>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="col-4 d-flex flex-column gap-3">
-          <div class="card card-ef">
+          <div class="card card-hm">
             <div class="card-header py-3"><span><i class="bi bi-cash-coin me-2"></i>Crédito</span></div>
             <ul class="list-group list-group-flush small">
               <li class="list-group-item d-flex justify-content-between"><span>Monto prestado</span><strong>$6,000.00</strong></li>
@@ -62,7 +62,7 @@
             </ul>
           </div>
 
-          <div class="card card-ef" id="politica">
+          <div class="card card-hm" id="politica">
             <div class="card-header py-3"><span><i class="bi bi-shield-exclamation me-2"></i>¿Qué significa la política?</span></div>
             <div class="card-body small">
               <p class="mb-2">
@@ -78,7 +78,7 @@
             </div>
           </div>
 
-          <div class="card card-ef">
+          <div class="card card-hm">
             <div class="card-header py-3"><span><i class="bi bi-clock-history me-2"></i>Historial del cliente</span></div>
             <ul class="list-group list-group-flush small">
               <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -124,7 +124,7 @@
             return `<tr>
               <td class="ps-3">${i + 1}</td><td>${fecha}</td><td>${STATUS[tipo]}</td>
               <td class="text-end">$420.00</td><td class="text-end">$420.00</td>
-              <td class="text-center"><span class="ef-pill ${trans > 1 ? 'ef-pill-dark' : ''}">${trans} <i class="bi bi-receipt"></i></span></td>
+              <td class="text-center"><span class="hm-pill ${trans > 1 ? 'hm-pill-dark' : ''}">${trans} <i class="bi bi-receipt"></i></span></td>
               <td class="text-center">—</td><td>${dia} <span class="text-secondary">${hora}</span></td>
               <td class="text-end pe-3"><button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button></td>
             </tr>`;
@@ -134,7 +134,7 @@
             <td class="text-end">$420.00</td><td class="text-end">—</td><td class="text-center text-secondary">—</td>
             <td class="text-center">—</td><td>—</td>
             <td class="text-end pe-3"><button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
-              <button class="btn btn-sm btn-ef"><i class="bi bi-cash"></i></button></td>
+              <button class="btn btn-sm btn-hm"><i class="bi bi-cash"></i></button></td>
           </tr>`;
         })
         .join('');

@@ -4,9 +4,9 @@ import BrowserFrame from '../components/BrowserFrame.astro';
 import CtaContacto from '../components/CtaContacto.astro';
 import Icon from '../components/Icon.astro';
 import { base } from '../utils/base';
-import dashboard from '../assets/equifin/dashboard.png';
-import clientes from '../assets/equifin/clientes.png';
-import credito from '../assets/equifin/credito.png';
+import dashboard from '../assets/hermes/dashboard.png';
+import clientes from '../assets/hermes/clientes.png';
+import credito from '../assets/hermes/credito.png';
 
 const capacidades = [
   {
@@ -172,7 +172,7 @@ const especialidades = [
       <div class="relative lg:col-span-6">
         <BrowserFrame
           src={dashboard}
-          alt="Tablero de HERMES, el sistema de EquiFin: porcentaje de mora, créditos, emprendedoras, cartera vigente y colocación del mes (datos ficticios)."
+          alt="Tablero de HERMES en versión de demostración: porcentaje de mora, créditos, emprendedoras, cartera vigente y colocación del mes (datos ficticios)."
           sizes="(min-width: 1152px) 552px, (min-width: 1024px) 48vw, 100vw"
           prioridad
         />
@@ -180,7 +180,7 @@ const especialidades = [
           href={`${base}/casos/equifin/`}
           class="absolute -bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-jade/30 bg-obsidiana/90 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-jade shadow-lg backdrop-blur transition hover:border-jade"
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-jade"></span> Caso real · HERMES para EquiFin
+          <span class="h-1.5 w-1.5 rounded-full bg-jade"></span> HERMES · en operación en EquiFin
         </a>
       </div>
     </div>
@@ -233,7 +233,8 @@ const especialidades = [
         />
       </div>
       <p class="mt-6 text-sm text-obsidiana/60">
-        Pantallas recreadas con datos ficticios: la información de EquiFin y de sus clientes es confidencial.
+        Pantallas de una versión de demostración, con la marca de IXT y datos ficticios: la información de EquiFin y de sus
+        clientes es confidencial.
       </p>
     </div>
   </section>

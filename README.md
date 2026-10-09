@@ -21,14 +21,14 @@ src/
   layouts/      Base.astro: <head>, metaetiquetas SEO/Open Graph, navbar y footer
   components/   Navbar (con menú móvil), Footer, CtaContacto, BrowserFrame e Icon
   data/         correos de contacto (contacto.ts)
-  assets/       capturas de EquiFin con datos ficticios (se generan en mockups/)
+  assets/       capturas de HERMES con marca IXT y datos ficticios (se generan en mockups/)
   styles/       global.css: Tailwind, @font-face de DejaVu y botones
   fonts/        DejaVu Serif y DejaVu Sans Mono recortadas al rango latino (woff2)
   utils/base.ts ruta base del sitio para armar enlaces
 public/
   brand/        logotipos e íconos en SVG
   og.png        imagen para compartir en redes (1200×630)
-mockups/        recreaciones en HTML de las pantallas de EquiFin (ver mockups/README.md)
+mockups/        recreaciones en HTML de las pantallas de HERMES (ver mockups/README.md)
 ```
 
 Los correos públicos (`l.morelos@ixt.mx` y `ventas@ixt.mx`) viven en `src/data/contacto.ts`: si cambian, se actualizan ahí.

@@ -1,7 +1,19 @@
-/* Recreación de la interfaz de HERMES (EquiFin) para capturas del sitio, siempre con datos ficticios. */
+/* Recreación de la interfaz de HERMES con la marca de IXT, para capturas del sitio, siempre con datos ficticios. */
+@font-face {
+  font-family: 'DejaVu Serif';
+  font-weight: 700;
+  src: url('../../src/fonts/dejavu-serif-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-weight: 400;
+  src: url('../../src/fonts/dejavu-sans-mono-400.woff2') format('woff2');
+}
+
 :root {
-  --ef-rojo: #c62828;
-  --ef-rojo-oscuro: #a91f1f;
+  --hm-primario: #0f6b4f;
+  --hm-primario-oscuro: #0b5540;
   --bs-body-font-family: 'Inter Variable', system-ui, sans-serif;
   --bs-body-color: #212529;
 }
@@ -12,8 +24,8 @@ body {
 }
 
 /* Barra superior */
-.ef-navbar {
-  background: #111;
+.hm-navbar {
+  background: #0b100d;
   height: 60px;
   padding: 0 22px;
   display: flex;
@@ -21,16 +33,38 @@ body {
   justify-content: space-between;
 }
 
-.ef-logo {
-  font-weight: 800;
-  font-style: italic;
+.hm-marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f3f4ef;
+  font-family: 'DejaVu Serif', serif;
+  font-weight: 700;
+  font-size: 22px;
   letter-spacing: -0.02em;
-  color: #e53935;
-  font-size: 27px;
-  line-height: 1;
 }
 
-.ef-burger {
+.hm-marca img {
+  width: 30px;
+  height: 30px;
+}
+
+.hm-producto {
+  margin-left: 4px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(243, 244, 239, 0.25);
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: #3bae88;
+}
+
+.text-marca {
+  color: var(--hm-primario) !important;
+}
+
+.hm-burger {
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 8px;
   width: 52px;
@@ -41,23 +75,23 @@ body {
   font-size: 24px;
 }
 
-/* Botones y tarjetas con el rojo de EquiFin */
-.btn-ef {
+/* Botones y tarjetas con el verde jade de IXT */
+.btn-hm {
   --bs-btn-color: #fff;
-  --bs-btn-bg: var(--ef-rojo);
-  --bs-btn-border-color: var(--ef-rojo);
+  --bs-btn-bg: var(--hm-primario);
+  --bs-btn-border-color: var(--hm-primario);
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: var(--ef-rojo-oscuro);
-  --bs-btn-hover-border-color: var(--ef-rojo-oscuro);
+  --bs-btn-hover-bg: var(--hm-primario-oscuro);
+  --bs-btn-hover-border-color: var(--hm-primario-oscuro);
 }
 
-.card-ef {
+.card-hm {
   border-color: #e3e3e3;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-.card-ef > .card-header {
-  background: var(--ef-rojo);
+.card-hm > .card-header {
+  background: var(--hm-primario);
   color: #fff;
   font-weight: 600;
   border-bottom: 0;
@@ -66,18 +100,18 @@ body {
   justify-content: space-between;
 }
 
-.ef-code {
-  color: #d63384;
+.hm-code {
+  color: var(--hm-primario);
   font-family: var(--bs-font-monospace);
   font-size: 0.92em;
 }
 
-.table-ef {
+.table-hm {
   --bs-table-border-color: #e5e5e5;
   margin-bottom: 0;
 }
 
-.table-ef thead th {
+.table-hm thead th {
   background: #212529;
   color: #fff;
   font-weight: 700;
@@ -85,7 +119,7 @@ body {
   border-color: #32383e;
 }
 
-.table-ef td {
+.table-hm td {
   vertical-align: middle;
 }
 
@@ -100,7 +134,7 @@ body {
   border: 1px solid #9eeaf9;
 }
 
-.ef-acciones .btn {
+.hm-acciones .btn {
   width: 40px;
   height: 36px;
   display: inline-grid;
@@ -108,7 +142,7 @@ body {
   padding: 0;
 }
 
-.ef-pill {
+.hm-pill {
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -122,7 +156,7 @@ body {
   background: #f8f9fa;
 }
 
-.ef-pill-dark {
+.hm-pill-dark {
   background: #6c757d;
   border-color: #6c757d;
   color: #fff;
@@ -254,7 +288,7 @@ body {
 }
 
 /* Inicio de sesión */
-.ef-login-bg {
+.hm-login-bg {
   background: radial-gradient(ellipse at top, #1b1c22 0%, #0d0d10 70%);
   min-height: 100vh;
   display: flex;
@@ -262,7 +296,7 @@ body {
   justify-content: center;
 }
 
-.ef-login-card {
+.hm-login-card {
   width: 980px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -271,8 +305,11 @@ body {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
 }
 
-.ef-login-left {
-  background: linear-gradient(170deg, #c62828 0%, #d4473c 55%, #e07a68 100%);
+.hm-login-left {
+  background-color: #0b100d;
+  background-image: radial-gradient(circle at 1px 1px, rgba(59, 174, 136, 0.18) 1px, transparent 0),
+    linear-gradient(165deg, #0b100d 0%, #10382b 55%, #0f6b4f 100%);
+  background-size: 22px 22px, auto;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -282,24 +319,13 @@ body {
   text-align: center;
 }
 
-.ef-logo-lg {
-  font-weight: 800;
-  font-style: italic;
-  font-size: 64px;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  position: relative;
+.hm-logo-ixt svg {
+  display: block;
+  width: 270px;
+  height: auto;
 }
 
-.ef-logo-lg svg {
-  position: absolute;
-  right: -46px;
-  top: -30px;
-  width: 54px;
-  height: 54px;
-}
-
-.ef-hermes {
+.hm-hermes {
   margin-top: 26px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -307,19 +333,19 @@ body {
   opacity: 0.92;
 }
 
-.ef-login-sub {
+.hm-login-sub {
   font-size: 18px;
   opacity: 0.88;
   margin-top: 4px;
 }
 
-.ef-tiles {
+.hm-tiles {
   display: flex;
   gap: 18px;
   margin-top: 40px;
 }
 
-.ef-tile {
+.hm-tile {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -328,7 +354,7 @@ body {
   opacity: 0.92;
 }
 
-.ef-tile span {
+.hm-tile span {
   width: 58px;
   height: 58px;
   border-radius: 14px;
@@ -338,22 +364,22 @@ body {
   font-size: 26px;
 }
 
-.ef-login-right {
+.hm-login-right {
   background: #fff;
   padding: 64px 56px 48px;
 }
 
-.ef-login-right h1 {
+.hm-login-right h1 {
   font-weight: 800;
   font-size: 34px;
   color: #161a33;
 }
 
-.ef-input {
+.hm-input {
   position: relative;
 }
 
-.ef-input i {
+.hm-input i {
   position: absolute;
   left: 16px;
   top: 50%;
@@ -361,7 +387,7 @@ body {
   color: #868e96;
 }
 
-.ef-input input {
+.hm-input input {
   height: 58px;
   border-radius: 14px;
   border: 2px solid #e9ecef;
@@ -383,7 +409,7 @@ body {
   width: 100%;
 }
 
-.ef-divisor {
+.hm-divisor {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -392,8 +418,8 @@ body {
   margin: 26px 0;
 }
 
-.ef-divisor::before,
-.ef-divisor::after {
+.hm-divisor::before,
+.hm-divisor::after {
   content: '';
   flex: 1;
   height: 1px;
